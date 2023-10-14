@@ -201,7 +201,7 @@
                                                     if (!empty($ciudad)) {
                                                         foreach ($ciudad as $c) {
                                                             ?>
-                                                            <option value="< ?php echo $c['id_ciudad']; ?>"><? php echo $c['ciu_descri']; ?></option>
+                                                            <option value="< ?php echo $c['id_ciudad']; ?>"></option>
                                                             < ?php
                                                         }
                                                     } else {
