@@ -2,8 +2,8 @@
 require '../../conexion.php';
 session_start();
 
-if (isset($_REQUEST['vidpedido'])) {
-    $gru = $_REQUEST['vidpedido'];
+if (isset($_REQUEST['vidorden'])) {
+    $gru = $_REQUEST['vidorden'];
 } else {
     echo 'VALORES VACIOS';
 }
@@ -11,11 +11,11 @@ if (isset($_REQUEST['vidpedido'])) {
 
 <div class="panel-body">
     <div class = "panel-body se">
-    <form action = "pedidosc_control.php" method = "post" accept-charset = "utf-8" class = "form-horizontal">
+    <form action = "ordenc_control.php" method = "post" accept-charset = "utf-8" class = "form-horizontal">
         
-            <h4 class = "modal-title" style="text-align: center"><strong>¿Desea confirmar el Pedido?</strong></h4>
-            <input name="voperacion" value="3" type="hidden">
-            <input class="form-control" name="vidpedido" type="hidden" value="<?php echo $gru ?>"  readonly="" id="codigo" onkeypress="return soloNum(event)" required="">  
+            <h4 class = "modal-title" style="text-align: center"><strong>¿Desea Anular la Orden de Compra?</strong></h4>
+            <input name="voperacion" value="2" type="hidden">
+            <input class="form-control" name="vidorden" type="hidden" value="<?php echo $gru ?>"  readonly="" id="codigoanular" onkeypress="return soloNum(event)" required="">  
             <div class="modal-footer" style="border-top: 1px solid #e5e5e5;margin-left: -1.1em;margin-right: -1.1em;margin-top: 1.5em;;padding-top: 1em;padding-right: 1em;">
                 <button type="submit" class="btn btn-success pull-left">
                      <span class="glyphicon glyphicon-ok-sign"></span> Confirmar

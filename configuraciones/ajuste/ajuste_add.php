@@ -61,90 +61,96 @@
                                             </div>
                                             <!--Motivo-->
                                             <div class="form-group">
+                                                <label class="control-label col-lg-2 col-sm-2 col-xs-4 ">Codigo Ajuste</label>
+                                                <div class="col-lg-6 col-sm-6 col-xs-7">
+                                                    <input class="form-control" value="<?php echo date(7); ?>" type="text" name="vfecha" required="" style="width: 250px;" readonly="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
                                                 <label class="control-label col-lg-2 col-sm-2 col-xs-4 ">Fecha</label>
                                                 <div class="col-lg-6 col-sm-6 col-xs-7">
                                                     <input class="form-control" value="<?php echo date("d-m-Y"); ?>" type="text" name="vfecha" required="" style="width: 250px;" readonly="">
                                                 </div>
                                             </div>
-                                            <div class="form-group">
+<!--                                            <div class="form-group">
                                                 <label class="control-label col-lg-2 col-sm-2 col-xs-2">Motivo</label>
                                                 <div class="col-lg-6 col-sm-6 col-xs-6">
                                                     <div class="input-group">
-                                                        <?php $pais = consultas::get_datos("SELECT * FROM motivo_ajuste ORDER BY id_majuste"); ?>
+                                                        ?php $pais = consultas::get_datos("SELECT * FROM motivo_ajuste ORDER BY id_majuste"); ?>
                                                         <select class="select2" name="vajustes" required="" style="width: 250px;">
                                                             <option value="">Seleccione un Motivo</option>>
-                                                            <?php
+                                                            ?php
                                                             if (!empty($pais)) {
                                                                 foreach ($pais as $p) {
                                                                     ?>
-                                                                    <option value="<?php echo $p['id_majuste']; ?>"><?php echo $p['maj_descri']; ?></option>
-                                                                    <?php
+                                                                    <option value="?php echo $p['id_majuste']; ?>"><?php echo $p['maj_descri']; ?></option>
+                                                                    ?php
                                                                 }
                                                             } else {
                                                                 ?>
                                                                 <option value="">Debe seleccionar al menos un Motivo</option>
-                                                            <?php }
+                                                            ?php }
                                                             ?>
                                                         </select>
 
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div>-->
                                             <!--Deposito-->
-                                            <div class="form-group">
+<!--                                            <div class="form-group">
                                                 <label class="control-label col-lg-2 col-sm-2 col-xs-2">Deposito</label>
                                                 <div class="col-lg-6 col-sm-6 col-xs-6">
                                                     <div class="input-group">
-                                                        <?php $pais = consultas::get_datos("SELECT * FROM ref_deposito ORDER BY id_depo"); ?>
+                                                        ?php $pais = consultas::get_datos("SELECT * FROM ref_deposito ORDER BY id_depo"); ?>
                                                         <select class="select2" name="vdeposito" required="" style="width: 250px;">
                                                             <option value="">Seleccione un Deposito</option>>
-                                                            <?php
+                                                            ?php
                                                             if (!empty($pais)) {
                                                                 foreach ($pais as $p) {
                                                                     ?>
-                                                                    <option value="<?php echo $p['id_depo']; ?>"><?php echo $p['dep_descri']; ?></option>
-                                                                    <?php
+                                                                    <option value="?php echo $p['id_depo']; ?>">?php echo $p['dep_descri']; ?></option>
+                                                                    ?php
                                                                 }
                                                             } else {
                                                                 ?>
                                                                 <option value="">Debe seleccionar al menos un Deposito</option>
-                                                            <?php }
+                                                            ?php }
                                                             ?>
                                                         </select>
 
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div>-->
 
-                                            <div class="form-group">
+<!--                                            <div class="form-group">
                                                 <label class="control-label col-lg-2 col-sm-2 col-xs-2">Articulo</label>
                                                 <div class="col-lg-6 col-sm-6 col-xs-6">
                                                     <div class="input-group">
-                                                        <?php $pais = consultas::get_datos("SELECT * FROM ref_producto WHERE pro_cod IN (select pro_cod from ref_stock where id_depo= (select id_depo from ref_deposito where id_sucursal=" . $_SESSION['id_sucursal'] . "))"); ?>
+                                                        ?php $pais = consultas::get_datos("SELECT * FROM ref_producto WHERE pro_cod IN (select pro_cod from ref_stock where id_depo= (select id_depo from ref_deposito where id_sucursal=" . $_SESSION['id_sucursal'] . "))"); ?>
                                                         <select class="select2" name="vproducto" required="" style="width: 250px;">
                                                             <option value="">Seleccione un Articulo</option>>
-                                                            <?php
+                                                            ?php
                                                             if (!empty($pais)) {
                                                                 foreach ($pais as $p) {
                                                                     ?>
-                                                                    <option value="<?php echo $p['pro_cod']; ?>"><?php echo $p['pro_descri']; ?></option>
-                                                                    <?php
+                                                                    <option value="?php echo $p['pro_cod']; ?>">?php echo $p['pro_descri']; ?></option>
+                                                                    ?php
                                                                 }
                                                             } else {
                                                                 ?>
                                                                 <option value="">Debe seleccionar al menos un Articulo</option>
-                                                            <?php }
+                                                            ?php }
                                                             ?>
                                                         </select>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-group">
+                                            </div>-->
+<!--                                            <div class="form-group">
                                                 <label class="control-label col-lg-2 col-sm-2 col-xs-4 ">Cantidad</label>
                                                 <div class="col-lg-6 col-sm-6 col-xs-7">
                                                     <input class="form-control" value="1" type="number" name="vcantidad" max="500" required=""  style="width: 150px;" min="1" autofocus="" maxlength="30">
                                                 </div>
-                                            </div>
+                                            </div>-->
 
                                         </div>
                                     </div>

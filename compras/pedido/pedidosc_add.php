@@ -65,10 +65,10 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-lg-2 col-sm-2 col-xs-4">Usuario</label>
+                                            <label class="control-label col-lg-2 col-sm-2 col-xs-4">Personal</label>
                                             <div class="col-lg-6 col-sm-6 col-xs-7">
                                                 <input class="form-control" type="hidden" name="vusuario" value="<?php echo $_SESSION['usu_cod']; ?>" />
-                                                <input class="form-control" type="text" name="vusunick" readonly="" value="<?php echo $_SESSION['usu_nick']; ?>">
+                                                <input class="form-control" type="text" name="vusunick" readonly="" value="Lucas Vietsky">
                                             </div>
                                         </div>
                                         <div class="form-group">

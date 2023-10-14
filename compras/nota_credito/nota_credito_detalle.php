@@ -58,6 +58,13 @@
                                                 <span style="color: green" class="glyphicon glyphicon-ok-sign"></span>
                                             </a>
                                         <?php } ?>
+                                        <?php if ($con['estado'] == 'CONFIRMADO') { ?>
+                                            <a style="padding: 10px; margin: 1px"  data-toggle="modal" data-target="#anular"
+                                               onclick="registrar_anular(<?php echo "'" . $_REQUEST['vidnota'] . "'" ?>);"
+                                               class="btn btn-toolbar btn-lg" role="button" rel="tooltip"  data-title="Anular" rel="tooltip" data-placement="top">
+                                                <span style="color: red" class="glyphicon glyphicon-ban-circle"></span>
+                                            </a>
+                                        <?php } ?>
                                     <?php } ?>
                                     <div class="box-tools">
                                         <a href="nota_credito_index.php" class="btn btn-toolbar pull-right">
@@ -79,7 +86,7 @@
                                                             <tr>
                                                                 <th class="text-center">N°</th>
                                                                 <th class="text-center">Fecha</th>
-                                                                <th class="text-center">Usuario</th>
+                                                                <th class="text-center">Personal</th>
                                                                 <th class="text-center">Motivo</th>
                                                                 <th class="text-center">Iva Total</th>
                                                                 <th class="text-center">Total</th>
@@ -91,7 +98,7 @@
                                                                 <tr>
                                                                     <td class="text-center"> <?php echo $pc['cod_notc']; ?></td>
                                                                     <td class="text-center"> <?php echo $pc['fecha_sistema1']; ?></td>
-                                                                    <td class="text-center"> <?php echo $pc['usu_nick']; ?></td>
+                                                                    <td class="text-center">Lucas Vietsky</td>
                                                                     <td class="text-center"> <?php echo $pc['descripcion']; ?></td>
                                                                     <td class="text-center"> <?php echo $pc['btc_totiva']; ?></td>
                                                                     <td class="text-center"> <?php echo $pc['btc_monto']; ?></td>
@@ -135,18 +142,18 @@
                                                     <tbody>
                                                         <?php foreach ($pedidoscdetalle as $pcd) { ?>
                                                             <tr>
-                                                               
+
                                                                 <td class="text-center"> <?php echo $pcd['pro_descri']; ?></td>
                                                                 <td class="text-center"> <?php echo $pcd['dep_descri']; ?></td>
                                                                 <td class="text-center"> <?php echo $pcd['cantidad']; ?></td>
                                                                 <td class="text-center"> <?php echo $pcd['precio']; ?></td>
-                                                           
+
                                                                 <td class="text-center">
                                                                     <?php if ($pc['estado'] == 'ACTIVO') { ?>                                                
                                                                         <a onclick="quitar(<?php echo "'" . $pcd['cod_notc'] . "_" . $pcd['pro_cod'] . "_" . $pcd['id_depo'] . "'" ?>)" class="btn btn-toolbar " role="button" data-title="Eliminar Detalle" data-placement="top" rel="tooltip" data-toggle="modal" data-target="#quitar">
                                                                             <span style="color: red;" class="fa fa-trash"></span>
                                                                         </a>
-                                                                     <?php } ?>
+                                                                    <?php } ?>
                                                                 </td>
                                                             </tr>
                                                         <?php } ?>
@@ -183,7 +190,7 @@
                                                             <input type="hidden" name="voperacion" value="1" />
                                                             <input type="hidden" name="vidnota" value="<?php echo $_REQUEST['vidnota']; ?>" />
                                                             <div class="col-lg-4 col-sm-4 col-md-4 col-xs-4">
-                                                               
+
                                                                 <div class="form-group">
                                                                     <label class="control-label col-lg-6 col-sm-6 col-md-6 col-xs-6">Deposito</label>
                                                                     <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
@@ -207,7 +214,7 @@
                                                                 <div class="form-group">
                                                                     <label class="control-label col-lg-6 col-sm-6 col-md-6 col-xs-6">Producto</label>
                                                                     <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
-                                                                        <?php $productos = consultas::get_datos("SELECT * FROM v_detalle_compras WHERE id_compra = (SELECT id_compra FROM nota_de_credito WHERE cod_notc = ".$_REQUEST['vidnota'].")") ?>
+                                                                        <?php $productos = consultas::get_datos("SELECT * FROM v_detalle_compras WHERE id_compra = (SELECT id_compra FROM nota_de_credito WHERE cod_notc = " . $_REQUEST['vidnota'] . ")") ?>
                                                                         <select class="select2" name="vproducto"  style="width: 300px;" id="idproducto" onchange="obtenerprecio()" onkeyup="obtenerprecio()" onclick="obtenerprecio()" required="">
                                                                             <option  value="">Seleccione un Producto</option>    
                                                                             <?php
@@ -265,6 +272,15 @@
                 </div>
             </div>
             <!-- registrar-->
+            <!-- registrar-->
+            <div id="anular" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content" id="detalles_anular">
+
+                    </div>
+                </div>
+            </div>
+            <!-- registrar-->
             <!-- MODAL DE QUITAR -->
             <div class="modal fade" id="quitar" role="dialog">
                 <div class="modal-dialog">
@@ -296,11 +312,11 @@
         $("#mensaje").delay(1500).slideUp(200, function () {
             $(this).alert('close');
         })
-  function quitar(datos) {
-        var dat = datos.split("_");
-        $('#si').attr('href', 'nota_credito_detalle_control.php?vidnota=' + dat[0] + '&vproducto=' + dat[1] + '&vdeposito=' + dat[2] + '&voperacion=2');
-        $('#confirmacion').html('<span class="glyphicon glyphicon-warning-sign"></span> Desea quitar el Articulo del detalle <i><strong>' + dat[1] + '</strong></i>?');
-    }
+        function quitar(datos) {
+            var dat = datos.split("_");
+            $('#si').attr('href', 'nota_credito_detalle_control.php?vidnota=' + dat[0] + '&vproducto=' + dat[1] + '&vdeposito=' + dat[2] + '&voperacion=2');
+            $('#confirmacion').html('<span class="glyphicon glyphicon-warning-sign"></span> Desea quitar el Articulo del detalle <i><strong>' + dat[1] + '</strong></i>?');
+        }
         function obtenerprecio() {
             var dat = $('#idproducto').val().split("_");
             if (parseInt($('#idproducto').val()) > 0) {
@@ -328,6 +344,19 @@
                 },
                 success: function (msg) {
                     $('#detalles_registrar').html(msg);
+                }
+            });
+        }
+        function registrar_anular(datos) {
+            var dat = datos.split("_");
+            $.ajax({
+                type: "GET",
+                url: "/T.A/compras/nota_credito/nota_credito_anularm.php?vidnota=" + dat[0],
+                beforeSend: function () {
+                    $('#detalles_anular').html();
+                },
+                success: function (msg) {
+                    $('#detalles_anular').html(msg);
                 }
             });
         }

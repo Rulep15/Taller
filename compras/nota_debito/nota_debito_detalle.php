@@ -58,6 +58,13 @@
                                                 <span style="color: green" class="glyphicon glyphicon-ok-sign"></span>
                                             </a>
                                         <?php } ?>
+                                        <?php if ($con['estado'] == 'CONFIRMADO') { ?>
+                                            <a style="padding: 10px; margin: 1px"  data-toggle="modal" data-target="#anular"
+                                               onclick="registrar_anular(<?php echo "'" . $_REQUEST['vidnota'] . "'" ?>);"
+                                               class="btn btn-toolbar btn-lg" role="button" rel="tooltip"  data-title="Anular" rel="tooltip" data-placement="top">
+                                                <span style="color: red" class="glyphicon glyphicon-ban-circle"></span>
+                                            </a>
+                                        <?php } ?>
                                     <?php } ?>
                                     <div class="box-tools">
                                         <a href="nota_debito_index.php" class="btn btn-toolbar pull-right">
@@ -79,7 +86,7 @@
                                                             <tr>
                                                                 <th class="text-center">N°</th>
                                                                 <th class="text-center">Fecha</th>
-                                                                <th class="text-center">Usuario</th>
+                                                                <th class="text-center">Personal</th>
                                                                 <th class="text-center">Iva Total</th>
                                                                 <th class="text-center">Total</th>
 
@@ -90,7 +97,7 @@
                                                                 <tr>
                                                                     <td class="text-center"> <?php echo $pc['id_debito']; ?></td>
                                                                     <td class="text-center"> <?php echo $pc['fecha_sistema1']; ?></td>
-                                                                    <td class="text-center"> <?php echo $pc['usu_nick']; ?></td>
+                                                                    <td class="text-center">Lucas Vietsky</td>
                                                                     <td class="text-center"> <?php echo $pc['total_iva']; ?></td>
                                                                     <td class="text-center"> <?php echo $pc['monto']; ?></td>
                                                                 </tr>
@@ -289,6 +296,15 @@
                 </div>
             </div>
             <!-- registrar-->
+            <!-- anular-->
+            <div id="anular" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content" id="detalles_anular">
+
+                    </div>
+                </div>
+            </div>
+            <!-- anular-->
             <!-- MODAL DE QUITAR -->
             <div class="modal fade" id="quitar" role="dialog">
                 <div class="modal-dialog">
@@ -352,6 +368,19 @@
                 },
                 success: function (msg) {
                     $('#detalles_registrar').html(msg);
+                }
+            });
+        }
+        function registrar_anular(datos) {
+            var dat = datos.split("_");
+            $.ajax({
+                type: "GET",
+                url: "/T.A/compras/nota_debito/nota_debito_anularm.php?vidnota=" + dat[0],
+                beforeSend: function () {
+                    $('#detalles_anular').html();
+                },
+                success: function (msg) {
+                    $('#detalles_anular').html(msg);
                 }
             });
         }

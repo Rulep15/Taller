@@ -12,7 +12,7 @@ if ($_SESSION) {
 <head>
     <meta charset="UTF-8">
     <meta content="width=devicewidth, initial-scale=1, maximum-scalable=no" name="viewport">
-    <title>Acceso la Sistema</title>
+    <title>Acceso al Sistema</title>
     <?php require 'estilos/css_lte.ctp'; ?>
     <style>
         body {
@@ -64,8 +64,12 @@ if ($_SESSION) {
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="password" name="pass" class="form-control" placeholder="Ingrese contraseña" required="">
-                <span class="glyphicon glyphicon-qrcode form-control-feedback"></span>
+                <div class="input-group">
+                    <input type="password" name="pass" id="password" class="form-control" placeholder="Ingrese contraseña" required="">
+                    <div class="input-group-addon">
+                        <span id="togglePassword" class="glyphicon glyphicon-eye-open" style="cursor: pointer;"></span>
+                    </div>
+                </div>
             </div>
             <button class="btn btn-lg btn-info btn-block" type="submit" style="color: #181818; background-color: #FFDE59; padding: 5px 5px;">Iniciar Sesion</button>
             <div class="checkbox" style="padding: 0px 20px;">
@@ -79,7 +83,18 @@ if ($_SESSION) {
             <?php } ?>
         </form>
     </div>
+    <?php require 'estilos/js_lte.ctp'; ?>
+    <script>
+        const togglePassword = document.getElementById('togglePassword');
+        const password = document.getElementById('password');
+
+        togglePassword.addEventListener('click', function() {
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            togglePassword.classList.toggle('glyphicon-eye-open');
+            togglePassword.classList.toggle('glyphicon-eye-close');
+        });
+    </script>
 </body>
-<?php require 'estilos/js_lte.ctp'; ?>
 
 </html>

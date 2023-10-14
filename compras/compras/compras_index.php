@@ -82,6 +82,7 @@
                                                             <tr>
                                                                 <th class="text-center">N° de Compra</th>
                                                                 <th class="text-center">N° de Orden</th>
+                                                                <th class="text-center">N° de Pedido</th>
                                                                 <th class="text-center">Fecha</th>
                                                                 <th class="text-center">Proveedor</th>
                                                                 <th class="text-center">Nro Fact</th>
@@ -103,6 +104,7 @@
                                                                     <?php if ($c['nro_orden'] > 0) { ?>
                                                                         <td class="text-center"><?php echo $c['nro_orden'];; ?></td>
                                                                     <?php } ?>
+                                                                    <td class="text-center"> <?php echo ' '; ?></td>
                                                                     <td class="text-center"> <?php echo $c['fecha_compra']; ?></td>
                                                                     <td class="text-center"> <?php echo $c['prv_razon_social']; ?></td>
                                                                     <td class="text-center"> <?php echo $c['com_nro_factura']; ?></td>
@@ -119,11 +121,11 @@
                                                                             </a>
                                                                         <?php } ?>
 
-                                                                        <?php if ($c['com_estado'] == 'CONFIRMADO') { ?>
-                                                                            <a href="compras_anular.php?vidcompra=<?php echo $c['id_compra']; ?>" class="btn btn-toolbar" role="button" data-title="Anular" rel="tooltip" data-placement="top">
+<!--                                                                        ?php if ($c['com_estado'] == 'CONFIRMADO') { ?>-->
+<!--                                                                            <a href="compras_anular.php?vidcompra=?php echo $c['id_compra']; ?>" class="btn btn-toolbar" role="button" data-title="Anular" rel="tooltip" data-placement="top">
                                                                                 <span style="color: red" class="glyphicon glyphicon-ban-circle"></span>
-                                                                            </a>
-                                                                        <?php } ?>
+                                                                            </a>-->
+<!--                                                                        <php } ?>-->
                                                                          <?php if ($c['com_estado'] == 'CONFIRMADO') { ?>
                                                                             <a href="compras_imprimir_factura.php?vidcompra=<?php echo $c['id_compra']; ?>" class="btn btn-toolbar" role="button" data-title="Factura" rel="tooltip" data-placement="top">
                                                                                 <span  class="fa fa-print"></span>

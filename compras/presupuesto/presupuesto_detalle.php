@@ -62,11 +62,28 @@
                                 <div class="box-header">
                                     <i class="ion ion-clipboard"></i>
                                     <h3 class="box-title">Cabecera</h3>
-                                    <a style="padding: 10px; margin: 1px"  data-toggle="modal" data-target="#confirmar"
-                                       onclick="registrar_permisos(<?php echo "'" . $_REQUEST['vidpresupuesto'] . "'" ?>);"
-                                       class="btn btn-toolbar btn-lg" role="button" rel="tooltip"  data-title="Confirmar" rel="tooltip" data-placement="top">
-                                        <span style="color: green" class="glyphicon glyphicon-ok-sign"></span>
-                                    </a> 
+                                    <?php
+                                    $idpedido = $_REQUEST['vidpresupuesto'];
+                                    $confirmar = consultas::get_datos("SELECT * FROM v_presupuesto WHERE id_presu = $idpedido");
+                                    if (!empty($confirmar)) {
+                                        ?>
+                                        <?php foreach ($confirmar AS $con) { ?>
+                                        <?php } ?>
+                                        <?php if ($con['estado'] == 'ACTIVO') { ?>
+                                            <a style="padding: 10px; margin: 1px"  data-toggle="modal" data-target="#confirmar"
+                                               onclick="registrar_permisos(<?php echo "'" . $_REQUEST['vidpresupuesto'] . "'" ?>);"
+                                               class="btn btn-toolbar btn-lg" role="button" rel="tooltip"  data-title="Confirmar" rel="tooltip" data-placement="top">
+                                                <span style="color: green" class="glyphicon glyphicon-ok-sign"></span>
+                                            </a>
+                                        <?php } ?>
+                                        <?php if ($con['estado'] == 'CONFIRMADO') { ?>
+                                            <a style="padding: 10px; margin: 1px"  data-toggle="modal" data-target="#anular"
+                                               onclick="registrar_anular(<?php echo "'" . $_REQUEST['vidpresupuesto'] . "'" ?>);"
+                                               class="btn btn-toolbar btn-lg" role="button" rel="tooltip"  data-title="Anular" rel="tooltip" data-placement="top">
+                                                <span style="color: red" class="glyphicon glyphicon-ban-circle"></span>
+                                            </a>
+                                        <?php } ?>
+                                    <?php } ?>
                                     <div class="box-tools">
                                         <a href="presupuesto_index.php" class="btn btn-toolbar pull-right">
                                             <i style="color: #465F62" class="fa fa-arrow-left"></i>
@@ -88,7 +105,7 @@
                                                                 <th class="text-center">N°</th>
                                                                 <th class="text-center">Pedido</th>
                                                                 <th class="text-center">Fecha</th>
-                                                                <th class="text-center">Empleado</th>
+                                                                <th class="text-center">Personal</th>
                                                                 <th class="text-center">Proveedor</th>
                                                             </tr>
                                                         </thead>
@@ -129,7 +146,7 @@
                                                     <thead>
                                                         <tr>
                                                             <th class="text-center">Producto</th>
-                                                            <th class="text-center">Deposito</th>
+                                                                <th class="text-center">Deposito</th>
                                                             <th class="text-center">Cantidad</th> 
                                                             <th class="text-center">Precio</th> 
                                                             <th class="text-center">Subtotal</th> 
@@ -142,7 +159,7 @@
                                                         <?php foreach ($presupuestodetalle AS $pcd) { ?>
                                                             <tr>
                                                                 <td class="text-center"> <?php echo $pcd['pro_descri']; ?></td>
-                                                                <td class="text-center"> <?php echo $pcd['dep_descri']; ?></td>
+                                                                    <td class="text-center"> <?php echo $pcd['dep_descri']; ?></td>
                                                                 <td class="text-center"> <?php echo $pcd['cantidad']; ?></td>
                                                                 <td class="text-center"> <?php echo $pcd['precio_unit']; ?></td>
                                                                 <td class="text-center"> <?php echo $pcd['subtotal']; ?></td>
@@ -181,7 +198,7 @@
                             <form action="presupuesto_detalle_control.php" method="POST" accept-charset="UTF-8" class="form-horizontal">
                                 <input name="voperacion" value="1" type="hidden">
                                 <input name="vproducto" id="producto" value="<?php echo $pcd['pro_cod']; ?>" type="hidden">
-                                <input name="vdeposito" id="deposito" value="<?php echo $pcd['id_depo']; ?>" type="hidden">
+<!--                                <input name="vdeposito" id="deposito" value="?php echo $pcd['id_depo']; ?>" type="hidden">-->
                                 <input type="hidden" name="vcantidad" id="cantidad" value="<?php echo $pcd['cantidad']; ?>">
                                 <input type="hidden" name="vidpresupuesto" id="codigo">
                                 <div class="box-body">
@@ -202,14 +219,23 @@
                 </div>
             </div>
             <!-- registrar-->
-                <div id="confirmar" class="modal fade" role="dialog">
-                    <div class="modal-dialog">
-                        <div class="modal-content" id="detalles_registrar">
+            <div id="confirmar" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content" id="detalles_registrar">
 
-                        </div>
                     </div>
                 </div>
-                <!-- registrar-->
+            </div>
+            <!-- registrar-->
+            <!-- anular-->
+            <div id="anular" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content" id="detalles_anular">
+
+                    </div>
+                </div>
+            </div>
+            <!-- anular-->
             <!-- MODAL DE QUITAR -->
             <div class="modal fade" id="quitar" role="dialog">
                 <div class="modal-dialog">
@@ -222,7 +248,7 @@
                             <div class="alert alert-danger" id="confirmacion"></div>
                         </div>
                         <div class="modal-footer"
-                            <a id="si" role="button" class="btn btn-primary">
+                             <a id="si" role="button" class="btn btn-primary">
                                 <span class="glyphicon glyphicon-ok-sign"></span>Si
                             </a>
                             <button type="button" class="btn btn-danger" data-dismiss="modal">
@@ -276,7 +302,7 @@
                 });
             }
         }
-         function registrar_permisos(datos) {
+        function registrar_permisos(datos) {
             var dat = datos.split("_");
             $.ajax({
                 type: "GET",
@@ -286,6 +312,19 @@
                 },
                 success: function (msg) {
                     $('#detalles_registrar').html(msg);
+                }
+            });
+        }
+        function registrar_anular(datos) {
+            var dat = datos.split("_");
+            $.ajax({
+                type: "GET",
+                url: "/T.A/compras/presupuesto/presupuesto_anularm.php?vidpresupuesto=" + dat[0],
+                beforeSend: function () {
+                    $('#detalles_anular').html();
+                },
+                success: function (msg) {
+                    $('#detalles_anular').html(msg);
                 }
             });
         }

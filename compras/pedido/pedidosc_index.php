@@ -82,7 +82,7 @@
                                                         <tr>
                                                             <th class="text-center">N°</th>
                                                             <th class="text-center">Fecha</th>
-                                                            <th class="text-center">Usuario</th>
+                                                            <th class="text-center">Personal</th>
                                                             <th class="text-center">Descripción</th>
                                                             <th class="text-center">Estado</th>
                                                             <th class="text-center">Acciones</th>
@@ -93,37 +93,36 @@
                                                             <tr>
                                                                 <td class="text-center"> <?php echo $pc['id_pedido']; ?></td>
                                                                 <td class="text-center"> <?php echo $pc['fecha_pedido1']; ?></td>
-                                                                <td class="text-center"> <?php echo $pc['usu_nick']; ?></td>
+                                                                <td class="text-center">Lucas Vietsky</td>
                                                                 <td class="text-center"> <?php echo $pc['descri']; ?></td>
                                                                 <td class="text-center"> <?php echo $pc['estado']; ?></td>
 
                                                                 <td class="text-center">
-                                                                    <?php if ($pc['estado'] == 'ACTIVO') { ?>
+<!--                                                                    ?php if ($pc['estado'] == 'ACTIVO') { ?>
                                                                         <a href="pedidosc_edit.php?vidpedido=<?php echo $pc['id_pedido']; ?>" class="btn btn-toolbar" role="button" data-title="Editar" rel="tooltip" data-placement="top">
                                                                             <span style="color: #FFB400" class="glyphicon glyphicon-edit"></span>
                                                                         </a>
-                                                                    <?php } ?>
-                                                                  
+                                                                    ?php } ?
+                                                                  -->
                                                                         <a href="pedidosc_detalle.php?vidpedido=<?php echo $pc['id_pedido']; ?>" class="btn btn-toolbar" role="button" data-title="Detalle" rel="tooltip" data-placement="top">
                                                                             <i style="color: #465F62" class="fa  fa-list"></i>
 
                                                                         </a>
                                                                    
                                                                 
-                                                                    <?php if ($pc['estado'] == 'CONFIRMADO') { ?>
-                                                                        <a href="pedidosc_anular.php?vidpedido=<?php echo $pc['id_pedido']; ?>" class="btn btn-toolbar" role="button" data-title="Anular" rel="tooltip" data-placement="top">
+<!--                                                                   ?php if ($pc['estado'] == 'CONFIRMADO') { ?>-->
+<!--                                                                        <a href="pedidosc_anular.php?vidpedido=<?php echo $pc['id_pedido']; ?>" class="btn btn-toolbar" role="button" data-title="Anular" rel="tooltip" data-placement="top">
                                                                             <span style="color: red" class="glyphicon glyphicon-ban-circle"></span>
-                                                                        </a>
-                                                                    <?php } ?>
+                                                                        </a>-->
+<!--                                                                    ?php } ?>-->
                                                                     
-                                                                    <?php if ($pc['estado'] == 'CONFIRMADO') { ?>
-                                                                    <a href="/T.A/compras/presupuesto/presupuesto_index.php" class="btn  btn-toolbar " rel="tooltip" title="Presupuesto">
+<!--                                                                    ?php if ($pc['estado'] == 'CONFIRMADO') { ?>-->
+<!--                                                                    <a href="/T.A/compras/presupuesto/presupuesto_index.php" class="btn  btn-toolbar " rel="tooltip" title="Presupuesto">
                                                                         <span style="color: #465F62" class="fa fa-money"></span>
-                                                                    </a>
-                                                                    <?php } ?>
+                                                                    </a>-->
+                                                                    <!--php } ?-->
                                                                     
-                                                                    
-
+                                                               
                                                                 </td>
                                                             </tr>
                                                         <?php } ?>

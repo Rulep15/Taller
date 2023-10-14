@@ -51,7 +51,7 @@
                                         <div class="row">
                                             <input type="hidden" name="voperacion" value="1">
                                             <div class="form-group">
-                                                <label class="control-label col-lg-2 col-sm-2 col-xs-4">N° de Nota Debito</label>
+                                                <label class="control-label col-lg-2 col-sm-2 col-xs-4">N° de Nota Remision</label>
                                                 <?php $pc = consultas::get_datos("SELECT COALESCE(MAX(id_remision),0)+1 AS ultimo FROM nota_remision") ?>
                                                 <div class="col-lg-6 col-sm-6 col-xs-7">
                                                     <input class="form-control" type="text" name="vidremision" readonly="" value="<?php echo $pc[0]['ultimo']; ?>">

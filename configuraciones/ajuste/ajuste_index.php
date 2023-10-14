@@ -80,25 +80,30 @@
                                                     <table class="table col-lg-12 col-md-12 col-xs-12">
                                                         <thead>
                                                             <tr>
-                                                                <th class="text-center">Nro Ajuste</th>
+                                                                <th class="text-center">N° Ajuste</th>
                                                                 <th class="text-center">Usuario</th>
-                                                                <th class="text-center">Motivo</th>
                                                                 <th class="text-center">Fecha</th>
-                                                                <th class="text-center">Producto</th>
-                                                                <th class="text-center">Deposito</th>
-                                                                <th class="text-center">Cantidad</th>
+                                                                <th class="text-center">Acciones</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <?php foreach ($stock AS $s) { ?>
                                                                 <tr>
                                                                     <td class="text-center"> <?php echo $s['id_ajuste']; ?></td>
-                                                                    <td class="text-center"> <?php echo $s['usu_nick']; ?></td>
-                                                                    <td class="text-center"> <?php echo $s['maj_descri']; ?></td>
+                                                                    <td class="text-center"> <?php echo 'Pedro'; ?></td>
                                                                     <td class="text-center"> <?php echo $s['fecha_ajus1']; ?></td>
-                                                                    <td class="text-center"> <?php echo $s['pro_descri']; ?></td>
-                                                                    <td class="text-center"> <?php echo $s['dep_descri']; ?></td>
-                                                                    <td class="text-center"> <?php echo $s['cantidad']; ?></td>
+
+                                                                    <td class="text-center">
+                                                                        <?php if ($s['estado'] == 'ACTIVO' || $s['estado'] == 'ANULADO' || $s['estado'] == 'AJUSTADO') { ?>
+                                                                            <a href="ajuste_detalle.php?vidajuste=<?php echo $c['id_ajuste']; ?>" class="btn btn-toolbar" role="button" data-title="Detalle" rel="tooltip" data-placement="top">
+                                                                                <i style="color: #465F62" class="fa  fa-list"></i>
+
+                                                                            </a>
+                                                                        <?php } ?>
+
+
+
+                                                                    </td>
                                                                     </td>
                                                                 </tr>
                                                             <?php } ?>

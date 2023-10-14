@@ -109,11 +109,11 @@
 
                                                                         </a>
 
-                                                                        <?php if ($pc['estado'] == 'CONFIRMADO') { ?>
-                                                                            <a href="presupuesto_anular.php?vidpresupuesto=<?php echo $pc['id_presu']; ?>" class="btn btn-toolbar" role="button" data-title="Anular" rel="tooltip" data-placement="top">
-                                                                                <span style="color: red" class="glyphicon glyphicon-ban-circle"></span>
-                                                                            </a>
-                                                                        <?php } ?>
+<!--                                                                        //?php if ($pc['estado'] == 'CONFIRMADO') { ?>-->
+<!--                                                                            <a href="presupuesto_anular.php?vidpresupuesto=//<?php echo $pc['id_presu']; ?>" class="btn btn-toolbar" role="button" data-title="Anular" rel="tooltip" data-placement="top">-->
+<!--                                                                                <span style="color: red" class="glyphicon glyphicon-ban-circle"></span>-->
+<!--                                                                            </a>-->
+<!--                                                                        ?php } ?>-->
                                                                      
 
                                                                     </td>
@@ -144,6 +144,7 @@
                     </div>
                 </div>
                 <!-- registrar-->
+                
             </div>
         </div>
         <?php require '../../estilos/pie.ctp'; ?>

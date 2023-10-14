@@ -111,11 +111,11 @@
                                                                             </a>
                                                                         
 
-                                                                        <?php if ($c['estado'] == 'CONFIRMADO') { ?>
-                                                                            <a href="ordenc_anular.php?vidorden=<?php echo $c['nro_orden']; ?>" class="btn btn-toolbar" role="button" data-title="Anular" rel="tooltip" data-placement="top">
-                                                                                <span style="color: red" class="glyphicon glyphicon-ban-circle"></span>
-                                                                            </a>
-                                                                        <?php } ?>
+<!--                                                                        //?php if ($c['estado'] == 'CONFIRMADO') { ?>-->
+<!--                                                                            <a href="ordenc_anular.php?vidorden=//?php echo $c['nro_orden']; ?>" class="btn btn-toolbar" role="button" data-title="Anular" rel="tooltip" data-placement="top">-->
+<!--                                                                                <span style="color: red" class="glyphicon glyphicon-ban-circle"></span>-->
+<!--                                                                            </a>-->
+<!--                                                                        ?php } ?>-->
                                                                       
 
                                                                     </td>

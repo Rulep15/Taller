@@ -76,6 +76,13 @@
                                                 <span style = "color: green" class = "glyphicon glyphicon-ok-sign"></span>
                                             </a>
                                         <?php } ?>
+                                        <?php if ($con['estado'] == 'CONFIRMADO') { ?>
+                                            <a style="padding: 10px; margin: 1px"  data-toggle="modal" data-target="#anular"
+                                               onclick="registrar_anular(<?php echo "'" . $_REQUEST['vidorden'] . "'" ?>);"
+                                               class="btn btn-toolbar btn-lg" role="button" rel="tooltip"  data-title="Anular" rel="tooltip" data-placement="top">
+                                                <span style="color: red" class="glyphicon glyphicon-ban-circle"></span>
+                                            </a>
+                                        <?php } ?>
                                     <?php } ?>
                                     <div class = "box-tools">
                                         <a href = "ordenc_index.php" class = "btn btn-toolbar pull-right">
@@ -143,7 +150,7 @@
                                                             <thead>
                                                                 <tr>
                                                                     <th class="text-center">Articulo</th>
-                                                                    <th class="text-center">Deposito</th>
+            <!--                                                                    <th class="text-center">Deposito</th>-->
                                                                     <th class="text-center">Cantidad</th> 
                                                                     <th class="text-center">Precio_Unit</th> 
                                                                     <th class="text-center">SubTotal</th>
@@ -153,7 +160,7 @@
                                                                 <?php foreach ($presupuestodetalle AS $pcd) { ?>
                                                                     <tr>
                                                                         <td class="text-center"> <?php echo $pcd['pro_descri']; ?></td>
-                                                                        <td class="text-center"> <?php echo $pcd['dep_descri']; ?></td>
+                <!--                                                                        <td class="text-center"> ?php echo $pcd['dep_descri']; ?></td>-->
                                                                         <td class="text-center"> <?php echo $pcd['cantidad']; ?></td>
                                                                         <td class="text-center"> <?php echo $pcd['precio_unit']; ?></td>
                                                                         <td class="text-center"> <?php echo $pcd['subtotal']; ?></td>
@@ -250,26 +257,26 @@
                                                         <input type="hidden" name="voperacion" value="1" />
                                                         <input type="hidden" name="vidpedido" value="<?php echo $_REQUEST['vidorden']; ?>" />
                                                         <div class="col-lg-4 col-sm-4 col-md-4 col-xs-4">
-                                                            <div class="form-group">
-                                                                <label class="control-label col-lg-6 col-sm-6 col-md-6 col-xs-6">Deposito</label>
-                                                                <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
-                                                                    <?php $depositos = consultas::get_datos("SELECT * FROM ref_deposito WHERE id_sucursal=" . $_SESSION['id_sucursal']) ?>
-                                                                    <select class="select2" name="vdeposito" required="" style="width: 300px;">
-                                                                        <option  value="">Seleccione un Deposito</option>   
-                                                                        <?php
-                                                                        if (!empty($depositos)) {
-                                                                            foreach ($depositos as $deposito) {
-                                                                                ?>
-                                                                                <option value="<?php echo $deposito['id_depo']; ?>"><?php echo $deposito['dep_descri']; ?></option>
-                                                                                <?php
-                                                                            }
-                                                                        } else {
-                                                                            ?>
-                                                                            <option value="">Debe insertar registros...</option>
-                                                                        <?php } ?>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
+                                                            <!--                                                            <div class="form-group">
+                                                                                                                            <label class="control-label col-lg-6 col-sm-6 col-md-6 col-xs-6">Deposito</label>
+                                                                                                                            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                                                                                                                                ?php $depositos = consultas::get_datos("SELECT * FROM ref_deposito WHERE id_sucursal=" . $_SESSION['id_sucursal']) ?>
+                                                                                                                                <select class="select2" name="vdeposito" required="" style="width: 300px;">
+                                                                                                                                    <option  value="">Seleccione un Deposito</option>   
+                                                                                                                                    ?php
+                                                                                                                                    if (!empty($depositos)) {
+                                                                                                                                        foreach ($depositos as $deposito) {
+                                                                                                                                            ?>
+                                                                                                                                            <option value="?php echo $deposito['id_depo']; ?>">?php echo $deposito['dep_descri']; ?></option>
+                                                                                                                                            ?php
+                                                                                                                                        }
+                                                                                                                                    } else {
+                                                                                                                                        ?>
+                                                                                                                                        <option value="">Debe insertar registros...</option>
+                                                                                                                                    ?php } ?>
+                                                                                                                                </select>
+                                                                                                                            </div>
+                                                                                                                        </div>-->
                                                             <div class="form-group">
                                                                 <label class="control-label col-lg-6 col-sm-6 col-md-6 col-xs-6">Producto</label>
                                                                 <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
@@ -332,6 +339,15 @@
                 </div>
             </div>
             <!-- registrar-->
+              <!-- anular-->
+            <div id="anular" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content" id="detalles_anular">
+
+                    </div>
+                </div>
+            </div>
+            <!-- anular-->
             <!-- MODAL DE QUITAR -->
             <div class="modal fade" id="quitar" role="dialog">
                 <div class="modal-dialog">
@@ -400,6 +416,19 @@
                 },
                 success: function (msg) {
                     $('#detalles_registrar').html(msg);
+                }
+            });
+        }
+        function registrar_anular(datos) {
+            var dat = datos.split("_");
+            $.ajax({
+                type: "GET",
+                url: "/T.A/compras/orden_compra/ordenc_anularm.php?vidorden=" + dat[0],
+                beforeSend: function () {
+                    $('#detalles_anular').html();
+                },
+                success: function (msg) {
+                    $('#detalles_anular').html(msg);
                 }
             });
         }

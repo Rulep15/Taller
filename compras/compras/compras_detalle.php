@@ -58,7 +58,7 @@
                             </div>
                         <?php } ?>
                         <!-- MENSAJE -->
-                        <h3 style="color: white; text-align: center">Datos Cabecera</h3>
+                        <h3 style="color: white; text-align: center">Detalle-Compras</h3>
                         <!--CABECERA-->
                         <div class="box box-primary">
                             <div class="box-header">
@@ -77,6 +77,13 @@
                                         </a>
                                     <?php } ?>
                                 <?php } ?>
+                                 <?php if ($con['com_estado'] == 'CONFIRMADO') { ?>
+                                            <a style="padding: 10px; margin: 1px"  data-toggle="modal" data-target="#anular"
+                                               onclick="registrar_anular(<?php echo "'" . $_REQUEST['vidcompra'] . "'" ?>);"
+                                               class="btn btn-toolbar btn-lg" role="button" rel="tooltip"  data-title="Anular" rel="tooltip" data-placement="top">
+                                                <span style="color: red" class="glyphicon glyphicon-ban-circle"></span>
+                                            </a>
+                                        <?php } ?>
                                 <div class="box-tools">
                                     <a href="compras_index.php" class="btn btn-toolbar pull-right">
                                         <i style="color: #465F62" class="fa fa-arrow-left"></i>
@@ -144,7 +151,7 @@
                                                     <thead>
                                                         <tr>
                                                             <th class="text-center">Articulo</th>
-                                                            <th class="text-center">Deposito</th>
+<!--                                                            <th class="text-center">Deposito</th>-->
                                                             <th class="text-center">Cantidad</th>
                                                             <th class="text-center">Precio_Unit</th>
                                                             <th class="text-center">SubTotal</th>
@@ -157,7 +164,7 @@
                                                         <?php foreach ($presupuestodetalle as $pcd) { ?>
                                                             <tr>
                                                                 <td class="text-center"> <?php echo $pcd['pro_descri']; ?></td>
-                                                                <td class="text-center"> <?php echo $pcd['dep_descri']; ?></td>
+<!--                                                                <td class="text-center"> ?php echo $pcd['dep_descri']; ?></td>-->
                                                                 <td class="text-center"> <?php echo $pcd['cantidad']; ?></td>
                                                                 <td class="text-center"> <?php echo $pcd['precioc']; ?></td>
                                                                 <td class="text-center"> <?php echo $pcd['subtotal']; ?></td>
@@ -387,6 +394,15 @@
             </div>
         </div>
         <!-- registrar-->
+        <!-- anular-->
+        <div id="anular" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content" id="detalles_anular">
+
+                </div>
+            </div>
+        </div>
+        <!-- anular-->
         <!-- MODAL DE QUITAR -->
         <div class="modal fade" id="quitar" role="dialog">
             <div class="modal-dialog">
@@ -459,6 +475,19 @@
             },
             success: function(msg) {
                 $('#detalles_registrar').html(msg);
+            }
+        });
+    }
+        function registrar_anular(datos) {
+        var dat = datos.split("_");
+        $.ajax({
+            type: "GET",
+            url: "/T.A/compras/compras/compra_anularm.php?vidcompra=" + dat[0],
+            beforeSend: function() {
+                $('#detalles_anular').html();
+            },
+            success: function(msg) {
+                $('#detalles_anular').html(msg);
             }
         });
     }

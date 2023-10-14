@@ -87,6 +87,7 @@
                                                                 <th class="text-center">Proveedor</th>
                                                                 <th class="text-center">N° de Fact</th>
                                                                 <th class="text-center">Total</th>
+                                                                <th class="text-center">Estado</th>                                                           
                                                                 <th class="text-center">Iva Total</th>
                                                                 <th class="text-center">Acciones</th>
                                                             </tr>
@@ -101,6 +102,7 @@
                                                                     <td class="text-center"> <?php echo $s['prv_razon_social']; ?></td>
                                                                     <td class="text-center"> <?php echo $s['btc_nro_fact']; ?></td>
                                                                     <td class="text-center"> <?php echo $s['btc_monto']; ?></td>
+                                                                    <td class="text-center"> <?php echo $s['estado']; ?></td>
                                                                     <td class="text-center"> <?php echo $s['btc_totiva']; ?></td>
                                                                     <td class="text-center">
                                                                         <?php if ($s['estado'] == 'ACTIVO' || $s['estado'] == 'ANULADO' || $s['estado'] == 'CONFIRMADO') { ?>
@@ -109,11 +111,11 @@
 
                                                                             </a>
                                                                         <?php } ?>
-                                                                        <?php if ($s['estado'] == 'CONFIRMADO') { ?>
-                                                                            <a href="nota_credito_anular.php?vidnota=<?php echo $s['cod_notc']; ?>" class="btn btn-toolbar" role="button" data-title="Anular" rel="tooltip" data-placement="top">
+                                                                        <!--?php if ($s['estado'] == 'CONFIRMADO') { ?>-->
+<!--                                                                            <a href="nota_credito_anular.php?vidnota=<?php echo $s['cod_notc']; ?>" class="btn btn-toolbar" role="button" data-title="Anular" rel="tooltip" data-placement="top">
                                                                                 <span style="color: red" class="glyphicon glyphicon-ban-circle"></span>
-                                                                            </a>
-                                                                        <?php } ?>
+                                                                            </a>-->
+                                                                        <!--?php } ?>-->
 
 
                                                                     </td>

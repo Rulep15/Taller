@@ -20,7 +20,7 @@ if (!empty($presupuestodetalle)) {
             <thead>
                 <tr>
                     <th class="text-center">Producto</th>
-                    <th class="text-center">Deposito</th>
+<!--                    <th class="text-center">Deposito</th>-->
                     <th class="text-center">Cantidad</th> 
                     <th class="text-center">Precio</th> 
                     <th class="text-center">Subtotal</th> 
@@ -30,7 +30,7 @@ if (!empty($presupuestodetalle)) {
                 <?php foreach ($presupuestodetalle AS $pcd) { ?>
                     <tr>
                         <td class="text-center" id="prod"> <?php echo $pcd['pro_descri']; ?></td>
-                        <td class="text-center" id="depo"> <?php echo $pcd['dep_descri']; ?></td>
+<!--                        <td class="text-center" id="depo"> ?php echo $pcd['dep_descri']; ?></td>-->
                         <td class="text-center" id="canti"> <?php echo $pcd['cantidad']; ?></td>
                         <td class="text-center" id="precio"> <?php echo $pcd['precioc']; ?></td>
                         <td class="text-center" id="subtotal"> <?php echo $pcd['subtotal']; ?></td>

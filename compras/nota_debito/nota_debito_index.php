@@ -85,6 +85,7 @@
                                                                 <th class="text-center">Proveedor</th>
                                                                 <th class="text-center">Nro Fact</th>
                                                                 <th class="text-center">Fecha</th>
+                                                                <th class="text-center">Estado</th>
                                                                 <th class="text-center">Total</th>
                                                                 <th class="text-center">IvaTotal</th>
                                                                 <th class="text-center">Acciones</th>
@@ -98,6 +99,7 @@
                                                                     <td class="text-center"> <?php echo $n['prv_razon_social']; ?></td>
                                                                     <td class="text-center"> <?php echo $n['nro_fact']; ?></td>
                                                                     <td class="text-center"> <?php echo $n['fecha_sistema1']; ?></td>
+                                                                    <td class="text-center"> <?php echo $n['estado']; ?></td>
                                                                     <td class="text-center"> <?php echo $n['monto']; ?></td>
                                                                     <td class="text-center"> <?php echo $n['total_iva']; ?></td>
                                                                     <td class="text-center">
@@ -108,11 +110,11 @@
                                                                             </a>
                                                                         <?php } ?>
 
-                                                                        <?php if ($n['estado'] == 'CONFIRMADO') { ?>
-                                                                            <a href="nota_debito_anular.php?vidnota=<?php echo $n['id_debito']; ?>" class="btn btn-toolbar" role="button" data-title="Anular" rel="tooltip" data-placement="top">
-                                                                                <span style="color: red" class="glyphicon glyphicon-ban-circle"></span>
-                                                                            </a>
-                                                                        <?php } ?>
+                                                                        <!--?php  if ($n['estado'] == 'CONFIRMADO') { ?>-->
+                                                                        <!--<a href="nota_debito_anular.php?vidnota=?php echo $n['id_debito']; ?>" class="btn btn-toolbar" role="button" data-title="Anular" rel="tooltip" data-placement="top">-->
+                                                                        <!--<span style="color: red" class="glyphicon glyphicon-ban-circle"></span>-->
+                                                                        <!--</a>-->
+                                                                        <!--?php } ?>-->
 
                                                                     </td>
 
