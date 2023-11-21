@@ -5,7 +5,7 @@ class conexion
 
     public static function con()
     {
-        $cadena = "host='localhost'" . "port='5432'" . "dbname='TA'" . "user='postgres'" . "password='123'";
+        $cadena = "host='localhost'" . "port='5432'" . "dbname='Taller3'" . "user='postgres'" . "password='123'";
         $con = pg_connect($cadena) or die("Error de conexion" . pg_last_error());
         return $con;
     }
