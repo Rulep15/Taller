@@ -1,7 +1,7 @@
 <header class="main-header">   
     <a href="#" class="logo">
-        <span class="logo-mini"><b>Taller</b></span>
-        <span class="logo-lg">Taller</span>
+        <span class="logo-mini"><b>T.A</b></span>
+        <span class="logo-lg">T.A</span>
     </a>
     <nav class="navbar navbar-static-top" role="navigation">
         <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
