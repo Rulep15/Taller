@@ -1,7 +1,7 @@
 <header class="main-header">   
     <a href="#" class="logo">
-        <span class="logo-mini"><b>T.A</b></span>
-        <span class="logo-lg">T.A</span>
+        <span class="logo-mini"><b>Taller</b></span>
+        <span class="logo-lg">Taller</span>
     </a>
     <nav class="navbar navbar-static-top" role="navigation">
         <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -14,9 +14,9 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="<?php
                         if (!empty($_SESSION['usu_foto'])) {
-                            echo "/T.A/img/personas/" . $_SESSION['usu_foto'];
+                            echo "/Taller/img/personas/" . $_SESSION['usu_foto'];
                         } else {
-                            echo "/T.A/img/sistema/nodisponible.jpg";
+                            echo "/Taller/img/sistema/nodisponible.jpg";
                         }
                         ?>" class="user-image" alt="User Image">
                         <span class="hidden-xs"><?php echo $_SESSION['usu_nick']; ?></span>
@@ -25,9 +25,9 @@
                         <li class="user-header">
                             <img src="<?php
                             if (!empty($_SESSION['usu_foto'])) {
-                                echo "/T.A/img/personas/" . $_SESSION['usu_foto'];
+                                echo "/Taller/img/personas/" . $_SESSION['usu_foto'];
                             } else {
-                                echo "/T.A/img/no_disponible.jpg";
+                                echo "/Taller/img/no_disponible.jpg";
                             }
                             ?>" 
                                  class="img-circle" alt="User Image">
@@ -41,25 +41,15 @@
                                     }
                                     ?>
                                 </small>
-
-                                <small><b>SUCURSAL: </b>
-                                    <?php
-                                    if (!empty($_SESSION['suc_descri'])) {
-                                        echo $_SESSION['suc_descri'];
-                                    } else {
-                                        echo "ERROR 69, CONTACTE AL 911";
-                                    }
-                                    ?>
-                                </small>
                             </p>
                         </li>
                         <!-- acciones dentro del menu emergente-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="/T.A/ayuda/manual_T.A.pdf " class="btn btn-default" style="color:blue;"> Ayuda </a>
+                                <a href="/Taller/ayuda/manual_Taller.pdf " class="btn btn-default" style="color:blue;"> Ayuda </a>
                             </div>
                             <div class="pull-right">
-                                <a href="/T.A" class="btn btn-default" style="color: red;"> Salir </a>
+                                <a href="/Taller" class="btn btn-default" style="color: red;"> Salir </a>
                             </div>
                         </li>
                     </ul>

@@ -1,24 +1,24 @@
 
-<script src="/T.A/librerias/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-<script src="/T.A/librerias/plugins/select2/select2.full.min.js"></script>
-<script src="/T.A/librerias/plugins/fastclick/fastclick.min.js"></script>
-<script src="/T.A/librerias/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<script src="/T.A/librerias/plugins/iCheck/icheck.min.js"></script>
-<script src="/T.A/librerias/plugins/pnotify/pnotify.custom.min.js"></script>
-<script src="/T.A/librerias/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="/T.A/librerias/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-<script src="/T.A/librerias/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-<script src="/T.A/librerias/bower_components/jquery-ui/jquery-ui.min.js"></script>
-<script src="/T.A/librerias/bower_components/raphael/raphael.min.js"></script>
-<script src="/T.A/librerias/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
-<script src="/T.A/librerias/bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
-<script src="/T.A/librerias/bower_components/moment/min/moment.min.js"></script>
-<script src="/T.A/librerias/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<script src="/T.A/librerias/bower_components/fastclick/lib/fastclick.js"></script>
-<script src="/T.A/librerias/dist/js/adminlte.min.js"></script>
-<script src="/T.A/librerias/dist/js/demo.js"></script>
-<script src="/T.A/librerias/js/adminlte/js/app.min.js"></script>
-<script src="/T.A/librerias/js/bootstrap.min.js"></script>
+<script src="/Taller/librerias/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<script src="/Taller/librerias/plugins/select2/select2.full.min.js"></script>
+<script src="/Taller/librerias/plugins/fastclick/fastclick.min.js"></script>
+<script src="/Taller/librerias/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="/Taller/librerias/plugins/iCheck/icheck.min.js"></script>
+<script src="/Taller/librerias/plugins/pnotify/pnotify.custom.min.js"></script>
+<script src="/Taller/librerias/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="/Taller/librerias/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+<script src="/Taller/librerias/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<script src="/Taller/librerias/bower_components/jquery-ui/jquery-ui.min.js"></script>
+<script src="/Taller/librerias/bower_components/raphael/raphael.min.js"></script>
+<script src="/Taller/librerias/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+<script src="/Taller/librerias/bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
+<script src="/Taller/librerias/bower_components/moment/min/moment.min.js"></script>
+<script src="/Taller/librerias/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="/Taller/librerias/bower_components/fastclick/lib/fastclick.js"></script>
+<script src="/Taller/librerias/dist/js/adminlte.min.js"></script>
+<script src="/Taller/librerias/dist/js/demo.js"></script>
+<script src="/Taller/librerias/js/adminlte/js/app.min.js"></script>
+<script src="/Taller/librerias/js/bootstrap.min.js"></script>
 
 <script>
 //Initialize Select2 Elements
@@ -87,7 +87,7 @@
         $('[id^=detail-]').hide();
         $('.toggle').click(function () {
             $input = $(this);
-            $target = $('#' + $inpuT.Attr('data-toggle'));
+            $target = $('#' + $inpuTallerttr('data-toggle'));
             $target.slideToggle();
         });
     });

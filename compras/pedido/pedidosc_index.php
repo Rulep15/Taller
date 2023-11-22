@@ -39,7 +39,7 @@
                         <div class="box box-primary">
                             <div class="box-header">
                                 <i class="ion ion-clipboard"></i>
-                                <h3 class="box-title">Pedidos</h3>
+                                <h3 class="box-title">ASDADAW</h3>
                                 <div class="box-tools">
                                     <a href="pedidosc_add.php" class="btn btn-toolbar pull-right">
                                         <i style="color: #465F62" class="fa fa-plus"></i>

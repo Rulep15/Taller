@@ -51,11 +51,7 @@
 
                     <section class="content-header">
                         <section class="content">
-                            <div class="contentreloj">
-                                <div class="reloj">
-                                    <span id="tiempo">00 : 00 : 00</span>
-                                </div>
-                            </div>
+                          
                             <h3 style="color: whitesmoke; font-size: 30px; font-family: Impact; font-style: italic;">
                                 Bienvenido al Sistema <?php echo '- ', $_SESSION['nombres']; ?>
                             </h3>
@@ -68,27 +64,7 @@
     </body>
     <?php require './estilos/pie.ctp'; ?>
     <?php require './estilos/js_lte.ctp'; ?>
-    <script>
-        let html = document.getElementById("tiempo");
 
-        setInterval(function () {
-            tiempo = new Date();
-
-            horas = tiempo.getHours();
-            minutos = tiempo.getMinutes();
-            segundos = tiempo.getSeconds();
-
-            //evitar los 0 o numeros individuales
-            if (horas < 10)
-                horas = "0" + horas;
-            if (minutos < 10)
-                minutos = "0" + minutos;
-            if (segundos < 10)
-                segundos = "0" + segundos;
-
-            html.innerHTML = horas + " : " + minutos + " : " + segundos;
-        }, 1000);
-    </script>
     <script>
         var embedimSnow = document.getElementById("embedim--snow");
         if (!embedimSnow) {

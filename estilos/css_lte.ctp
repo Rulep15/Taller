@@ -1,27 +1,27 @@
 <!--BOOTSTRAP-->
-<link rel="stylesheet" href="/T.A/librerias/css/bootstrap.min.css">
+<link rel="stylesheet" href="/Taller/librerias/css/bootstrap.min.css">
 <!--ADMIN LTE 2-->
-<link rel="stylesheet" href="/T.A/librerias/css/AdminLTE.min.css">
+<link rel="stylesheet" href="/Taller/librerias/css/AdminLTE.min.css">
 <!--TEMA ESTILO-->
-<link rel="stylesheet" href="/T.A/librerias/css/skins/_all-skins.min.css">
+<link rel="stylesheet" href="/Taller/librerias/css/skins/_all-skins.min.css">
 <!--ZOOM IMAGEN-->
-<link rel="stylesheet" href="/T.A/librerias/css/zoom.css" type="text/css">
+<link rel="stylesheet" href="/Taller/librerias/css/zoom.css" type="text/css">
 <!--MAPAS-->
-<link rel="stylesheet" href="/T.A/librerias/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+<link rel="stylesheet" href="/Taller/librerias/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
 <!--SELECTOR DE BUSQUEDA-->
-<link rel="stylesheet" href="/T.A/librerias/plugins/select2/select2.min.css">
+<link rel="stylesheet" href="/Taller/librerias/plugins/select2/select2.min.css">
 <!--CHECK-->
-<link rel="stylesheet" href="/T.A/librerias/plugins/iCheck/square/blue.css">
+<link rel="stylesheet" href="/Taller/librerias/plugins/iCheck/square/blue.css">
 <!--EXTRAÑO ITEM-->
-<link rel="stylesheet" href="/T.A/librerias/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+<link rel="stylesheet" href="/Taller/librerias/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 <!--ICONOS FONTS FONT AWESOME-->
-<link rel="stylesheet" href="/T.A/librerias/fonts/font-awesome-4.4.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="/T.A/librerias/bower_components/font-awesome/css/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="/Taller/librerias/fonts/font-awesome-4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/Taller/librerias/bower_components/font-awesome/css/font-awesome.min.css" type="text/css">
 <!--ICONO AL COSTADO DE LA BARRA DESPLEGABLE-->
-<link rel="stylesheet" href="/T.A/librerias/bower_components/Ionicons/css/ionicons.min.css">
+<link rel="stylesheet" href="/Taller/librerias/bower_components/Ionicons/css/ionicons.min.css">
 <!--ICONO AL NAVEGACION Y TITULO-->
-<title>T.A</title>
-<link rel="shortcut icon" href="/T.A/img/sistema/off.png">
+<title>Taller</title>
+<link rel="shortcut icon" href="/Taller/img/sistema/off.png">
 
 
 <style>
