@@ -52,12 +52,12 @@
                                             <div class="form-group">
                                                 <label class="control-label col-lg-2 col-sm-2 col-xs-4">Codigo de barra</label>
                                                 <div class="col-lg-6 col-sm-6 col-xs-7">
-                                                    <input class="form-control" type="number" name="vcodigob" required="" autofocus onkeypress="return soloNumero(event)">
+                                                    <input style="width: 320px;" class="form-control" type="number" name="vcodigob" required="" autofocus onkeypress="return soloNumero(event)">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="control-label col-lg-2 col-sm-2 col-xs-2">Marcas</label>
-                                                <div class="col-lg-6 col-sm-6 col-xs-6">
+                                                <label class="control-label col-lg-2 col-sm-2 col-xs-4">Marcas</label>
+                                                <div class="col-lg-6 col-sm-6 col-xs-7">
                                                     <div class="input-group">
                                                         <?php $marcas = consultas::get_datos("SELECT * FROM ref_marca ORDER BY mar_cod"); ?>
                                                         <select class="select2" name="vidmarca" required="" style="width: 320px;">
@@ -74,16 +74,16 @@
                                                             <?php }
                                                             ?>
                                                         </select>
-                                                        <span class="input-group-btn">
+                                                        <!-- <span class="input-group-btn">
                                                             <button class="btn btn-toolbar btn-flat" type="button" data-toggle="modal" data-target="#registrar_marca">
                                                                 <i style="color: #465F62" class="fa fa-plus"></i>
                                                             </button>
-                                                        </span>
+                                                        </span> -->
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="control-label col-lg-2 col-sm-2 col-xs-2">Tipo</label>
+                                                <label class="control-label col-lg-2 col-sm-2 col-xs-4">Tipo</label>
                                                 <div class="col-lg-6 col-sm-6 col-xs-6">
                                                     <div class="input-group">
                                                         <?php $tipoprod = consultas::get_datos("SELECT * FROM ref_tipo_producto ORDER BY id_tipro"); ?>
@@ -101,16 +101,16 @@
                                                             <?php }
                                                             ?>
                                                         </select>
-                                                        <span class="input-group-btn">
+                                                        <!-- <span class="input-group-btn">
                                                             <button class="btn btn-toolbar btn-flat" type="button" data-toggle="modal" data-target="#registrar_tipoprod">
                                                                 <i style="color: #465F62" class="fa fa-plus"></i>
                                                             </button>
-                                                        </span>
+                                                        </span> -->
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="control-label col-lg-2 col-sm-2 col-xs-2">Impuesto</label>
+                                                <label class="control-label col-lg-2 col-sm-2 col-xs-4">Impuesto</label>
                                                 <div class="col-lg-6 col-sm-6 col-xs-6">
                                                     <div class="input-group">
                                                         <?php $tipoimp = consultas::get_datos("SELECT * FROM ref_tipo_impuesto ORDER BY id_timp"); ?>
@@ -128,11 +128,11 @@
                                                             <?php }
                                                             ?>
                                                         </select>
-                                                        <span class="input-group-btn">
+                                                        <!-- <span class="input-group-btn">
                                                             <button class="btn btn-toolbar btn-flat" type="button" data-toggle="modal" data-target="#registrar_tipoimp">
                                                                 <i style="color: #465F62" class="fa fa-plus"></i>
                                                             </button>
-                                                        </span>
+                                                        </span> -->
                                                     </div>
                                                 </div>
                                             </div>
@@ -140,7 +140,7 @@
                                                 <label class="control-label col-lg-2 col-sm-2 col-xs-2">U.Medida</label>
                                                 <div class="col-lg-6 col-sm-6 col-xs-6">
                                                     <div class="input-group">
-                                                        <?php $Unidad = consultas::get_datos("SELECT * FROM ref_unidadmedida ORDER BY id_um"); ?>
+                                                        <?php $Unidad = consultas::get_datos("SELECT * FROM unidad_de_medida ORDER BY id_um"); ?>
                                                         <select class="select2" name="vidum" required="" style="width: 320px;">
                                                             <?php
                                                             if (!empty($Unidad)) {
@@ -155,39 +155,33 @@
                                                             <?php }
                                                             ?>
                                                         </select>
-                                                        <span class="input-group-btn">
+                                                        <!-- <span class="input-group-btn">
                                                             <button class="btn btn-toolbar btn-flat" type="button" data-toggle="modal" data-target="#registrar_unidadm">
                                                                 <i style="color: #465F62" class="fa fa-plus"></i>
                                                             </button>
-                                                        </span>
+                                                        </span> -->
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label col-lg-2 col-sm-2 col-xs-4">Descripcion</label>
                                                 <div class="col-lg-6 col-sm-6 col-xs-7">
-                                                    <input maxlength="250" class="form-control" type="text" name="vdescripcion" required=""  onkeypress="return soloLetras(event);">
+                                                    <input style="width: 320px;" maxlength="250" class="form-control" type="text" name="vdescripcion" required=""  onkeypress="return soloLetras(event);">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label col-lg-2 col-sm-2 col-xs-4">Precio Compra</label>
                                                 <div class="col-lg-6 col-sm-6 col-xs-7">
-                                                    <input class="form-control" type="number" onkeypress="return soloNumero(event)" name="vprecioc" required="" min="0">
+                                                    <input style="width: 320px;" class="form-control" type="number" onkeypress="return soloNumero(event)" name="vprecioc" required="" min="0">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label col-lg-2 col-sm-2 col-xs-4">Precio Venta</label>
                                                 <div class="col-lg-6 col-sm-6 col-xs-7">
-                                                    <input class="form-control" type="number"  onkeypress="return soloNumero(event)" name="vpreciov" required="" min="0">
+                                                    <input style="width: 320px;" class="form-control" type="number"  onkeypress="return soloNumero(event)" name="vpreciov" required="" min="0">
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-lg-2 col-sm-2 col-xs-4">Imagen</label>
-                                                <div class="col-lg-6 col-sm-6 col-xs-7">
-                                                    <input maxlength="100" class="form-control" type="file" name="vimagen" required="" min="0"
-                                                           placeholder="Seleccione una imagen">
-                                                </div>
-                                            </div>
+                                     
                                         </div>
                                     </div>
                                     <div class="box-footer" style="text-align: center;">
@@ -199,7 +193,7 @@
                     </div>
                 </div>
                 <!--MODAL DE MARCAS-->
-                <div class="modal fade" id="registrar_marca" role="dialog">
+                <!-- <div class="modal fade" id="registrar_marca" role="dialog">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -224,10 +218,10 @@
                             </form>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!--MODAL DE MARCAS-->
                 <!--MODAL DE TIPRO-->
-                <div class="modal fade" id="registrar_tipoprod" role="dialog">
+                <!-- <div class="modal fade" id="registrar_tipoprod" role="dialog">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -251,7 +245,7 @@
                             </form>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!--MODAL DE TIPRO-->
             </div>
         </div>
