@@ -38,7 +38,7 @@
                                 </div>
                             <?php } ?>
                             <!-- MENSAJE -->
-                            <h3 style="color: white" >Pedidos de Compras - Detalle</h3>
+                            <h3 style="text-align:center; color:white" >Pedidos de Compras - Detalle</h3>
                             <!--CABECERA-->
                             <div class="box box-primary">
                                 <div class="box-header">
@@ -46,7 +46,7 @@
                                     <h3 class="box-title">Cabecera</h3>
                                     <?php
                                     $idpedido = $_REQUEST['vidpedido'];
-                                    $confirmar = consultas::get_datos("SELECT * FROM v_compras_pedido WHERE id_pedido = $idpedido");
+                                    $confirmar = consultas::get_datos("SELECT * FROM v_pedido WHERE id_pedido = $idpedido");
                                     if (!empty($confirmar)) {
                                         ?>
                                         <?php foreach ($confirmar AS $con) { ?>
@@ -77,7 +77,7 @@
                                         <div class="col-lg-12 col-md-12 col-xs-12">
                                             <?php
                                             $idpedido = $_REQUEST['vidpedido'];
-                                            $pedidosc = consultas::get_datos("SELECT * FROM v_compras_pedido WHERE id_pedido = $idpedido ");
+                                            $pedidosc = consultas::get_datos("SELECT * FROM v_pedido WHERE id_pedido = $idpedido ");
                                             if (!empty($pedidosc)) {
                                                 ?>
                                                 <div class="table-responsive">
@@ -87,7 +87,6 @@
                                                                 <th class="text-center">N°</th>
                                                                 <th class="text-center">Fecha</th>
                                                                 <th class="text-center">Personal</th>
-                                                                <th class="text-center">Observacion</th>
 
                                                             </tr>
                                                         </thead>
@@ -97,7 +96,6 @@
                                                                     <td class="text-center"> <?php echo $pc['id_pedido']; ?></td>
                                                                     <td class="text-center"> <?php echo $pc['fecha_pedido1']; ?></td>
                                                                     <td class="text-center">Lucas Vietsky</td>
-                                                                    <td class="text-center"> <?php echo $pc['descri']; ?></td>
 
                                                                 </tr>
                                                             <?php } ?>
@@ -120,7 +118,7 @@
                                     <div class="col-lg-12 col-md-12 col-xs-12">
                                         <?php
                                         $idpedido = $_REQUEST['vidpedido'];
-                                        $pedidoscdetalle = consultas::get_datos("SELECT * FROM v_compras_pedidos_detalle WHERE id_pedido=$idpedido");
+                                        $pedidoscdetalle = consultas::get_datos("SELECT * FROM v_det_pedido WHERE id_pedido=$idpedido");
                                         if (!empty($pedidoscdetalle)) {
                                             ?>
                                             <div class="table-responsive">
@@ -128,7 +126,6 @@
                                                     <thead>
                                                         <tr>
                                                             <th class="text-center">Producto</th>
-                                                            <th class="text-center">Deposito</th>
                                                             <th class="text-center">Cantidad</th>
                                                             <?php if ($pc['estado'] == 'ACTIVO') { ?>
                                                                 <th class="text-center">Acciones</th>
@@ -139,7 +136,6 @@
                                                         <?php foreach ($pedidoscdetalle as $pcd) { ?>
                                                             <tr>
                                                                 <td class="text-center"> <?php echo $pcd['pro_descri']; ?></td>
-                                                                <td class="text-center"> <?php echo $pcd['dep_descri']; ?></td>
                                                                 <td class="text-center"> <?php echo $pcd['cantidad']; ?></td>
                                                                 <td class="text-center">
                                                                     <?php if ($pc['estado'] == 'ACTIVO') { ?>
@@ -170,36 +166,16 @@
                                     </div>
                                     <div class="box-body no-padding">
                                         <?php if ($pc['estado'] == 'ACTIVO') { ?>
-                                            <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                                            <div class="col-lg-10 col-sm-10 col-md-10 col-xs-10">
                                                 <form action="pedidosc_detalle_control.php" method="POST" accept-charset="UTF-8" class="form-horizontal">
                                                     <div class="box-body" style="left: 1000px;">
                                                         <input type="hidden" name="voperacion" value="1" />
                                                         <input type="hidden" name="vidpedido" value="<?php echo $_REQUEST['vidpedido']; ?>" />
                                                         <div class="col-lg-4 col-sm-4 col-md-4 col-xs-4">
                                                             <div class="form-group">
-                                                                <label class="control-label col-lg-6 col-sm-6 col-md-6 col-xs-6">Deposito</label>
-                                                                <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
-                                                                    <?php $depositos = consultas::get_datos("SELECT * FROM ref_deposito WHERE id_sucursal=" . $_SESSION['id_sucursal']) ?>
-                                                                    <select class="select2" name="vdeposito" required="" style="width: 300px;">
-                                                                        <OPTION value="">Seleccione un Deposito</OPTION>
-                                                                        <?php
-                                                                        if (!empty($depositos)) {
-                                                                            foreach ($depositos as $deposito) {
-                                                                                ?>
-                                                                                <option value="<?php echo $deposito['id_depo']; ?>"><?php echo $deposito['dep_descri']; ?></option>
-                                                                                <?php
-                                                                            }
-                                                                        } else {
-                                                                            ?>
-                                                                            <option value="">Debe insertar registros...</option>
-                                                                        <?php } ?>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
                                                                 <label class="control-label col-lg-6 col-sm-6 col-md-6 col-xs-6">Producto</label>
                                                                 <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
-                                                                    <?php $productos = consultas::get_datos("SELECT * FROM ref_producto WHERE pro_cod IN (SELECT pro_cod FROM ref_stock)") ?>
+                                                                    <?php $productos = consultas::get_datos("SELECT * FROM producto WHERE pro_cod IN (SELECT pro_cod FROM producto)") ?>
                                                                     <select class="select2" name="vproducto" required="" style="width: 300px;" id="idproducto" onchange="obtenerprecio()" onkeyup="obtenerprecio()" onclick="obtenerprecio()">
                                                                         <option  value="">Seleccione un Producto</option>    
                                                                         <?php
