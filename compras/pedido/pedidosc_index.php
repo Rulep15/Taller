@@ -39,7 +39,7 @@
                         <div class="box box-primary">
                             <div class="box-header">
                                 <i class="ion ion-clipboard"></i>
-                                <h3 class="box-title">ASDADAW</h3>
+                                <h3 class="box-title">Pedidos</h3>
                                 <div class="box-tools">
                                     <a href="pedidosc_add.php" class="btn btn-toolbar pull-right">
                                         <i style="color: #465F62" class="fa fa-plus"></i>
@@ -56,7 +56,7 @@
                                                 <div class="form-group">
                                                     <div class="col-lg-12 col-md-12 col-xs-12">
                                                         <div class="input-group custom-search-form">
-                                                            <input type="search" class="form-control" name="buscar" placeholder="Buscar por descripcion..." autofocus="" />
+                                                            <input type="search" class="form-control" name="buscar" placeholder="Buscar por fecha..." autofocus="" />
                                                             <span class="input-group-btn">
                                                                 <button type="submit" class="btn btn-toolbar btn-flat" data-title="Buscar" data-placement="bottom" rel="tooltip">
                                                                     <span style="color: #465F62" class="fa fa-search"></span>
@@ -73,7 +73,7 @@
                                         if (isset($_REQUEST['buscar'])) {
                                             $valor = $_REQUEST['buscar'];
                                         }
-                                        $pedidos = consultas::get_datos("SELECT * FROM v_compras_pedido WHERE id_pedido > 0 AND (id_pedido||TRIM(UPPER(descri))) LIKE TRIM(UPPER('%" . $valor . "%')) ORDER BY id_pedido");
+                                        $pedidos = consultas::get_datos("SELECT * FROM v_pedido WHERE id_pedido > 0 AND (id_pedido||TRIM(UPPER(fecha_pedido))) LIKE TRIM(UPPER('%" . $valor . "%')) ORDER BY id_pedido");
                                         if (!empty($pedidos)) {
                                         ?>
                                             <div class="table-responsive">
@@ -83,8 +83,6 @@
                                                             <th class="text-center">N°</th>
                                                             <th class="text-center">Fecha</th>
                                                             <th class="text-center">Personal</th>
-                                                            <th class="text-center">Descripción</th>
-                                                            <th class="text-center">Estado</th>
                                                             <th class="text-center">Acciones</th>
                                                         </tr>
                                                     </thead>
@@ -94,8 +92,6 @@
                                                                 <td class="text-center"> <?php echo $pc['id_pedido']; ?></td>
                                                                 <td class="text-center"> <?php echo $pc['fecha_pedido1']; ?></td>
                                                                 <td class="text-center">Lucas Vietsky</td>
-                                                                <td class="text-center"> <?php echo $pc['descri']; ?></td>
-                                                                <td class="text-center"> <?php echo $pc['estado']; ?></td>
 
                                                                 <td class="text-center">
 <!--                                                                    ?php if ($pc['estado'] == 'ACTIVO') { ?>
