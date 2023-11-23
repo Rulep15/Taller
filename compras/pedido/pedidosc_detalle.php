@@ -368,6 +368,7 @@
                                     <div class="input-group">
                                         <?php $tipoprod = consultas::get_datos("SELECT * FROM ref_tipo_producto ORDER BY id_tipro"); ?>
                                         <select class="select2" name="vidtipro" required="" style="width: 320px;">
+                                            <option></option>
                                             <?php
                                             if (!empty($tipoprod)) {
                                                 foreach ($tipoprod as $tp) {
