@@ -5,18 +5,14 @@ session_start();
 
 $operacion = $_REQUEST['voperacion'];
 $codigo = $_REQUEST['vidpedido'];
-$deposito = $_REQUEST['vdeposito'];
 $producto = $_REQUEST['vproducto'];
 $cantidad = $_REQUEST['vcantidad'];
-$precio = $_REQUEST['vprecio'];
 
 
 $sql = "SELECT sp_compras_pedidos_detalle(" . $operacion . "," .
     (!empty($codigo) ? $codigo : 0) . "," .
-    (!empty($deposito) ? $deposito : 0) . "," .
     (!empty($producto) ? $producto : 0) . "," .
-    (!empty($cantidad) ? $cantidad : 0) . "," .
-    (!empty($precio) ? $precio : 0) . ") AS dpedidosc;";
+    (!empty($cantidad) ? $cantidad : 0) . ") AS dpedidosc;";
 $resultado = consultas::get_datos($sql);
 
 if ($resultado[0]['dpedidosc'] != NULL) {

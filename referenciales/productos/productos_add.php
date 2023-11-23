@@ -70,7 +70,7 @@
                                                                 }
                                                             } else {
                                                                 ?>
-                                                                <option value="">Debe seleccionar al menos una marca</option>             
+                                                                <option value="">Debe seleccionar al menos un Dato</option>             
                                                             <?php }
                                                             ?>
                                                         </select>
@@ -97,7 +97,7 @@
                                                                 }
                                                             } else {
                                                                 ?>
-                                                                <option value="">Debe seleccionar al menos un tipo</option>             
+                                                                <option value="">Debe seleccionar al menos un Dato</option>             
                                                             <?php }
                                                             ?>
                                                         </select>
@@ -124,7 +124,7 @@
                                                                 }
                                                             } else {
                                                                 ?>
-                                                                <option value="">Debe seleccionar al menos un tipo</option>             
+                                                                <option value="">Debe seleccionar al menos un Dato</option>             
                                                             <?php }
                                                             ?>
                                                         </select>
@@ -151,7 +151,7 @@
                                                                 }
                                                             } else {
                                                                 ?>
-                                                                <option value="">Debe seleccionar al menos un tipo</option>             
+                                                                <option value="">Debe seleccionar al menos un Dato</option>             
                                                             <?php }
                                                             ?>
                                                         </select>
