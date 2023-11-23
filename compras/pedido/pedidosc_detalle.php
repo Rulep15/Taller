@@ -155,7 +155,7 @@
                         </div>
                         <?php if ($pc['estado'] == 'ACTIVO') { ?>
                             <!--AGREGAR DETALLE-->
-                            <div class="box box-primary" style="width: 550px; height: 300px;margin: 0 auto;">
+                            <div class="box box-primary" style="width: 500px; height: 250px; margin: 0 auto;">
                                 <div class="box-header">
                                     <i class="ion ion-clipboard"></i>
                                     <h3 class="box-title">Agregar Productos</h3>
@@ -323,14 +323,14 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 style="text-align:center;" class="modal-title"><strong>Registrar Producto</strong></h4>
+                        <h4 class="modal-title"><strong>Registrar Producto</strong></h4>
                     </div>
                     <form action="ciudad_control.php" method="POST" accept-charset="UTF-8" class="form-horizontal">
                         <input name="voperacion" value="4" type="hidden">
                         <input name="vidpais" value="0" type="hidden" id="vidmarca">
                         <div class="box-body">
                             <div class="form-group">
-                                <label class="control-label col-lg-2 col-sm-2 col-xs-4">Codigo de barra</label>
+                                <label class="control-label col-lg-2 col-sm-2 col-xs-4">Cod.Barra</label>
                                 <div class="col-lg-6 col-sm-6 col-xs-7">
                                     <input style="width: 320px;" class="form-control" type="number" name="vcodigob" required="" id="codigo_barra" onkeypress="return soloNumero(event)">
                                 </div>
@@ -341,6 +341,7 @@
                                     <div class="input-group">
                                         <?php $marcas = consultas::get_datos("SELECT * FROM ref_marca ORDER BY mar_cod"); ?>
                                         <select class="select2" name="vidmarca" required="" style="width: 320px;">
+                                            <option value="0">SELECCIONE UN DATO</option>
                                             <?php
                                             if (!empty($marcas)) {
                                                 foreach ($marcas as $m) {
@@ -363,12 +364,12 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-lg-2 col-sm-2 col-xs-4">Tipo</label>
+                                <label class="control-label col-lg-2 col-sm-2 col-xs-4">T.Producto</label>
                                 <div class="col-lg-6 col-sm-6 col-xs-6">
                                     <div class="input-group">
                                         <?php $tipoprod = consultas::get_datos("SELECT * FROM ref_tipo_producto ORDER BY id_tipro"); ?>
                                         <select class="select2" name="vidtipro" required="" style="width: 320px;">
-                                            <option></option>
+                                            <option value="0">SELECCIONE UN DATO</option>
                                             <?php
                                             if (!empty($tipoprod)) {
                                                 foreach ($tipoprod as $tp) {
@@ -396,6 +397,7 @@
                                     <div class="input-group">
                                         <?php $tipoimp = consultas::get_datos("SELECT * FROM ref_tipo_impuesto ORDER BY id_timp"); ?>
                                         <select class="select2" name="vidtimp" required="" style="width: 320px;">
+                                            <option value="0">SELECCIONE UN DATO</option>
                                             <?php
                                             if (!empty($tipoimp)) {
                                                 foreach ($tipoimp as $tim) {
@@ -418,6 +420,7 @@
                                     <div class="input-group">
                                         <?php $Unidad = consultas::get_datos("SELECT * FROM unidad_de_medida ORDER BY id_um"); ?>
                                         <select class="select2" name="vidum" required="" style="width: 320px;">
+                                            <option value="0">SELECCIONE UN DATO</option>
                                             <?php
                                             if (!empty($Unidad)) {
                                                 foreach ($Unidad as $um) {
@@ -441,13 +444,13 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-lg-2 col-sm-2 col-xs-4">Precio Compra</label>
+                                <label class="control-label col-lg-2 col-sm-2 col-xs-4">P.Compra</label>
                                 <div class="col-lg-6 col-sm-6 col-xs-7">
                                     <input style="width: 320px;" class="form-control" type="number" onkeypress="return soloNumero(event)" id="precioc" name="vprecioc" required="" min="0">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-lg-2 col-sm-2 col-xs-4">Precio Venta</label>
+                                <label class="control-label col-lg-2 col-sm-2 col-xs-4">P.Venta</label>
                                 <div class="col-lg-6 col-sm-6 col-xs-7">
                                     <input style="width: 320px;" class="form-control" type="number" onkeypress="return soloNumero(event)" id="preciov" name="vpreciov" required="" min="0">
                                 </div>
