@@ -158,7 +158,7 @@
                             <div class="box box-primary" style="width: 550px; height: 300px;margin: 0 auto;">
                                 <div class="box-header">
                                     <i class="ion ion-clipboard"></i>
-                                    <h3 class="box-title">Agregar Items</h3>
+                                    <h3 class="box-title">Agregar Productos</h3>
                                 </div>
                                 <div class="box-body no-padding">
                                     <?php if ($pc['estado'] == 'ACTIVO') { ?>
