@@ -277,7 +277,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Descripcion</label>
                                 <div class="col-xs-10 col-md-10 col-lg-10">
-                                    <input type="text" class="form-control" name="vdescripcion" required="" autofocus="" id="vmardescri" onkeypress="return soloLetras(event);">
+                                    <input type="text" class="form-control" name="vdescripcionmarca" required="" autofocus="" id="vmardescri" onkeypress="return soloLetras(event);">
                                 </div>
                             </div>
                         </div>
@@ -290,7 +290,7 @@
             </div>
     </div>
     <!--MODAL DE MARCAS-->
-    <!--MODAL DE MARCAS-->
+    <!--MODAL DE TIPO DE PRODUCTO-->
     < <div class="modal fade" id="registrar_tipo" role="dialog" style="z-index: 1060;">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -305,19 +305,19 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Descripcion</label>
                             <div class="col-xs-10 col-md-10 col-lg-10">
-                                <input type="text" class="form-control" name="vdescripcion" required="" autofocus="" id="vmardescri" onkeypress="return soloLetras(event);">
+                                <input type="text" class="form-control" name="vdescripcionproducto" required="" autofocus="" id="vtipoproducto" onkeypress="return soloLetras(event);">
                             </div>
                         </div>
                     </div>
                     <div class="box-footer">
-                        <button type="reset" data-dismiss="modal" class="fa fa-remove btn btn-danger" id="cerrar_marca"> Cerrar</button>
+                        <button type="reset" data-dismiss="modal" class="fa fa-remove btn btn-danger" id="cerrar_tipo"> Cerrar</button>
                         <button type="submit" class="fa fa-save btn btn-success pull-right"> Guardar</button>
                     </div>
                 </form>
             </div>
         </div>
         </div>
-        <!--MODAL DE MARCAS-->
+        <!--MODAL DE TIPO DE PRODUCTO-->
         <!--MODAL DE Producto-->
         <div class="modal fade" id="registrar_producto" role="dialog" style="z-index: 1050;">
             <div class="modal-dialog">
@@ -332,7 +332,7 @@
                             <div class="form-group">
                                 <label class="control-label col-lg-2 col-sm-2 col-xs-4">Codigo de barra</label>
                                 <div class="col-lg-6 col-sm-6 col-xs-7">
-                                    <input style="width: 320px;" class="form-control" type="number" name="vcodigob" required="" autofocus onkeypress="return soloNumero(event)">
+                                    <input style="width: 320px;" class="form-control" type="number" name="vcodigob" required="" id="codigo_barra" onkeypress="return soloNumero(event)">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -436,24 +436,24 @@
                             <div class="form-group">
                                 <label class="control-label col-lg-2 col-sm-2 col-xs-4">Descripcion</label>
                                 <div class="col-lg-6 col-sm-6 col-xs-7">
-                                    <input style="width: 320px;" maxlength="250" class="form-control" type="text" name="vdescripcion" required="" onkeypress="return soloLetras(event);">
+                                    <input style="width: 320px;" maxlength="250" class="form-control" type="text" name="vdescripcion" id="descripcion" onkeypress="return soloLetras(event);">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-lg-2 col-sm-2 col-xs-4">Precio Compra</label>
                                 <div class="col-lg-6 col-sm-6 col-xs-7">
-                                    <input style="width: 320px;" class="form-control" type="number" onkeypress="return soloNumero(event)" name="vprecioc" required="" min="0">
+                                    <input style="width: 320px;" class="form-control" type="number" onkeypress="return soloNumero(event)" id="precioc" name="vprecioc" required="" min="0">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-lg-2 col-sm-2 col-xs-4">Precio Venta</label>
                                 <div class="col-lg-6 col-sm-6 col-xs-7">
-                                    <input style="width: 320px;" class="form-control" type="number" onkeypress="return soloNumero(event)" name="vpreciov" required="" min="0">
+                                    <input style="width: 320px;" class="form-control" type="number" onkeypress="return soloNumero(event)" id="preciov" name="vpreciov" required="" min="0">
                                 </div>
                             </div>
                         </div>
                         <div class="box-footer">
-                            <button type="reset" data-dismiss="modal" class="fa fa-close btn btn-danger" id="cerrar_agregar1"> Cerrar</button>
+                            <button type="reset" data-dismiss="modal" class="fa fa-close btn btn-danger" id="cerrar_producto"> Cerrar</button>
                             <button type="submit" class="fa fa-save btn btn-success pull-right"> Guardar</button>
                         </div>
                     </form>
@@ -500,8 +500,44 @@
             success: function(msg) {
                 $('#detalles_anular').html(msg);
             }
+
         });
+
     }
 </SCRIPT>
+<script>
+    //focus en el primer de marca
+    $(document).ready(function() {
+        $('#registrar_marca').on('shown.bs.modal', function() {
+            $('#vmardescri').focus();
+        });
+    });
+    //focus en el primer de tipo de producto
+    $(document).ready(function() {
+        $('#registrar_tipo').on('shown.bs.modal', function() {
+            $('#vtipoproducto').focus();
+        });
+    });
+    /*MENSAJE DE INSERT MARCAS, TIPO,. ETC*/
+    $("#mensaje").delay(1000).slideUp(200, function() {
+        $(this).alert('close');
+    });
+    //LIMPIAR AUTOMÁTICO MARCA
+    $("#cerrar_marca").click(function() {
+        $('#vmardescri').val("");
+    });
+    //LIMPIAR AUTOMÁTICO TIPO DE PRODUCTO
+    $("#cerrar_tipo").click(function() {
+        $('#vtipoproducto').val("");
+    });
+    //LIMPIAR AUTOMÁTICO PRODUCTO
+    $("#cerrar_producto").click(function() {
+        $('#codigo_barra').val("");
+        $('#descripcion').val("");
+        $('#precioc').val("");
+        $('#preciov').val("");
+    });
+</script>
+
 
 </HTML>
