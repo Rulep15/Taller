@@ -142,7 +142,7 @@
         if (parseInt($('#factura').val()) > 0) {
             $.ajax({
                 type: "GET",
-                url: "/T.A/compras/presupuesto/presupuesto_pedi.php?vidpresupuesto=" + dat[0],
+                url: "/Taller/compras/presupuesto/presupuesto_pedi.php?vidpresupuesto=" + dat[0],
                 cache: false,
                 beforeSend: function() {},
                 success: function(msg) {
