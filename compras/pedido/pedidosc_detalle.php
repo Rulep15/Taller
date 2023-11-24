@@ -164,7 +164,6 @@
                                             <form action="pedidosc_detalle_control.php" method="POST" accept-charset="UTF-8" class="form-horizontal">
                                                 <div class="box-body" style="left: 1000px;">
                                                     <input type="hidden" name="voperacion" value="1" />
-                                                    <input type="hidden" name="vidpedido" value="<?php echo $_REQUEST['vidpedido']; ?>" />
                                                     <div class="col-lg-4 col-sm-4 col-md-4 col-xs-4">
                                                         <div class="form-group">
                                                             <label class="control-label col-lg-6 col-sm-6 col-md-6 col-xs-6">Producto</label>
@@ -325,6 +324,7 @@
                     <form action="productos_control.php" method="POST" accept-charset="UTF-8" class="form-horizontal">
                         <input name="voperacion" value="1" type="hidden">
                         <input name="vidproducto" value="0" type="hidden" id="vidmarca">
+                        <input name="vidpedido" value="<?php echo $_REQUEST['vidpedido']; ?>" type="hidden" id="vidpedido">
                         <div class="box-body">
                             <div class="form-group">
                                 <label class="control-label col-lg-2 col-sm-2 col-xs-4">Cod.Barra</label>
@@ -338,7 +338,6 @@
                                     <div class="input-group">
                                         <?php $marcas = consultas::get_datos("SELECT * FROM ref_marca ORDER BY mar_cod"); ?>
                                         <select class="select2" name="vidmarca" required="" style="width: 320px;">
-                                            <option value="0">SELECCIONE UN DATO</option>
                                             <?php
                                             if (!empty($marcas)) {
                                                 foreach ($marcas as $m) {
@@ -366,7 +365,6 @@
                                     <div class="input-group">
                                         <?php $tipoprod = consultas::get_datos("SELECT * FROM ref_tipo_producto ORDER BY id_tipro"); ?>
                                         <select class="select2" name="vidtipro" required="" style="width: 320px;">
-                                            <option value="0">SELECCIONE UN DATO</option>
                                             <?php
                                             if (!empty($tipoprod)) {
                                                 foreach ($tipoprod as $tp) {
@@ -394,7 +392,6 @@
                                     <div class="input-group">
                                         <?php $tipoimp = consultas::get_datos("SELECT * FROM ref_tipo_impuesto ORDER BY id_timp"); ?>
                                         <select class="select2" name="vidtimp" required="" style="width: 320px;">
-                                            <option value="0">SELECCIONE UN DATO</option>
                                             <?php
                                             if (!empty($tipoimp)) {
                                                 foreach ($tipoimp as $tim) {
@@ -417,7 +414,6 @@
                                     <div class="input-group">
                                         <?php $Unidad = consultas::get_datos("SELECT * FROM unidad_de_medida ORDER BY id_um"); ?>
                                         <select class="select2" name="vidum" required="" style="width: 320px;">
-                                            <option value="0">SELECCIONE UN DATO</option>
                                             <?php
                                             if (!empty($Unidad)) {
                                                 foreach ($Unidad as $um) {

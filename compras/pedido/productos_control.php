@@ -11,7 +11,7 @@ $unidad = $_REQUEST['vidum'];
 $descripcion = $_REQUEST['vdescripcion'];
 $precioc = $_REQUEST['vprecioc'];
 $preciov = $_REQUEST['vpreciov'];
-$pedi = $_REQUEST['vpedi'];
+$pedi = $_REQUEST['vidpedido'];
 $codigob = $_REQUEST['vcodigob'];
 
 
@@ -29,8 +29,8 @@ $sql = "SELECT sp_ref_det_producto(" . $operacion . "," .
     (!empty($codigob) ? $codigob : 0) . ") AS productos;";
 $resultado = consultas::get_datos($sql);
 
-if ($resultado[0]['pedidosc'] != NULL) {
-    $valor = explode("*", $resultado[0]['pedidosc']);
+if ($resultado[0]['productos'] != NULL) {
+    $valor = explode("*", $resultado[0]['productos']);
     $_SESSION['mensaje'] = $valor[0];
     header("location:" . $valor[1]);
 } else {
