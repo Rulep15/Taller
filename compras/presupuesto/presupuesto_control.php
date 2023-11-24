@@ -18,7 +18,7 @@ $sql = "SELECT sp_presupuesto(" . $operacion . "," .
     (!empty($proveedor) ? $proveedor : 0) . "," .
     (!empty($pedido) ? $pedido : 0) . "," .
     (!empty($usuario) ? $usuario : 0) . ",'" .
-    (!empty($fechasistema) ? $fechasistema : 0) . "','" .
+    (!empty($fechasistema) ? $fechasistema : "2000/01/01") . "','" .
     (!empty($validez) ? $validez : "2000/01/01") . "','" .
     (!empty($fecha) ? $fecha : "2000/01/01") . "') AS presupuesto;";
 $resultado = consultas::get_datos($sql);

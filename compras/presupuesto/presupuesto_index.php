@@ -75,7 +75,7 @@
                                         if (isset($_REQUEST['buscar'])) {
                                             $valor = $_REQUEST['buscar'];
                                         }
-                                        $presupuesto = consultas::get_datos("SELECT * FROM v_presupuesto WHERE id_presu > 0 AND  (id_presu||TRIM(UPPER(prv_razon_social))) LIKE TRIM(UPPER('%" . $valor . "%')) ORDER BY id_presu");
+                                        $presupuesto = consultas::get_datos("SELECT * FROM v_presupuesto WHERE estado <> 'ANULADO' AND id_presu > 0 AND  (id_presu||TRIM(UPPER(prv_razon_social))) LIKE TRIM(UPPER('%" . $valor . "%')) ORDER BY id_presu");
                                         if (!empty($presupuesto)) {
                                         ?>
                                             <div class="table-responsive">
