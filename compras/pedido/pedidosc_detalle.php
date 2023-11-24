@@ -507,7 +507,7 @@
     }
 </SCRIPT>
 <script>
-    //focus en el primer de marca
+    //focus en el primer input de marca
     $(document).ready(function() {
         $('#registrar_marca').on('shown.bs.modal', function() {
             $('#vmardescri').focus();
@@ -517,6 +517,12 @@
     $(document).ready(function() {
         $('#registrar_tipo').on('shown.bs.modal', function() {
             $('#vtipoproducto').focus();
+        });
+    });
+    //focus en el primer input de producto
+    $(document).ready(function() {
+        $('#registrar_producto').on('shown.bs.modal', function() {
+            $('#codigo_barra').focus();
         });
     });
     /*MENSAJE DE INSERT MARCAS, TIPO,. ETC*/
