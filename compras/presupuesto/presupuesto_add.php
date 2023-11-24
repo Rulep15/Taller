@@ -51,8 +51,11 @@
                                     <div class="row">
                                         <input type="hidden" name="voperacion" value="1">
                                         <input name="vusuario" value="<?php echo $_SESSION['usu_cod']; ?>" type="hidden">
-                                        <input type="hidden" name="vtotal" value="0">
-
+                                        <input class="form-control" type="hidden" name="vfechasistema" value="<?php echo date("d-m-Y"); ?>">
+                                        <div>
+                                            <?php $pc = consultas::get_datos("SELECT COALESCE(MAX(id_presu),0)+1 AS ultimo FROM presupuesto") ?>
+                                            <input class="form-control" type="hidden" name="vidpresupuesto" value="<?php echo $pc[0]['ultimo']; ?>">
+                                        </div>
                                         <div class="form-group">
                                             <label class="control-label  col-lg-3 col-sm-2 col-xs-2">Pedido</label>
                                             <div class="col-lg-4 col-sm-4 col-xs-4">

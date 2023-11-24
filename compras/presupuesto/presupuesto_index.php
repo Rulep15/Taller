@@ -95,7 +95,7 @@
                                                             <tr>
 
                                                                 <td class="text-center"> <?php echo $pc['id_presu']; ?></td>
-                                                                <td class="text-center"> <?php echo $pc['id_pedido']; ?><?php echo ' - '; ?><?php echo $pc['fecha']; ?><?php echo ' - '; ?></td>
+                                                                <td class="text-center"> <?php echo $pc['id_pedido']; ?><?php echo ' - '; ?><?php echo $pc['fecha']; ?></td>
                                                                 <td class="text-center"> <?php echo $pc['fecha_presu1']; ?></td>
                                                                 <td class="text-center"> <?php echo $pc['prv_razon_social']; ?></td>
                                                                 <td class="text-center"> <?php echo $pc['validez']; ?></td>
