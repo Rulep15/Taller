@@ -83,7 +83,6 @@
                                                             <th class="text-center">N°</th>
                                                             <th class="text-center">Fecha</th>
                                                             <th class="text-center">Personal</th>
-
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -92,7 +91,6 @@
                                                                 <td class="text-center"> <?php echo $pc['id_pedido']; ?></td>
                                                                 <td class="text-center"> <?php echo $pc['fecha_pedido1']; ?></td>
                                                                 <td class="text-center">Lucas Vietsky</td>
-
                                                             </tr>
                                                         <?php } ?>
                                                     </tbody>
@@ -221,7 +219,7 @@
                 </div>
             </div>
         </div>
-        <!-- registrar-->
+        <!-- CONFIRMAR-->
         <div id="confirmar" class="modal fade" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content" id="detalles_registrar">
@@ -229,8 +227,8 @@
                 </div>
             </div>
         </div>
-        <!-- registrar-->
-        <!-- registrar-->
+        <!-- CONFIRMAR-->
+        <!-- ANULAR-->
         <div id="anular" class="modal fade" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content" id="detalles_anular">
@@ -238,13 +236,12 @@
                 </div>
             </div>
         </div>
-        <!-- registrar-->
+        <!-- ANULAR-->
         <!-- MODAL DE QUITAR -->
         <div class="modal fade" id="quitar" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" arial-label="Close">X</button>
                         <h4 class="modal-title custom_align" id="Heading">Atencion!!!</h4>
                     </div>
                     <div class="modal-body">
@@ -325,9 +322,9 @@
                     <div class="modal-header">
                         <h4 class="modal-title"><strong>Registrar Producto</strong></h4>
                     </div>
-                    <form action="ciudad_control.php" method="POST" accept-charset="UTF-8" class="form-horizontal">
-                        <input name="voperacion" value="4" type="hidden">
-                        <input name="vidpais" value="0" type="hidden" id="vidmarca">
+                    <form action="productos_control.php" method="POST" accept-charset="UTF-8" class="form-horizontal">
+                        <input name="voperacion" value="1" type="hidden">
+                        <input name="vidproducto" value="0" type="hidden" id="vidmarca">
                         <div class="box-body">
                             <div class="form-group">
                                 <label class="control-label col-lg-2 col-sm-2 col-xs-4">Cod.Barra</label>
