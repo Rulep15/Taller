@@ -73,7 +73,7 @@
                                         if (isset($_REQUEST['buscar'])) {
                                             $valor = $_REQUEST['buscar'];
                                         }
-                                        $pedidos = consultas::get_datos("SELECT  * FROM v_pedido WHERE id_pedido > 0 AND (id_pedido||TRIM(UPPER(fecha_pedido))) LIKE TRIM(UPPER('%" . $valor . "%')) ORDER BY id_pedido");
+                                        $pedidos = consultas::get_datos("SELECT  * FROM v_pedido WHERE estado <> 'ANULADO' AND (id_pedido||TRIM(UPPER(fecha_pedido))) LIKE TRIM(UPPER('%" . $valor . "%')) ORDER BY id_pedido");
                                         if (!empty($pedidos)) {
                                         ?>
                                             <div class="table-responsive">
@@ -94,31 +94,31 @@
                                                                 <td class="text-center">Lucas Vietsky</td>
 
                                                                 <td class="text-center">
-<!--                                                                    ?php if ($pc['estado'] == 'ACTIVO') { ?>
+                                                                    <!--                                                                    ?php if ($pc['estado'] == 'ACTIVO') { ?>
                                                                         <a href="pedidosc_edit.php?vidpedido=<?php echo $pc['id_pedido']; ?>" class="btn btn-toolbar" role="button" data-title="Editar" rel="tooltip" data-placement="top">
                                                                             <span style="color: #FFB400" class="glyphicon glyphicon-edit"></span>
                                                                         </a>
                                                                     ?php } ?
                                                                   -->
-                                                                        <a href="pedidosc_detalle.php?vidpedido=<?php echo $pc['id_pedido']; ?>" class="btn btn-toolbar" role="button" data-title="Detalle" rel="tooltip" data-placement="top">
-                                                                            <i style="color: #465F62" class="fa  fa-list"></i>
+                                                                    <a href="pedidosc_detalle.php?vidpedido=<?php echo $pc['id_pedido']; ?>" class="btn btn-toolbar" role="button" data-title="Detalle" rel="tooltip" data-placement="top">
+                                                                        <i style="color: #465F62" class="fa  fa-list"></i>
 
-                                                                        </a>
-                                                                   
-                                                                
-<!--                                                                   ?php if ($pc['estado'] == 'CONFIRMADO') { ?>-->
-<!--                                                                        <a href="pedidosc_anular.php?vidpedido=<?php echo $pc['id_pedido']; ?>" class="btn btn-toolbar" role="button" data-title="Anular" rel="tooltip" data-placement="top">
+                                                                    </a>
+
+
+                                                                    <!--                                                                   ?php if ($pc['estado'] == 'CONFIRMADO') { ?>-->
+                                                                    <!--                                                                        <a href="pedidosc_anular.php?vidpedido=<?php echo $pc['id_pedido']; ?>" class="btn btn-toolbar" role="button" data-title="Anular" rel="tooltip" data-placement="top">
                                                                             <span style="color: red" class="glyphicon glyphicon-ban-circle"></span>
                                                                         </a>-->
-<!--                                                                    ?php } ?>-->
-                                                                    
-<!--                                                                    ?php if ($pc['estado'] == 'CONFIRMADO') { ?>-->
-<!--                                                                    <a href="/T.A/compras/presupuesto/presupuesto_index.php" class="btn  btn-toolbar " rel="tooltip" title="Presupuesto">
+                                                                    <!--                                                                    ?php } ?>-->
+
+                                                                    <!--                                                                    ?php if ($pc['estado'] == 'CONFIRMADO') { ?>-->
+                                                                    <!--                                                                    <a href="/T.A/compras/presupuesto/presupuesto_index.php" class="btn  btn-toolbar " rel="tooltip" title="Presupuesto">
                                                                         <span style="color: #465F62" class="fa fa-money"></span>
                                                                     </a>-->
                                                                     <!--php } ?-->
-                                                                    
-                                                               
+
+
                                                                 </td>
                                                             </tr>
                                                         <?php } ?>
