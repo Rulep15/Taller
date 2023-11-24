@@ -265,10 +265,10 @@
                     <div class="modal-header">
                         <h4 class="modal-title"><strong>Registrar Marca</strong></h4>
                     </div>
-                    <form action="productos_control.php" method="POST" accept-charset="UTF-8" class="form-horizontal">
-                        <input name="voperacion" value="4" type="hidden">
+                    <form action="marca_control.php" method="POST" accept-charset="UTF-8" class="form-horizontal">
+                        <input name="voperacion" value="1" type="hidden">
                         <input name="vidmarca" value="0" type="hidden" id="vidmarca">
-                        <input name="vidmarca" value="0" type="hidden" id="vidmarca">
+                        <input name="vidpedido" value="<?php echo $_REQUEST['vidpedido']; ?>" type="hidden" id="vidpedido">
                         <div class="box-body">
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Descripcion</label>
