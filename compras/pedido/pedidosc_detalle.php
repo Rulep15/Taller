@@ -153,16 +153,17 @@
                         </div>
                         <?php if ($pc['estado'] == 'ACTIVO') { ?>
                             <!--AGREGAR DETALLE-->
-                            <div class="box box-primary" style="width: 500px; height: 250px; margin: 0 auto;">
+                            <div class="box box-primary" style="width: 550px; height: auto; margin: 0 auto;">
                                 <div class="box-header">
                                     <i class="ion ion-clipboard"></i>
                                     <h3 class="box-title">Agregar Productos</h3>
                                 </div>
                                 <div class="box-body no-padding">
                                     <?php if ($pc['estado'] == 'ACTIVO') { ?>
-                                        <div class="col-lg-10 col-sm-10 col-md-10 col-xs-10">
+                                        <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
                                             <form action="pedidosc_detalle_control.php" method="POST" accept-charset="UTF-8" class="form-horizontal">
                                                 <div class="box-body" style="left: 1000px;">
+                                                    <input type="hidden" name="vidpedido" value="<?php echo $_REQUEST['vidpedido']; ?>" />
                                                     <input type="hidden" name="voperacion" value="1" />
                                                     <div class="col-lg-4 col-sm-4 col-md-4 col-xs-4">
                                                         <div class="form-group">
@@ -170,7 +171,7 @@
                                                             <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
                                                                 <?php $productos = consultas::get_datos("SELECT * FROM producto WHERE pro_cod IN (SELECT pro_cod FROM producto)") ?>
                                                                 <div class="input-group">
-                                                                    <select class="select2 form-control" name="vproducto" required="" style="width: 300px;" id="idproducto" onchange="obtenerprecio()" onkeyup="obtenerprecio()" onclick="obtenerprecio()">
+                                                                    <select class="select2 form-control" name="vproducto" required="" style="width: 300px;" id="idproducto">
                                                                         <option value="">Seleccione un Producto</option>
                                                                         <?php
                                                                         if (!empty($productos)) {
