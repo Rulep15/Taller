@@ -433,7 +433,7 @@
                             <div class="form-group">
                                 <label class="control-label col-lg-2 col-sm-2 col-xs-4">Descripcion</label>
                                 <div class="col-lg-6 col-sm-6 col-xs-7">
-                                    <input style="width: 320px;" maxlength="250" class="form-control" type="text" name="vdescripcion" id="descripcion" onkeypress="return soloLetras(event);">
+                                    <input style="width: 320px;" maxlength="250" required="" class="form-control" type="text" name="vdescripcion" id="descripcion" onkeypress="return soloLetras(event);">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -531,7 +531,7 @@
     });
     //LIMPIAR AUTOMÁTICO TIPO DE PRODUCTO
     $("#cerrar_tipo").click(function() {
-        $('#vtipoproducto').val("");
+        $('#vdescripcionproducto').val("");
     });
     //LIMPIAR AUTOMÁTICO PRODUCTO
     $("#cerrar_producto").click(function() {
