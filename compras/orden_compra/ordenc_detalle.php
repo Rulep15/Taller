@@ -132,7 +132,6 @@
                             </div>
                         </div>
                         <!--CABECERA-->
-                        <!--DETALLE PRESUPUESTO-->
 
                         <!--DETALLE-->
                         <div class="box box-primary">
