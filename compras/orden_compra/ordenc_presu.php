@@ -3,6 +3,12 @@ session_start();
 require '../../conexion.php';
 $idpedido = $_REQUEST['vidpedido'];
 $presupuestodetalle = consultas::get_datos("SELECT * FROM v_det_presupuesto WHERE id_presu = $idpedido");
+$total = consultas::get_datos("SELECT sum(cantidad*precio_unit) as total FROM v_det_presupuesto where id_presu=$idpedido");
+if ($total !== false && isset($total[0]['total'])) {
+    $resultado = $total[0]['total'];
+} else {
+    $resultado = "No se pudo obtener el resultado.";
+}
 ?>
 
 <?php
@@ -22,7 +28,7 @@ if ($idpedido == 0) {
                         <th class="text-center">Producto</th>
                         <th class="text-center">Cantidad</th>
                         <th class="text-center">Precio</th>
-                        <th class="text-center">subtotal</th>
+                        <th class="text-center">SubTotal</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,7 +37,7 @@ if ($idpedido == 0) {
                             <td class="text-center" id="prod"> <?php echo $pcd['pro_descri']; ?></td>
                             <td class="text-center" id="canti"> <?php echo $pcd['cantidad']; ?></td>
                             <td class="text-center" id="precio"> <?php echo $pcd['precio_unit']; ?></td>
-                            <td class="text-center" id="subtotal"> <?php echo $pcd['subtotal']; ?></td>
+                            <td class="text-center"> <?php echo $resultado; ?></td>
                         </tr>
                     <?php } ?>
                 </tbody>
