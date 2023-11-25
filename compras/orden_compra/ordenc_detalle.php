@@ -342,7 +342,7 @@
         var dat = datos.split("_");
         $.ajax({
             type: "GET",
-            url: "/T.A/compras/orden_compra/ordenc_confirmar.php?vidpedido=" + dat[0],
+            url: "/Taller/compras/orden_compra/ordenc_confirmar.php?vidpedido=" + dat[0],
             beforeSend: function() {
                 $('#detalles_registrar').html();
             },
@@ -356,7 +356,7 @@
         var dat = datos.split("_");
         $.ajax({
             type: "GET",
-            url: "/T.A/compras/orden_compra/ordenc_anularm.php?vidorden=" + dat[0],
+            url: "/Taller/compras/orden_compra/ordenc_anularm.php?vidorden=" + dat[0],
             beforeSend: function() {
                 $('#detalles_anular').html();
             },
