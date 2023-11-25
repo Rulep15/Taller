@@ -98,7 +98,7 @@
                                         if ($total !== false && isset($total[0]['total'])) {
                                             $resultado = $total[0]['total'];
                                         } else {
-                                            $resultado = "No se pudo obtener el resultado.";
+                                            $resultado = 0;
                                         }
                                         if (!empty($presupuesto)) {
                                         ?>
@@ -288,7 +288,7 @@
         var dat = datos.split("_");
         $.ajax({
             type: "GET",
-            url: "/T.A/compras/presupuesto/presupuesto_confirmar.php?vidpresupuesto=" + dat[0],
+            url: "/Taller/compras/presupuesto/presupuesto_confirmar.php?vidpresupuesto=" + dat[0],
             beforeSend: function() {
                 $('#detalles_registrar').html();
             },
@@ -302,7 +302,7 @@
         var dat = datos.split("_");
         $.ajax({
             type: "GET",
-            url: "/T.A/compras/presupuesto/presupuesto_anularm.php?vidpresupuesto=" + dat[0],
+            url: "/Taller/compras/presupuesto/presupuesto_anularm.php?vidpresupuesto=" + dat[0],
             beforeSend: function() {
                 $('#detalles_anular').html();
             },
