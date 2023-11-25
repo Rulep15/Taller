@@ -93,7 +93,13 @@
                                     <div class="col-lg-12 col-md-12 col-xs-12">
                                         <?php
                                         $idpedido = $_REQUEST['vidpresupuesto'];
-                                        $presupuesto = consultas::get_datos("SELECT * FROM v_presupuesto WHERE id_presu = $idpedido ");
+                                        $presupuesto = consultas::get_datos("SELECT * FROM v_presupuesto WHERE id_presu = $idpedido");
+                                        $total = consultas::get_datos("SELECT sum(cantidad*precio_unit) as total FROM v_det_presupuesto where id_presu=$idpedido");
+                                        if ($total !== false && isset($total[0]['total'])) {
+                                            $resultado = $total[0]['total'];
+                                        } else {
+                                            $resultado = "No se pudo obtener el resultado.";
+                                        }
                                         if (!empty($presupuesto)) {
                                         ?>
                                             <div class="table-responsive">
@@ -116,7 +122,7 @@
                                                                 <td class="text-center"> <?php echo $pc['fecha_presu1']; ?></td>
                                                                 <td class="text-center"> <?php echo $pc['empleado']; ?></td>
                                                                 <td class="text-center"> <?php echo $pc['prv_razon_social']; ?></td>
-                                                                <td class="text-center"> <?php echo $pc['prv_razon_social']; ?></td>
+                                                                <td class="text-center"> <?php echo $resultado; ?></td>
                                                             </tr>
                                                         <?php } ?>
                                                     </tbody>
