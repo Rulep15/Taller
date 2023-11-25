@@ -208,7 +208,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label col-lg-6 col-sm-6 col-md-6 col-xs-6">Producto</label>
                                                             <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
-                                                                <?php $productos = consultas::get_datos("SELECT * FROM producto WHERE pro_cod IN (SELECT pro_cod FROM presupuesto)") ?>
+                                                                <?php $productos = consultas::get_datos("SELECT * FROM producto WHERE pro_cod IN (SELECT pro_cod FROM detalle_presupuesto)") ?>
                                                                 <select class="select2" name="vproducto" required="" style="width: 300px;" id="idproducto" onchange="obtenerprecio()" onkeyup="obtenerprecio()" onclick="obtenerprecio()">
                                                                     <option value="">Seleccione un Producto</option>
 
@@ -325,10 +325,10 @@
         if (parseInt($('#idproducto').val()) > 0) {
             $.ajax({
                 type: "GET",
-                url: "/Taller/compras/compras/listar_precios.php?vidproducto=" + dat[0],
+                url: "/Taller/compras/orden_compra/listar_precios.php?vidproducto=" + dat[0],
                 cache: false,
                 beforeSend: function() {
-                    $('#precio').html('<img src="/T.A/img/sistema/ajax-loader.gif">\n\<strong><i>Cargando...</i></strong></img>');
+                    $('#precio').html('<img src="/Taller/img/sistema/ajax-loader.gif">\n\<strong><i>Cargando...</i></strong></img>');
                 },
                 success: function(msg) {
                     $('#precio').html(msg);
