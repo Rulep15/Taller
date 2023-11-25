@@ -96,21 +96,10 @@
                                                                 <td class="text-center"> <?php echo $c['fecha_orden1']; ?></td>
 
                                                                 <td class="text-center">
-
-
                                                                     <a href="ordenc_detalle.php?vidorden=<?php echo $c['nro_orden']; ?>" class="btn btn-toolbar" role="button" data-title="Detalle" rel="tooltip" data-placement="top">
                                                                         <i style="color: #465F62" class="fa  fa-list"></i>
 
                                                                     </a>
-
-
-                                                                    <!--                                                                        //?php if ($c['estado'] == 'CONFIRMADO') { ?>-->
-                                                                    <!--                                                                            <a href="ordenc_anular.php?vidorden=//?php echo $c['nro_orden']; ?>" class="btn btn-toolbar" role="button" data-title="Anular" rel="tooltip" data-placement="top">-->
-                                                                    <!--                                                                                <span style="color: red" class="glyphicon glyphicon-ban-circle"></span>-->
-                                                                    <!--                                                                            </a>-->
-                                                                    <!--                                                                        ?php } ?>-->
-
-
                                                                 </td>
                                                             </tr>
                                                         <?php } ?>
