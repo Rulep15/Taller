@@ -204,7 +204,7 @@
                                 <div class="form-group">
                                     <label class="control-label  col-lg-3 col-sm-2 col-xs-2">Precio</label>
                                     <div class="col-lg-4 col-sm-4 col-xs-4">
-                                        <input class="form-control" type="number" onkeypress="return soloNUM(event)" name="vprecio" value="" min="1000" required="" id="pre">
+                                        <input class="form-control" readonly="" type="text" onkeypress="return soloNUM(event)" name="vprecio" min="1000" required="" id="pre">
                                     </div>
                                 </div>
                             </div>

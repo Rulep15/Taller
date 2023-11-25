@@ -208,7 +208,8 @@
                                                         <div class="form-group">
                                                             <label class="control-label col-lg-6 col-sm-6 col-md-6 col-xs-6">Producto</label>
                                                             <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
-                                                                <?php $productos = consultas::get_datos("SELECT * FROM producto WHERE pro_cod IN (SELECT pro_cod FROM detalle_presupuesto)") ?>
+
+                                                                <?php $productos = consultas::get_datos("SELECT pro_cod FROM detalle_presupuesto WHERE nro_orden=") ?>
                                                                 <select class="select2" name="vproducto" required="" style="width: 300px;" id="idproducto" onchange="obtenerprecio()" onkeyup="obtenerprecio()" onclick="obtenerprecio()">
                                                                     <option value="">Seleccione un Producto</option>
 
