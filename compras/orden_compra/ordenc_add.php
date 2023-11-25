@@ -123,7 +123,7 @@
 
 
                                                 <label id="two">
-                                                    <input type="checkbox" style="margin-top: 15px" onchange="tiposelect()" onclick="tiposelect(); obtenerpresu()" name="presupuesto" value="presupuesto" id="pres" />Presupuesto
+                                                    <input required="" type="checkbox" style="margin-top: 15px" onchange="tiposelect()" onclick="tiposelect(); obtenerpresu()" name="presupuesto" value="presupuesto" id="pres" />Presupuesto
                                                 </label>
                                             </div>
                                         </div>
