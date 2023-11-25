@@ -165,10 +165,9 @@
                                                             <td class="text-center"> <?php echo $pcd['precio_unit']; ?></td>
                                                             <td class="text-center"> <?php echo $pcd['cantidad']; ?></td>
                                                             <td class="text-center">
-
                                                                 <?php if ($pc['orden_estado'] == 'ACTIVO') { ?>
-                                                                    <a onclick="quitar(<?php echo "'" . $pcd['nro_orden'] . "_" . "_" . $pcd['pro_cod'] . "" ?>)" class="btn btn-toolbar " role="button" data-title="Eliminar Detalle" data-placement="top" rel="tooltip" data-toggle="modal" data-target="#quitar">
-                                                                        <span style="color: red;" class="fa fa-trash"></span>
+                                                                    <a onclick="quitar(<?php echo "'" . $pcd['nro_orden'] . "_" . $pcd['pro_cod'] . "'"; ?>);" class="btn btn-toolbar" role="button" data-title="Quitar" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#quitar">
+                                                                        <i style="color: red" class="fa fa-times"></i>
                                                                     </a>
                                                                 <?php } ?>
                                                             </td>
@@ -186,12 +185,9 @@
                                 </div>
                             </div>
                         </div>
-
-
-
                         <?php if ($pc['orden_estado'] == 'ACTIVO') { ?>
                             <!--AGREGAR DETALLE-->
-                            <div class="box box-primary" style="width: 550px; height: 300px;margin: 0 auto;">
+                            <div class="box box-primary" style="width: 550px; height: auto;margin: 0 auto;">
                                 <div class="box-header">
                                     <i class="ion ion-clipboard"></i>
                                     <h3 class="box-title">Agregar Items</h3>
@@ -207,11 +203,8 @@
                                                         <div class="form-group">
                                                             <label class="control-label col-lg-6 col-sm-6 col-md-6 col-xs-6">Producto</label>
                                                             <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
-
-                                                                <?php $productos = consultas::get_datos("SELECT pro_cod FROM detalle_presupuesto WHERE nro_orden=") ?>
-                                                                <select class="select2" name="vproducto" required="" style="width: 300px;" id="idproducto" onchange="obtenerprecio()" onkeyup="obtenerprecio()" onclick="obtenerprecio()">
+                                                                <?php $productos = consultas::get_datos("SELECT * FROM producto where pro_cod != 0 AND pro_cod in(select pro_cod from detalle_presupuesto where id_presu = $pc[id_presu] ) ORDER BY pro_cod") ?> <select class="select2" name="vproducto" required="" style="width: 300px;" id="idproducto" onchange="obtenerprecio()" onkeyup="obtenerprecio()" onclick="obtenerprecio()">
                                                                     <option value="">Seleccione un Producto</option>
-
                                                                     <?php
                                                                     if (!empty($productos)) {
                                                                         foreach ($productos as $producto) {
@@ -226,19 +219,12 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="form-group" id="precio">
-                                                            <label class="control-label col-lg-6 col-sm-6 col-md-6 col-xs-6">Precio</label>
-                                                            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
-                                                                <input type="number" name="vprecio" class="form-control" required="" min="1000" value="0" style="width: 300px;">
-                                                            </div>
-                                                        </div>
                                                         <div class="form-group">
                                                             <label class="control-label col-lg-6 col-sm-6 col-md-6 col-xs-6">Cantidad</label>
                                                             <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
                                                                 <input type="number" name="vcantidad" class="form-control" max="500" required="" min="1" value="1" style="width: 300px;" id="idcantidad" onchange="calsubtotal()" onkeydown="calsubtotal()">
                                                             </div>
                                                         </div>
-
                                                     </div>
                                                 </div>
                                                 <div class="">
@@ -281,7 +267,6 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" arial-label="Close">X</button>
                         <h4 class="modal-title custom_align" id="Heading">Atencion!!!</h4>
                     </div>
                     <div class="modal-body">
@@ -310,9 +295,10 @@
 
     function quitar(datos) {
         var dat = datos.split("_");
-        $('#si').attr('href', 'ordenc_detalle_control.php?vidpedido=' + dat[0] + '&vproducto=' + dat[1] + '&vdeposito=' + dat[2] + '&voperacion=2');
-        $('#confirmacion').html('<span class="glyphicon glyphicon-warning-sign"></span> Desea quitar el Articulo del detalle <i><strong>' + dat[1] + '</strong></i>?');
+        $('#si').attr('href', 'ordenc_detalle_control.php?vidorden=' + dat[0] + '&vproducto=' + dat[1] + '&vdeposito=' + dat[2] + '&voperacion=2');
+        $('#confirmacion').html('<span class="glyphicon glyphicon-warning-sign"></span> Desea quitar el producto del detalle <i><strong>' + '</strong></i>?');
     }
+
 
     function calsubtotal() {
         var precio = parseInt($('#idprecio').val());

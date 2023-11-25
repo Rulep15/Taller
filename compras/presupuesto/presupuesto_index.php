@@ -44,9 +44,7 @@
                                     <a href="presupuesto_add.php" class="btn btn-toolbar pull-right ">
                                         <i style="color: #465F62" class="fa fa-plus"></i>
                                     </a>
-                                    <a href="/T.A/compras/pedido/pedidosc_index.php" class="btn btn-toolbar pull-right " rel="tooltip" title="Atras">
-                                        <i style="color: #465F62" class="fa fa-arrow-left"></i>
-                                    </a>
+
                                 </div>
                             </div>
                             <div class="box-body no-padding">
