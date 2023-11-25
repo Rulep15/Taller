@@ -73,7 +73,7 @@
                                         if (isset($_REQUEST['buscar'])) {
                                             $valor = $_REQUEST['buscar'];
                                         }
-                                        $compras = consultas::get_datos("SELECT * FROM v_orden_de_compra WHERE nro_orden > 0 AND (nro_orden||TRIM(UPPER(prv_razon_social))) LIKE TRIM(UPPER('%" . $valor . "%')) ORDER BY nro_orden");
+                                        $compras = consultas::get_datos("SELECT * FROM v_orden_de_compra WHERE orden_estado <> 'ANULADO' AND nro_orden > 0 AND (nro_orden||TRIM(UPPER(prv_razon_social))) LIKE TRIM(UPPER('%" . $valor . "%')) ORDER BY nro_orden");
                                         if (!empty($compras)) {
                                         ?>
                                             <div class="table-responsive">
