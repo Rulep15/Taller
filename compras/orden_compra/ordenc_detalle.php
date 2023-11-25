@@ -294,8 +294,8 @@
 
     function quitar(datos) {
         var dat = datos.split("_");
-        $('#si').attr('href', 'ordenc_detalle_control.php?vidorden=' + dat[0] + '&vproducto=' + dat[1] + '&vdeposito=' + dat[2] + '&voperacion=2');
-        $('#confirmacion').html('<span class="glyphicon glyphicon-warning-sign"></span> Desea quitar el producto del detalle <i><strong>' + '</strong></i>?');
+        $('#si').attr('href', 'ordenc_detalle_control.php?vidorden=' + dat[0] + '&vproducto=' + dat[1] + '&vdeposito=' + dat[2] + '&voperacion=4');
+        $('#confirmacion').html('<span class="glyphicon glyphicon-warning-sign"></span> Desea quitar el producto del detalle <i><strong>' + dat[1] + '</strong></i>?');
     }
 
 
