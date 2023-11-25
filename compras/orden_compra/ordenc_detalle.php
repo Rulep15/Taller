@@ -325,7 +325,7 @@
         if (parseInt($('#idproducto').val()) > 0) {
             $.ajax({
                 type: "GET",
-                url: "/T.A/compras/compras/listar_precios.php?vidproducto=" + dat[0],
+                url: "/Taller/compras/compras/listar_precios.php?vidproducto=" + dat[0],
                 cache: false,
                 beforeSend: function() {
                     $('#precio').html('<img src="/T.A/img/sistema/ajax-loader.gif">\n\<strong><i>Cargando...</i></strong></img>');
