@@ -94,7 +94,6 @@
                                                                 <td class="text-center"> <?php echo $c['id_presu']; ?><?php echo ' - '; ?><?php echo $c['fecha']; ?></td>
                                                                 <td class="text-center"> <?php echo $c['prv_razon_social']; ?></td>
                                                                 <td class="text-center"> <?php echo $c['fecha_orden1']; ?></td>
-
                                                                 <td class="text-center">
                                                                     <a href="ordenc_detalle.php?vidorden=<?php echo $c['nro_orden']; ?>" class="btn btn-toolbar" role="button" data-title="Detalle" rel="tooltip" data-placement="top">
                                                                         <i style="color: #465F62" class="fa  fa-list"></i>
