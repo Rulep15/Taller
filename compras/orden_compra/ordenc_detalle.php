@@ -58,7 +58,7 @@
                             </div>
                         <?php } ?>
                         <!-- MENSAJE -->
-                        <h3 style="color: white; text-align: center">Datos Cabecera</h3>
+                        <h3 style="color: white; text-align: center">Orden de Compras-Detalle</h3>
                         <!--CABECERA-->
                         <div class="box box-primary">
                             <div class="box-header">
@@ -198,7 +198,7 @@
                                             <form action="ordenc_detalle_control.php" method="POST" accept-charset="UTF-8" class="form-horizontal">
                                                 <div class="box-body" style="left: 1000px;">
                                                     <input type="hidden" name="voperacion" value="1" />
-                                                    <input type="hidden" name="vidpedido" value="<?php echo $_REQUEST['vidorden']; ?>" />
+                                                    <input type="hidden" name="vidorden" value="<?php echo $_REQUEST['vidorden']; ?>" />
                                                     <div class="col-lg-4 col-sm-4 col-md-4 col-xs-4">
                                                         <div class="form-group">
                                                             <label class="control-label col-lg-6 col-sm-6 col-md-6 col-xs-6">Producto</label>
@@ -248,7 +248,6 @@
         <div id="confirmar" class="modal fade" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content" id="detalles_registrar">
-
                 </div>
             </div>
         </div>
@@ -328,7 +327,7 @@
         var dat = datos.split("_");
         $.ajax({
             type: "GET",
-            url: "/Taller/compras/orden_compra/ordenc_confirmar.php?vidpedido=" + dat[0],
+            url: "/Taller/compras/orden_compra/ordenc_confirmar.php?vidorden=" + dat[0],
             beforeSend: function() {
                 $('#detalles_registrar').html();
             },
