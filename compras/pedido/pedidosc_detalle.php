@@ -437,16 +437,16 @@
                                     <input style="width: 320px;" maxlength="250" required="" class="form-control" type="text" name="vdescripcion" id="descripcion" onkeypress="return soloLetras(event);">
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div style="display: none;" class="form-group">
                                 <label class="control-label col-lg-2 col-sm-2 col-xs-4">P.Compra</label>
                                 <div class="col-lg-6 col-sm-6 col-xs-7">
-                                    <input style="width: 320px;" class="form-control" type="number" onkeypress="return soloNumero(event)" id="precioc" name="vprecioc" required="" min="0">
+                                    <input style="width: 320px;" class="form-control" type="number" onkeypress="return soloNumero(event)" id="precioc" name="vprecioc" min="0">
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div style="display: none;" class="form-group">
                                 <label class="control-label col-lg-2 col-sm-2 col-xs-4">P.Venta</label>
                                 <div class="col-lg-6 col-sm-6 col-xs-7">
-                                    <input style="width: 320px;" class="form-control" type="number" onkeypress="return soloNumero(event)" id="preciov" name="vpreciov" required="" min="0">
+                                    <input style="width: 320px;" class="form-control" type="number" onkeypress="return soloNumero(event)" id="preciov" name="vpreciov" min="0">
                                 </div>
                             </div>
                         </div>
