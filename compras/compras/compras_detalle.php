@@ -77,13 +77,11 @@
                                         </a>
                                     <?php } ?>
                                 <?php } ?>
-                                 <?php if ($con['com_estado'] == 'CONFIRMADO') { ?>
-                                            <a style="padding: 10px; margin: 1px"  data-toggle="modal" data-target="#anular"
-                                               onclick="registrar_anular(<?php echo "'" . $_REQUEST['vidcompra'] . "'" ?>);"
-                                               class="btn btn-toolbar btn-lg" role="button" rel="tooltip"  data-title="Anular" rel="tooltip" data-placement="top">
-                                                <span style="color: red" class="glyphicon glyphicon-ban-circle"></span>
-                                            </a>
-                                        <?php } ?>
+                                <?php if ($con['com_estado'] == 'CONFIRMADO') { ?>
+                                    <a style="padding: 10px; margin: 1px" data-toggle="modal" data-target="#anular" onclick="registrar_anular(<?php echo "'" . $_REQUEST['vidcompra'] . "'" ?>);" class="btn btn-toolbar btn-lg" role="button" rel="tooltip" data-title="Anular" rel="tooltip" data-placement="top">
+                                        <span style="color: red" class="glyphicon glyphicon-ban-circle"></span>
+                                    </a>
+                                <?php } ?>
                                 <div class="box-tools">
                                     <a href="compras_index.php" class="btn btn-toolbar pull-right">
                                         <i style="color: #465F62" class="fa fa-arrow-left"></i>
@@ -96,6 +94,18 @@
                                         <?php
                                         $idorden = $_REQUEST['vidcompra'];
                                         $orden = consultas::get_datos("SELECT * FROM v_compras WHERE id_compra = $idorden ");
+                                        $total = consultas::get_datos("SELECT sum(cantidad*precio) as total FROM det_compra where id_compra=$idorden");
+                                        if ($total !== false && isset($total[0]['total'])) {
+                                            $resultado = $total[0]['total'];
+                                        } else {
+                                            $resultado = 0;
+                                        }
+                                        $ivatotal = consultas::get_datos("SELECT sum(iva5+iva10+exentas) as totaliva FROM det_compra where id_compra=$idorden");
+                                        if ($ivatotal !== false && isset($ivatotal[0]['totaliva'])) {
+                                            $resultadoiva = $ivatotal[0]['totaliva'];
+                                        } else {
+                                            $resultadoiva = 0;
+                                        }
                                         if (!empty($orden)) {
                                         ?>
                                             <div class="table-responsive">
@@ -103,6 +113,7 @@
                                                     <thead>
                                                         <tr>
                                                             <th class="text-center">N°</th>
+                                                            <th class="text-center">N° de Orden</th>
                                                             <th class="text-center">Proveedor</th>
                                                             <th class="text-center">Fecha</th>
                                                             <th class="text-center">Iva Total</th>
@@ -113,10 +124,11 @@
                                                         <?php foreach ($orden as $pc) { ?>
                                                             <tr>
                                                                 <td class="text-center"> <?php echo $pc['id_compra']; ?></td>
+                                                                <td class="text-center"> <?php echo $pc['nro_orden']; ?></td>
                                                                 <td class="text-center"> <?php echo $pc['prv_razon_social']; ?></td>
                                                                 <td class="text-center"> <?php echo $pc['fecha_compra']; ?></td>
-                                                                <td class="text-center"> <?php echo $pc['com_totaliva']; ?></td>
-                                                                <td class="text-center"> <?php echo $pc['com_total']; ?></td>
+                                                                <td class="text-center"> <?php echo $resultadoiva; ?></td>
+                                                                <td class="text-center"> <?php echo $resultado; ?></td>
                                                             </tr>
                                                         <?php } ?>
                                                     </tbody>
@@ -128,69 +140,6 @@
                             </div>
                         </div>
                         <!--CABECERA-->
-                        <!--DETALLE ORDEN-->
-                        <?php
-                        $idorden1 = $_REQUEST['vidcompra'];
-                        $vista = consultas::get_datos("SELECT * FROM v_compra_orden WHERE id_compra = $idorden1");
-                        if (!empty($vista)) {
-                        ?>
-                            <div class="box box-primary">
-                                <div class="box-header">
-                                    <i class="ion ion-clipboard"></i>
-                                    <h3 class="box-title">Detalles Orden</h3>
-                                </div>
-                                <div class="box-body no-padding">
-                                    <div class="col-lg-12 col-md-12 col-xs-12">
-                                        <?php
-                                        $idpedido = $_REQUEST['vidcompra'];
-                                        $presupuestodetalle = consultas::get_datos("SELECT * FROM v_compra_orden WHERE id_compra = $idpedido");
-                                        if (!empty($presupuestodetalle)) {
-                                        ?>
-                                            <div class="table-responsive">
-                                                <table class="table col-lg-12 col-md-12 col-xs-12 table-bordered">
-                                                    <thead>
-                                                        <tr>
-                                                            <th class="text-center">Articulo</th>
-<!--                                                            <th class="text-center">Deposito</th>-->
-                                                            <th class="text-center">Cantidad</th>
-                                                            <th class="text-center">Precio_Unit</th>
-                                                            <th class="text-center">SubTotal</th>
-                                                            <?php if ($pc['com_estado'] == 'ACTIVO') { ?>
-                                                                <th class="text-center">Acciones</th>
-                                                            <?php } ?>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <?php foreach ($presupuestodetalle as $pcd) { ?>
-                                                            <tr>
-                                                                <td class="text-center"> <?php echo $pcd['pro_descri']; ?></td>
-<!--                                                                <td class="text-center"> ?php echo $pcd['dep_descri']; ?></td>-->
-                                                                <td class="text-center"> <?php echo $pcd['cantidad']; ?></td>
-                                                                <td class="text-center"> <?php echo $pcd['precioc']; ?></td>
-                                                                <td class="text-center"> <?php echo $pcd['subtotal']; ?></td>
-                                                                <td class="text-center">
-                                                                    <?php if ($pc['com_estado'] == 'ACTIVO') { ?>
-                                                                        <a onclick="cantidad(<?php echo "'" . $pcd['id_compra'] . "_" . $pcd['pro_cod'] . "_" . $pcd['id_depo'] . "_" . $pcd['cantidad'] . "_" . $pcd['precioc'] . "'"; ?>)" class="btn btn-lg btn-toolbar" role="button" data-title="Modificar cantidad" data-placement="top" rel="tooltip" data-toggle="modal" data-target="#cantidad_orden">
-                                                                            <span class="fa fa-bitcoin"></span>
-                                                                        </a>
-                                                                    <?php } ?>
-                                                                </td>
-
-                                                            </tr>
-                                                        <?php } ?>
-                                                    </tbody>
-                                                </table>
-
-                                            </div>
-                                        <?php } else { ?>
-                                            <div class="alert alert-danger flat">
-                                                <span class="glyphicon glyphicon-info-sign"></span> La Orden no tiene detalles...
-                                            </div>
-                                        <?php } ?>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php } ?>
 
                         <!--DETALLE ITEMS-->
                         <?php
@@ -209,8 +158,13 @@
                                     <div class="col-lg-12 col-md-12 col-xs-12">
                                         <?php
                                         $idpedido = $_REQUEST['vidcompra'];
-                                        $presupuestodetalle = consultas::get_datos("SELECT * FROM v_detalle_compras where id_compra = $idpedido AND pro_cod NOT IN (SELECT a.pro_cod FROM detalle_orden a, orden_de_compra b, compras c, compras_detalle d
-                                               WHERE a.nro_orden = b.nro_orden AND b.nro_orden = c.nro_orden AND c.id_compra = d. id_compra AND c.id_compra = $idpedido)");
+                                        $presupuestodetalle = consultas::get_datos("SELECT * FROM v_detalle_compras WHERE id_compra = $idpedido ");
+                                        $total = consultas::get_datos("SELECT sum(cantidad*precio) as total FROM det_compra where id_compra=$idorden");
+                                        if ($total !== false && isset($total[0]['total'])) {
+                                            $resultado = $total[0]['total'];
+                                        } else {
+                                            $resultado = 0;
+                                        }
                                         if (!empty($presupuestodetalle)) {
                                         ?>
                                             <div class="table-responsive">
@@ -232,20 +186,18 @@
                                                         <?php foreach ($presupuestodetalle as $pcd) { ?>
                                                             <tr>
                                                                 <td class="text-center"> <?php echo $pcd['pro_descri']; ?></td>
-                                                                <td class="text-center"> <?php echo $pcd['precio_unit']; ?></td>
+                                                                <td class="text-center"> <?php echo $pcd['precio']; ?></td>
                                                                 <td class="text-center"> <?php echo $pcd['cantidad']; ?></td>
-                                                                <td class="text-center"> <?php echo $pcd['subtotal']; ?></td>
+                                                                <td class="text-center"> <?php echo $resultado; ?></td>
                                                                 <td class="text-center"> <?php echo $pcd['iva5']; ?></td>
                                                                 <td class="text-center"> <?php echo $pcd['iva10']; ?></td>
                                                                 <td class="text-center">
-
                                                                     <?php if ($deti['com_estado'] == 'ACTIVO') { ?>
-                                                                        <a onclick="quitar(<?php echo "'" . $pcd['id_compra'] . "_" . $pcd['pro_cod'] . "_" . $pcd['id_depo'] . "'" ?>)" class="btn btn-toolbar " role="button" data-title="Eliminar Detalle" data-placement="top" rel="tooltip" data-toggle="modal" data-target="#quitar">
+                                                                        <a onclick="quitar(<?php echo "'" . $pcd['id_compra'] . "_" . $pcd['pro_cod'] . "'" ?>)" class="btn btn-toolbar " role="button" data-title="Eliminar Detalle" data-placement="top" rel="tooltip" data-toggle="modal" data-target="#quitar">
                                                                             <span style="color: red;" class="fa fa-trash"></span>
                                                                         </a>
                                                                     <?php } ?>
                                                                 </td>
-
                                                             </tr>
                                                         <?php } ?>
                                                     </tbody>
@@ -285,30 +237,12 @@
                                                         <input type="hidden" name="vidcompra" value="<?php echo $_REQUEST['vidcompra']; ?>" />
                                                         <div class="col-lg-4 col-sm-4 col-md-4 col-xs-4">
                                                             <div class="form-group">
-                                                                <label class="control-label col-lg-6 col-sm-6 col-md-6 col-xs-6">Deposito</label>
-                                                                <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
-                                                                    <?php $depositos = consultas::get_datos("SELECT * FROM ref_deposito WHERE id_sucursal=" . $_SESSION['id_sucursal']) ?>
-                                                                    <select class="select2" name="vdeposito" required="" style="width: 300px;">
-                                                                        <option value="">Seleccione un Deposito</option>
-                                                                        <?php
-                                                                        if (!empty($depositos)) {
-                                                                            foreach ($depositos as $deposito) {
-                                                                        ?>
-                                                                                <option value="<?php echo $deposito['id_depo']; ?>"><?php echo $deposito['dep_descri']; ?></option>
-                                                                            <?php
-                                                                            }
-                                                                        } else {
-                                                                            ?>
-                                                                            <option value="">Debe insertar registros...</option>
-                                                                        <?php } ?>
-                                                                    </select>
-                                                                </div>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label class="control-label col-lg-6 col-sm-6 col-md-6 col-xs-6">Producto</label>
                                                                 <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
-                                                                    <?php $productos = consultas::get_datos("SELECT * FROM ref_producto") ?>
-                                                                    <select class="select2" name="vproducto" required="" style="width: 300px;" id="idproducto" onchange="obtenerprecio()" onkeyup="obtenerprecio()" onclick="obtenerprecio()">
+                                                                    <?php $productos = consultas::get_datos("SELECT * FROM producto") ?>
+                                                                    <select class="select2" name="vproducto" required="" style="width: 300px;" id="idproducto">
                                                                         <option value="">Seleccione un Producto</option>
                                                                         <?php
                                                                         if (!empty($productos)) {
@@ -336,7 +270,6 @@
                                                                     <input type="number" name="vcantidad" class="form-control" required="" min="1" max="500" value="1" style="width: 300px;" id="idcantidad" onchange="calsubtotal()" onkeydown="calsubtotal()">
                                                                 </div>
                                                             </div>
-
                                                         </div>
                                                     </div>
                                                     <div class="">
@@ -356,35 +289,7 @@
                 </div>
             </div>
         </div>
-        <!-- EDITAR  Cantidad-->
-        <div class="modal fade" id="cantidad_orden" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title"><strong>Modificar Cantidad</strong></h4>
-                        <form action="compras_detalle_control.php" method="POST" accept-charset="UTF-8" class="form-horizontal">
-                            <input name="voperacion" value="5" type="hidden">
-                            <input name="vproducto" id="product" type="hidden">
-                            <input name="vdeposito" id="deposit" type="hidden">
-                            <input type="hidden" name="vprecio" id="preci">
-                            <input type="hidden" name="vidcompra" id="idcom">
-                            <div class="box-body">
-                                <div class="form-group">
-                                    <label class="control-label  col-lg-3 col-sm-2 col-xs-2">Cantidad</label>
-                                    <div class="col-lg-4 col-sm-4 col-xs-4">
-                                        <input class="form-control" type="number" name="vcantidad" max="500" min="1" required="" id="cantidati">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box-footer">
-                                <button type="reset" data-dismiss="modal" class="fa fa-remove btn btn-danger">Cerrar</button>
-                                <button type="submit" class="fa fa-refresh btn btn-success pull-right">Actualizar</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <!-- registrar-->
         <div id="confirmar" class="modal fade" role="dialog">
             <div class="modal-dialog">
@@ -408,7 +313,6 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" arial-label="Close">X</button>
                         <h4 class="modal-title custom_align" id="Heading">Atencion!!!</h4>
                     </div>
                     <div class="modal-body">
@@ -441,35 +345,13 @@
         $('#confirmacion').html('<span class="glyphicon glyphicon-warning-sign"></span> Desea quitar el Articulo del detalle <i><strong>' + dat[0] + '</strong></i>?');
     }
 
-    function calsubtotal() {
-        var precio = parseInt($('#idprecio').val());
-        var cant = parseInt($('#idcantidad').val());
-        $('#idsubtotal').val(precio * cant);
-    }
 
-    function obtenerprecio() {
-        var dat = $('#idproducto').val().split("_");
-        if (parseInt($('#idproducto').val()) > 0) {
-            $.ajax({
-                type: "GET",
-                url: "/T.A/compras/compras/listar_precios.php?vidproducto=" + dat[0],
-                cache: false,
-                beforeSend: function() {
-                    $('#precio').html('<img src="/T.A/img/sistema/ajax-loader.gif">\n\<strong><i>Cargando...</i></strong></img>');
-                },
-                success: function(msg) {
-                    $('#precio').html(msg);
-                    calsubtotal();
-                }
-            });
-        }
-    }
 
     function registrar_permisos(datos) {
         var dat = datos.split("_");
         $.ajax({
             type: "GET",
-            url: "/T.A/compras/compras/compras_confirmar.php?vidcompra=" + dat[0],
+            url: "/Taller/compras/compras/compras_confirmar.php?vidcompra=" + dat[0],
             beforeSend: function() {
                 $('#detalles_registrar').html();
             },
@@ -478,11 +360,12 @@
             }
         });
     }
-        function registrar_anular(datos) {
+
+    function registrar_anular(datos) {
         var dat = datos.split("_");
         $.ajax({
             type: "GET",
-            url: "/T.A/compras/compras/compra_anularm.php?vidcompra=" + dat[0],
+            url: "/Taller/compras/compras/compra_anularm.php?vidcompra=" + dat[0],
             beforeSend: function() {
                 $('#detalles_anular').html();
             },
