@@ -81,7 +81,7 @@
                                 <i class="ion ion-plus"></i>
                                 <h3 class="box-title"> Agregar Compra</h3>
                                 <div class="box-tools">
-                                    <a href="compra_index.php" class="btn btn-toolbar">
+                                    <a href="compras_index.php" class="btn btn-toolbar">
                                         <i style="color: #465F62" class="fa fa-arrow-left"></i>
                                     </a>
 
