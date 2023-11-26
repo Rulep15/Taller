@@ -181,14 +181,14 @@
                                             <label class="control-label  col-lg-3 col-sm-2 col-xs-2"></label>
                                             <div class="col-lg-4 col-sm-4 col-xs-4">
                                                 <label id="one">
-                                                    <input type="checkbox" onclick="tiposelect()" onchange="tiposelect();obtenerord();habilitar_registro()" name="Pedido" value="pedido" id="pedi" /> Orden de compra
+                                                    <input required="" type="checkbox" onclick="tiposelect()" onchange="tiposelect();obtenerord();habilitar_registro()" name="Pedido" value="pedido" id="pedi" /> Orden de compra
                                                 </label>
                                             </div>
                                             <br><br>
                                             <label class="control-label  col-lg-3 col-sm-2 col-xs-2"></label>
                                             <div class="col-lg-4 col-sm-4 col-xs-4">
                                                 <label id="two">
-                                                    <input type="checkbox" onclick="tiposelect()" onchange="tiposelect();obtenernota();habilitar_registro()" name="Nota de remision " value="nota" id="nota" /> Nota de remision
+                                                    <input required="" type="checkbox" onclick="tiposelect(); obtener_nota();" onchange="tiposelect();obtenernota();habilitar_registro()" name="Nota de remision " value="nota" id="nota" /> Nota de remision
                                                 </label>
 
                                             </div>
@@ -283,14 +283,22 @@
             $("#valor").val('0');
         } else {
             if (document.getElementById('nota').checked) {
+
                 orden = document.getElementById('one');
                 orden.style.display = 'none';
-                detalle1 = document.getElementById('pedi_detalle3');
-                detalle1.style.display = '';
+
+                detalle10 = document.getElementById('pedi_detalle3');
+                detalle10.style.display = '';
+
                 detalle3 = document.getElementById('pedi_detalle1');
                 detalle3.style.display = '';
-                detalle5 = document.getElementById('notita');
-                detalle5.style.display = '';
+
+                ORDEN = document.getElementById('notarda');
+                ORDEN.setAttribute('required', 'true');
+
+                $("#notes").val('0');
+
+
             } else {
                 notas = document.getElementById('two');
                 notas.style.display = '';
@@ -304,11 +312,19 @@
                 divone = document.getElementById('one');
                 $("#pedido").val('0');
 
-                detalle1 = document.getElementById('pedi_detalle');
-                detalle1.style.display = 'none';
+                detalle3 = document.getElementById('pedi_detalle');
+                detalle3.style.display = 'none';
 
-                detalle1 = document.getElementById('pedi_detalle2');
-                detalle1.style.display = 'none';
+                detalle2 = document.getElementById('pedi_detalle1');
+                detalle2.style.display = 'none';
+
+                detalle5 = document.getElementById('pedi_detalle3');
+                detalle5.style.display = 'none';
+                $("#notarda").val('0');
+
+
+                detalle3 = document.getElementById('pedi_detalle2');
+                detalle3.style.display = 'none';
 
                 proveedor = document.getElementById('idprovi');
                 proveedor.removeAttribute('disabled');
@@ -367,6 +383,16 @@
 
     function ver_boton_registrar() {
         if (document.getElementById('pedido').value > 0) {
+            registro = document.getElementById('registro');
+            registro.style.display = '';
+        } else {
+            registro = document.getElementById('registro');
+            registro.style.display = 'none';
+        }
+    }
+
+    function ver_boton_registrar1() {
+        if (document.getElementById('notarda').value > 0) {
             registro = document.getElementById('registro');
             registro.style.display = '';
         } else {

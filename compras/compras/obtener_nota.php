@@ -9,8 +9,8 @@ $productos = consultas::get_datos("SELECT * FROM nota_remision WHERE estado = 'C
     <div class="form-group">
         <label class="control-label  col-lg-3 col-sm-2 col-xs-2">Nota de Remision</label>
         <div class="col-lg-4 col-sm-4 col-xs-4">
-            <select class="form-control" name="vidorden" id="notarda" onchange="obtenernota();ver_boton_registrar()" onclick="obtenernota();ver_boton_registrar()">
-                <option id="valor" value="">Debe seleccionar una Nota de Remision</option>
+            <select class="form-control" name="vidorden" id="notarda" onchange=" obtenernota();ver_boton_registrar1()" onclick="obtenernota();ver_boton_registrar1()">
+                <option id="notes" value="">Debe seleccionar una Nota de Remision</option>
                 <?php
                 if (!empty($productos)) {
                     foreach ($productos as $m) {
