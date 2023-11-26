@@ -12,7 +12,7 @@ if ($idpedido > 0) {
 if ($idpedido == 0) {
     echo '';
 } else {
-    if (!empty($presupuestodetalle)) {
+    if (!empty($orden)) {
 ?>
         <div class="table-responsive">
             <h3 style="text-align: center"><i class="fa fa-navicon"></i> Detalle de Nota de Remision</h3>
@@ -24,7 +24,7 @@ if ($idpedido == 0) {
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($presupuestodetalle as $pcd) { ?>
+                    <?php foreach ($orden as $pcd) { ?>
                         <tr>
                             <td class="text-center" id="prod"> <?php echo $pcd['pro_descri']; ?></td>
                             <td class="text-center" id="canti"> <?php echo $pcd['cantidad']; ?></td>
