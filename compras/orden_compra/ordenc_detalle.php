@@ -150,7 +150,7 @@
                                             <table class="table col-lg-12 col-md-12 col-xs-12 table-bordered">
                                                 <thead>
                                                     <tr>
-                                                        <th class="text-center">Articulo</th>
+                                                        <th class="text-center">Producto</th>
                                                         <th class="text-center">Precio</th>
                                                         <th class="text-center">Cantidad</th>
                                                         <?php if ($pc['orden_estado'] == 'ACTIVO') { ?>

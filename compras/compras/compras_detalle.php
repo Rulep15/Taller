@@ -170,7 +170,7 @@
                                                 <table class="table col-lg-12 col-md-12 col-xs-12 table-bordered">
                                                     <thead>
                                                         <tr>
-                                                            <th class="text-center">Articulo</th>
+                                                            <th class="text-center">Producto</th>
                                                             <th class="text-center">Precio</th>
                                                             <th class="text-center">Cantidad</th>
                                                             <th class="text-center">SubTotal</th>
@@ -240,21 +240,29 @@
                                                             <div class="form-group">
                                                                 <label class="control-label col-lg-6 col-sm-6 col-md-6 col-xs-6">Producto</label>
                                                                 <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
-                                                                    <?php $productos = consultas::get_datos("SELECT * FROM producto") ?>
-                                                                    <select class="select2" name="vproducto" required="" style="width: 300px;" id="idproducto">
-                                                                        <option value="">Seleccione un Producto</option>
-                                                                        <?php
-                                                                        if (!empty($productos)) {
-                                                                            foreach ($productos as $producto) {
-                                                                        ?>
-                                                                                <option value="<?php echo $producto['pro_cod']; ?>"><?php echo $producto['pro_descri']; ?></option>
+                                                                    <?php $productos = consultas::get_datos("SELECT * FROM producto WHERE pro_cod IN (SELECT pro_cod FROM producto)") ?>
+                                                                    <div class="input-group">
+                                                                        <select class="select2 form-control" name="vproducto" required="" style="width: 300px;" id="idproducto">
+                                                                            <option value="">Seleccione un Producto</option>
                                                                             <?php
-                                                                            }
-                                                                        } else {
+                                                                            if (!empty($productos)) {
+                                                                                foreach ($productos as $producto) {
                                                                             ?>
-                                                                            <option value="">Debe insertar registros...</option>
-                                                                        <?php } ?>
-                                                                    </select>
+                                                                                    <option value="<?php echo $producto['pro_cod']; ?>"><?php echo $producto['pro_descri']; ?></option>
+                                                                                <?php
+                                                                                }
+                                                                            } else {
+                                                                                ?>
+                                                                                <option value="">Debe insertar registros..
+
+                                                                                </option>
+                                                                            <?php } ?>
+                                                                        </select>
+                                                                        <span class="input-group-btn">
+                                                                            <button class="btn btn-toolbar btn-flat " type="button" data-toggle="modal" data-target="#registrar_producto">
+                                                                                <i style="color: #465F62" class="fa fa-plus"></i> </button>
+                                                                        </span>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group" id="precio">
@@ -329,6 +337,173 @@
             </div>
         </div>
         <!-- MODAL DE QUITAR -->
+        <!--MODAL DE MARCAS-->
+        < <div class="modal fade" id="registrar_marca" role="dialog" style="z-index: 1060;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title"><strong>Registrar Marca</strong></h4>
+                    </div>
+                    <form action="marca_control.php" method="POST" accept-charset="UTF-8" class="form-horizontal">
+                        <input name="voperacion" value="1" type="hidden">
+                        <input name="vidmarca" value="0" type="hidden" id="vidmarca">
+                        <input name="vidpedido" value="<?php echo $_REQUEST['vidcompra']; ?>" type="hidden" id="vidpedido">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Descripcion</label>
+                                <div class="col-xs-10 col-md-10 col-lg-10">
+                                    <input type="text" class="form-control" name="vdescripcionmarca" required="" autofocus="" id="vmardescri" onkeypress="return soloLetras(event);">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-footer">
+                            <button type="reset" data-dismiss="modal" class="fa fa-remove btn btn-danger" id="cerrar_marca"> Cerrar</button>
+                            <button type="submit" class="fa fa-save btn btn-success pull-right"> Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    </div>
+    <!--MODAL DE MARCAS-->
+    <!--MODAL DE Producto-->
+    <div class="modal fade" id="registrar_producto" role="dialog" style="z-index: 1050;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"><strong>Registrar Producto</strong></h4>
+                </div>
+                <form action="productos_control.php" method="POST" accept-charset="UTF-8" class="form-horizontal">
+                    <input name="voperacion" value="1" type="hidden">
+                    <input name="vidproducto" value="0" type="hidden" id="vidmarca">
+                    <input name="vidpedido" value="<?php echo $_REQUEST['vidcompra']; ?>" type="hidden" id="vidpedido">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label class="control-label col-lg-2 col-sm-2 col-xs-4">Cod.Barra</label>
+                            <div class="col-lg-6 col-sm-6 col-xs-7">
+                                <input style="width: 320px;" class="form-control" type="number" name="vcodigob" required="" id="codigo_barra" onkeypress="return soloNumero(event)">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2 col-sm-2 col-xs-4">Marcas</label>
+                            <div class="col-lg-6 col-sm-6 col-xs-7">
+                                <div class="input-group">
+                                    <?php $marcas = consultas::get_datos("SELECT * FROM ref_marca ORDER BY mar_cod"); ?>
+                                    <select class="select2" name="vidmarca" required="" style="width: 320px;">
+                                        <?php
+                                        if (!empty($marcas)) {
+                                            foreach ($marcas as $m) {
+                                        ?>
+                                                <option value="<?php echo $m['mar_cod']; ?>"><?php echo $m['mar_descri']; ?></option>
+                                            <?php
+                                            }
+                                        } else {
+                                            ?>
+                                            <option value="">Debe seleccionar al menos un Dato</option>
+                                        <?php }
+                                        ?>
+                                    </select>
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-toolbar btn-flat" type="button" data-toggle="modal" data-target="#registrar_marca">
+                                            <i style="color: #465F62" class="fa fa-plus"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2 col-sm-2 col-xs-4">T.Producto</label>
+                            <div class="col-lg-6 col-sm-6 col-xs-6">
+                                <div class="input-group">
+                                    <?php $tipoprod = consultas::get_datos("SELECT * FROM ref_tipo_producto ORDER BY id_tipro"); ?>
+                                    <select class="select2" name="vidtipro" required="" style="width: 320px;">
+                                        <?php
+                                        if (!empty($tipoprod)) {
+                                            foreach ($tipoprod as $tp) {
+                                        ?>
+                                                <option value="<?php echo $tp['id_tipro']; ?>"><?php echo $tp['tipro_descri']; ?></option>
+                                            <?php
+                                            }
+                                        } else {
+                                            ?>
+                                            <option value="">Debe seleccionar al menos un Dato</option>
+                                        <?php }
+                                        ?>
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2 col-sm-2 col-xs-4">Impuesto</label>
+                            <div class="col-lg-6 col-sm-6 col-xs-6">
+                                <div class="input-group">
+                                    <?php $tipoimp = consultas::get_datos("SELECT * FROM ref_tipo_impuesto ORDER BY id_timp"); ?>
+                                    <select class="select2" name="vidtimp" required="" style="width: 320px;">
+                                        <?php
+                                        if (!empty($tipoimp)) {
+                                            foreach ($tipoimp as $tim) {
+                                        ?>
+                                                <option value="<?php echo $tim['id_timp']; ?>"><?php echo $tim['descripcion']; ?></option>
+                                            <?php
+                                            }
+                                        } else {
+                                            ?>
+                                            <option value="">Debe seleccionar al menos un Dato</option>
+                                        <?php }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2 col-sm-2 col-xs-2">U.Medida</label>
+                            <div class="col-lg-6 col-sm-6 col-xs-6">
+                                <div class="input-group">
+                                    <?php $Unidad = consultas::get_datos("SELECT * FROM unidad_de_medida ORDER BY id_um"); ?>
+                                    <select class="select2" name="vidum" required="" style="width: 320px;">
+                                        <?php
+                                        if (!empty($Unidad)) {
+                                            foreach ($Unidad as $um) {
+                                        ?>
+                                                <option value="<?php echo $um['id_um']; ?>"><?php echo $um['descripcion']; ?></option>
+                                            <?php
+                                            }
+                                        } else {
+                                            ?>
+                                            <option value="">Debe seleccionar al menos un Dato</option>
+                                        <?php }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2 col-sm-2 col-xs-4">Descripcion</label>
+                            <div class="col-lg-6 col-sm-6 col-xs-7">
+                                <input style="width: 320px;" maxlength="250" required="" class="form-control" type="text" name="vdescripcion" id="descripcion" onkeypress="return soloLetras(event);">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2 col-sm-2 col-xs-4">P.Compra</label>
+                            <div class="col-lg-6 col-sm-6 col-xs-7">
+                                <input style="width: 320px;" class="form-control" type="number" onkeypress="return soloNumero(event)" id="precioc" name="vprecioc" required="" min="0">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2 col-sm-2 col-xs-4">P.Venta</label>
+                            <div class="col-lg-6 col-sm-6 col-xs-7">
+                                <input style="width: 320px;" class="form-control" type="number" onkeypress="return soloNumero(event)" id="preciov" name="vpreciov" required="" min="0">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button type="reset" data-dismiss="modal" class="fa fa-close btn btn-danger" id="cerrar_producto"> Cerrar</button>
+                        <button type="submit" class="fa fa-save btn btn-success pull-right"> Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     </div>
     <?php require '../../estilos/pie.ctp'; ?>
 </BODY>
@@ -341,7 +516,7 @@
     function quitar(datos) {
         var dat = datos.split("_");
         $('#si').attr('href', 'compras_detalle_control.php?vidcompra=' + dat[0] + '&vproducto=' + dat[1] + '&vdeposito=' + dat[2] + '&voperacion=2');
-        $('#confirmacion').html('<span class="glyphicon glyphicon-warning-sign"></span> Desea quitar el Articulo del detalle <i><strong>' + dat[0] + '</strong></i>?');
+        $('#confirmacion').html('<span class="glyphicon glyphicon-warning-sign"></span> Desea quitar el Articulo del detalle <i><strong>' + '</strong></i>?');
     }
 
 
@@ -383,5 +558,44 @@
         $('#preci').val(dat[4]);
     }
 </SCRIPT>
+<script>
+    //focus en el primer input de marca
+    $(document).ready(function() {
+        $('#registrar_marca').on('shown.bs.modal', function() {
+            $('#vmardescri').focus();
+        });
+    });
+    //focus en el primer de tipo de producto
+    $(document).ready(function() {
+        $('#registrar_tipo').on('shown.bs.modal', function() {
+            $('#vtipoproducto').focus();
+        });
+    });
+    //focus en el primer input de producto
+    $(document).ready(function() {
+        $('#registrar_producto').on('shown.bs.modal', function() {
+            $('#codigo_barra').focus();
+        });
+    });
+    /*MENSAJE DE INSERT MARCAS, TIPO,. ETC*/
+    $("#mensaje").delay(1000).slideUp(200, function() {
+        $(this).alert('close');
+    });
+    //LIMPIAR AUTOMÁTICO MARCA
+    $("#cerrar_marca").click(function() {
+        $('#vmardescri').val("");
+    });
+    //LIMPIAR AUTOMÁTICO TIPO DE PRODUCTO
+    $("#cerrar_tipo").click(function() {
+        $('#vdescripcionproducto').val("");
+    });
+    //LIMPIAR AUTOMÁTICO PRODUCTO
+    $("#cerrar_producto").click(function() {
+        $('#codigo_barra').val("");
+        $('#descripcion').val("");
+        $('#precioc').val("");
+        $('#preciov').val("");
+    });
+</script>
 
 </HTML>
