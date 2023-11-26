@@ -140,7 +140,6 @@
                             </div>
                         </div>
                         <!--CABECERA-->
-
                         <!--DETALLE ITEMS-->
                         <?php
                         $idpedido = $_REQUEST['vidcompra'];
