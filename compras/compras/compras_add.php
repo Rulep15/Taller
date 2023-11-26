@@ -158,7 +158,7 @@
                                             <div class="col-lg-4 col-sm-4 col-xs-4">
 
                                                 <?php $proveedors = consultas::get_datos("SELECT * FROM proveedor ORDER BY prv_cod"); ?>
-                                                <select class="form-control" id="idprovi" name="vidproveedor" required="" onclick="obtenerpedido();ver_boton();" onchange="obtenerpedido();ver_boton()">
+                                                <select class="form-control" id="idprovi" name="vidproveedor" required="" onclick="obtenernotarem();obtenerpedido();ver_boton();" onchange="obtenernotarem();obtenerpedido();ver_boton()">
                                                     <option value="">Debe seleccionar un proveedor</option>
                                                     <?php
                                                     if (!empty($proveedors)) {
@@ -188,7 +188,7 @@
                                             <label class="control-label  col-lg-3 col-sm-2 col-xs-2"></label>
                                             <div class="col-lg-4 col-sm-4 col-xs-4">
                                                 <label id="two">
-                                                    <input type="checkbox" onclick="tiposelect()" onchange="tiposelect()" name="Nota de remision " value="nota" id="nota" /> Nota de remision
+                                                    <input type="checkbox" onclick="tiposelect()" onchange="tiposelect();obtenernota();habilitar_registro()" name="Nota de remision " value="nota" id="nota" /> Nota de remision
                                                 </label>
 
                                             </div>
@@ -200,11 +200,27 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="box-body" id="pedi_detalle1" style="display: none">
+                                                <div class="col-lg-12 col-md-12 col-xs-12">
+                                                    <div class="box-header" style="text-align: center;">
+                                                    </div>
+                                                    <div id="notita">
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="box-body" id="pedi_detalle2" style="display: none">
                                                 <div class="col-lg-12 col-md-12 col-xs-12">
                                                     <div class="box-header" style="text-align: center;">
                                                     </div>
                                                     <div id="pedid">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="box-body" id="pedi_detalle3" style="display: none">
+                                                <div class="col-lg-12 col-md-12 col-xs-12">
+                                                    <div class="box-header" style="text-align: center;">
+                                                    </div>
+                                                    <div id="notas">
                                                     </div>
                                                 </div>
                                             </div>
@@ -269,6 +285,12 @@
             if (document.getElementById('nota').checked) {
                 orden = document.getElementById('one');
                 orden.style.display = 'none';
+                detalle1 = document.getElementById('pedi_detalle3');
+                detalle1.style.display = '';
+                detalle3 = document.getElementById('pedi_detalle1');
+                detalle3.style.display = '';
+                detalle5 = document.getElementById('notita');
+                detalle5.style.display = '';
             } else {
                 notas = document.getElementById('two');
                 notas.style.display = '';
@@ -316,6 +338,23 @@
         }
     }
 
+    function obtenernotarem() {
+        var dat = $('#idprovi').val().split("_");
+        if (parseInt($('#idprovi').val()) > 0) {
+            $.ajax({
+                type: "GET",
+                url: "/Taller/compras/compras/obtener_nota.php?vidpedido=" + dat[0],
+                cache: false,
+                beforeSend: function() {},
+                success: function(msg) {
+                    $('#notita').html(msg);
+
+
+                }
+            });
+        }
+    }
+
     function ver_boton() {
         if (document.getElementById('idprovi').value > 0) {
             div = document.getElementById('botoncito');
@@ -347,6 +386,22 @@
             beforeSend: function() {},
             success: function(msg) {
                 $('#pedid').html(msg);
+
+
+            }
+        });
+    }
+</script>
+<script>
+    function obtenernota() {
+        var dat = $('#notarda').val().split("_");
+        $.ajax({
+            type: "GET",
+            url: "/Taller/compras/compras/nota_compra.php?vidorden=" + dat[0],
+            cache: false,
+            beforeSend: function() {},
+            success: function(msg) {
+                $('#notas').html(msg);
 
 
             }
