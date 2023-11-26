@@ -88,7 +88,7 @@
                                 </div>
 
                             </div>
-                            <form action="compra_control.php" method="POST" accept-charset="UTF-8" class="form-horizontal">
+                            <form action="compras_control.php" method="POST" accept-charset="UTF-8" class="form-horizontal">
                                 <div class="box-body">
                                     <div class="form-group">
                                         <input type="hidden" name="voperacion" value="1">
@@ -98,7 +98,6 @@
                                             <div class="col-xs-8 col-sm-4 col-xs-4 ">
                                                 <input class="form-control" type="text" name="vidcompra" readonly="" value="<?php echo $compra[0]['ultimo']; ?>" required="">
                                                 <input type="hidden" name="vusuario" value="<?php echo $_SESSION['usu_cod']; ?>">
-                                                <input type="hidden" name="vsucursal" value="<?php echo $_SESSION['id_sucursal']; ?>">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -117,13 +116,13 @@
                                         <div class="form-group">
                                             <label class="control-label  col-lg-3 col-sm-2 col-xs-2">Timbrado</label>
                                             <div class="col-lg-4 col-sm-4 col-xs-4">
-                                                <input class="form-control" type="text" maxlength="8" minlength="8" placeholder="INSERTE 8 DIGITOS" onkeypress="return SoloNum(event)" name="vnrotimp" required="">
+                                                <input class="form-control" type="text" maxlength="8" minlength="8" placeholder="INSERTE 8 DIGITOS" onkeypress="return SoloNum(event)" name="vtimbrado" required="">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label  col-lg-3 col-sm-2 col-xs-2">Validez timbrado</label>
                                             <div class="col-lg-4 col-sm-4 col-xs-4">
-                                                <input class="form-control" type="date" onkeypress="return SoloNum(event)" name="vetimp" value="<?php echo date("Y-m-d"); ?>" min="<?php echo date("Y-m-d"); ?>" required="">
+                                                <input class="form-control" type="date" onkeypress="return SoloNum(event)" name="vvalidez" value="<?php echo date("Y-m-d"); ?>" min="<?php echo date("Y-m-d"); ?>" required="">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -158,7 +157,7 @@
                                             <div class="col-lg-4 col-sm-4 col-xs-4">
 
                                                 <?php $proveedors = consultas::get_datos("SELECT * FROM proveedor ORDER BY prv_cod"); ?>
-                                                <select class="form-control" id="idprovi" name="vidproveedor" required="" onclick="obtenernotarem();obtenerpedido();ver_boton();" onchange="obtenernotarem();obtenerpedido();ver_boton()">
+                                                <select class="form-control" id="idprovi" name="vproveedor" required="" onclick="obtenernotarem();obtenerpedido();ver_boton();" onchange="obtenernotarem();obtenerpedido();ver_boton()">
                                                     <option value="">Debe seleccionar un proveedor</option>
                                                     <?php
                                                     if (!empty($proveedors)) {
@@ -181,14 +180,14 @@
                                             <label class="control-label  col-lg-3 col-sm-2 col-xs-2"></label>
                                             <div class="col-lg-4 col-sm-4 col-xs-4">
                                                 <label id="one">
-                                                    <input required="" type="checkbox" onclick="tiposelect()" onchange="tiposelect();obtenerord();habilitar_registro()" name="Pedido" value="pedido" id="pedi" /> Orden de compra
+                                                    <input type="checkbox" onclick="tiposelect()" onchange="tiposelect();obtenerord();habilitar_registro()" name="Pedido" value="pedido" id="pedi" /> Orden de compra
                                                 </label>
                                             </div>
                                             <br><br>
                                             <label class="control-label  col-lg-3 col-sm-2 col-xs-2"></label>
                                             <div class="col-lg-4 col-sm-4 col-xs-4">
                                                 <label id="two">
-                                                    <input required="" type="checkbox" onclick="tiposelect(); obtener_nota();" onchange="tiposelect();obtenernota();habilitar_registro()" name="Nota de remision " value="nota" id="nota" /> Nota de remision
+                                                    <input type="checkbox" onclick="tiposelect(); obtener_nota();" onchange="tiposelect();obtenernota();habilitar_registro()" name="Nota de remision " value="nota" id="nota" /> Nota de remision
                                                 </label>
 
                                             </div>
@@ -227,7 +226,7 @@
                                         </div>
                                     </div>
                                     <div class="box-footer" style="text-align: right;">
-                                        <button id="registro" class="fa fa-save btn btn-success" type="submit"> Guardar</button>
+                                        <button id="registro" style="display: none;" class="fa fa-save btn btn-success" type="submit"> Guardar</button>
                                     </div>
                             </form>
                         </div>
@@ -307,7 +306,7 @@
                 orden.style.display = ''
 
                 registro = document.getElementById('registro');
-                registro.style.display = '';
+                registro.style.display = 'none';
 
                 divone = document.getElementById('one');
                 $("#pedido").val('0');
@@ -375,6 +374,8 @@
         if (document.getElementById('idprovi').value > 0) {
             div = document.getElementById('botoncito');
             div.style.display = '';
+            div = document.getElementById('registro');
+            div.style.display = 'none';
         } else {
             div = document.getElementById('botoncito');
             div.style.display = 'none';

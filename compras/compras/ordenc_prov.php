@@ -10,7 +10,7 @@ $productos = consultas::get_datos("SELECT * FROM v_orden_de_compra WHERE orden_e
     <div class="form-group">
         <label class="control-label  col-lg-3 col-sm-2 col-xs-2">Orden de compra</label>
         <div class="col-lg-4 col-sm-4 col-xs-4">
-            <select class="form-control" name="vidorden" id="pedido" onchange="obtenerord();ver_boton_registrar()" onclick="obtenerord();ver_boton_registrar()">
+            <select class="form-control" name="vordenes" id="pedido" onchange="obtenerord();ver_boton_registrar()" onclick="obtenerord();ver_boton_registrar()">
                 <option id="valor" value="">Debe seleccionar una Orden</option>
                 <?php
                 if (!empty($productos)) {
