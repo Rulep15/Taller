@@ -40,7 +40,7 @@ $resultado = consultas::get_datos($sql);
 if ($resultado[0]['compras'] != NULL) {
     $valor = explode("*", $resultado[0]['compras']);
     $_SESSION['mensaje'] = $valor[0];
-    header("location:" . $valor[1] . ".php");
+    header("location:" . $valor[1]);
 } else {
     $_SESSION['mensaje'] = 'Error:' . $sql;
     header("location:compras_index.php");

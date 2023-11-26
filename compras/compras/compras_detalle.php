@@ -265,16 +265,16 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group" id="precio">
+                                                            <div class="form-group">
                                                                 <label class="control-label col-lg-6 col-sm-6 col-md-6 col-xs-6">Precio</label>
                                                                 <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
-                                                                    <input type="number" name="vprecio" class="form-control" required="" min="1000" value="0" style="width: 300px;">
+                                                                    <input type="number" name="vprecio" class="form-control" required="" min="1000" style="width: 300px;">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label class="control-label col-lg-6 col-sm-6 col-md-6 col-xs-6">Cantidad</label>
                                                                 <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
-                                                                    <input type="number" name="vcantidad" class="form-control" required="" min="1" max="500" value="1" style="width: 300px;" id="idcantidad" onchange="calsubtotal()" onkeydown="calsubtotal()">
+                                                                    <input type="number" name="vcantidad" class="form-control" required="" min="1" max="500" value="1" style="width: 300px;" id="idcantidad">
                                                                 </div>
                                                             </div>
                                                         </div>
