@@ -73,7 +73,7 @@
                                         if (isset($_REQUEST['buscar'])) {
                                             $valor = $_REQUEST['buscar'];
                                         }
-                                        $compras = consultas::get_datos("SELECT * FROM v_compras WHERE  AND (id_compra||TRIM(UPPER(prv_razon_social))) LIKE TRIM(UPPER('%" . $valor . "%')) ORDER BY id_compra");
+                                        $compras = consultas::get_datos("SELECT * FROM v_compras WHERE com_estado <> 'ANULADO' AND (id_compra||TRIM(UPPER(prv_razon_social))) LIKE TRIM(UPPER('%" . $valor . "%')) ORDER BY id_compra");
                                         if (!empty($compras)) {
                                         ?>
                                             <div class="table-responsive">
@@ -82,14 +82,11 @@
                                                         <tr>
                                                             <th class="text-center">N° de Compra</th>
                                                             <th class="text-center">N° de Orden</th>
-                                                            <th class="text-center">N° de Pedido</th>
+                                                            <th class="text-center">N° de Remision</th>
                                                             <th class="text-center">Fecha</th>
                                                             <th class="text-center">Proveedor</th>
                                                             <th class="text-center">Nro Fact</th>
-                                                            <th class="text-center">Estado</th>
                                                             <th class="text-center">Condicion</th>
-                                                            <th class="text-center">Total Compra</th>
-                                                            <th class="text-center">Total Iva</th>
                                                             <th class="text-center">Acciones</th>
                                                         </tr>
                                                     </thead>
@@ -108,10 +105,7 @@
                                                                 <td class="text-center"> <?php echo $c['fecha_compra']; ?></td>
                                                                 <td class="text-center"> <?php echo $c['prv_razon_social']; ?></td>
                                                                 <td class="text-center"> <?php echo $c['com_nro_factura']; ?></td>
-                                                                <td class="text-center"> <?php echo $c['com_estado']; ?></td>
                                                                 <td class="text-center"> <?php echo $c['com_condicion']; ?></td>
-                                                                <td class="text-center"> <?php echo $c['com_total']; ?></td>
-                                                                <td class="text-center"> <?php echo $c['com_totaliva']; ?></td>
                                                                 <td class="text-center">
 
                                                                     <?php if ($c['com_estado'] == 'ACTIVO' || $c['com_estado'] == 'ANULADO' || $c['com_estado'] == 'CONFIRMADO') { ?>
