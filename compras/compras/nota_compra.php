@@ -21,6 +21,8 @@ if ($idpedido == 0) {
                     <tr>
                         <th class="text-center">Producto</th>
                         <th class="text-center">Cantidad</th>
+                        <th class="text-center">Precio</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -28,6 +30,8 @@ if ($idpedido == 0) {
                         <tr>
                             <td class="text-center" id="prod"> <?php echo $pcd['pro_descri']; ?></td>
                             <td class="text-center" id="canti"> <?php echo $pcd['cantidad']; ?></td>
+                            <td class="text-center" id="canti"> <?php echo $pcd['precio_unit']; ?></td>
+
                         </tr>
                     <?php } ?>
                 </tbody>
