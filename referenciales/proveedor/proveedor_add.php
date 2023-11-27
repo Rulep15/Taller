@@ -50,39 +50,7 @@
                                 <div class="box-body">
                                     <div class="row">
                                         <input type="hidden" name="voperacion" value="1">
-                                        <input type="hidden" name="vcodigo" value="0" />
-
-
-
-                                        <div class="form-group">
-                                            <label class="control-label col-lg-2 col-sm-2 col-xs-4">Ciudad</label>
-                                            <div class="col-lg-6 col-sm-6 col-xs-12">
-                                                <div class="input-group">
-                                                    <?php $ciudad = consultas::get_datos("SELECT * FROM ref_ciudad ORDER BY id_ciudad"); ?>
-                                                    <select class="select2" name="vciudad" required="" style="width: 320px;">
-                                                        <?php
-                                                        if (!empty($ciudad)) {
-                                                            foreach ($ciudad as $ciu) {
-                                                        ?>
-                                                                <option value="<?php echo $ciu['id_ciudad']; ?>"> <?php echo $ciu['ciu_descri']; ?> </option>
-                                                            <?php
-                                                            }
-                                                        } else {
-                                                            ?>
-                                                            <option value="">Debe seleccionar al menos una ciudad</option>
-                                                        <?php }
-                                                        ?>
-                                                    </select>
-                                                    <span class="input-group-btn">
-                                                        <button class="btn btn-toolbar btn-flat" type="button" data-toggle="modal" data-target="#registrar_ciudad">
-                                                            <i style="color: #465F62" class="fa fa-plus"></i>
-                                                        </button>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
+                                        <input type="hidden" name="vcodigo" value="0">
                                         <div class="form-group">
                                             <label class="control-label col-lg-2 col-sm-2 col-xs-4">Razon Social</label>
                                             <div class="col-lg-6 col-sm-6 col-xs-7">
@@ -105,6 +73,27 @@
                                             <label class="control-label col-lg-2 col-sm-2 col-xs-4">Telefono</label>
                                             <div class="col-lg-6 col-sm-6 col-xs-7">
                                                 <input maxlength="30" class="form-control" onkeypress="return soloNumero(event)" type="number" name="vtelefono" required="" min="0">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label  col-lg-3 col-sm-2 col-xs-2">Ciudad</label>
+                                            <div class="col-lg-4 col-sm-4 col-xs-4">
+                                                <?php $proveedors = consultas::get_datos("SELECT * FROM ref_ciudad ORDER BY id_ciudad"); ?>
+                                                <select class="form-control" id="idprovi" name="vciudad" required="">
+                                                    <option value="">Debe seleccionar una Ciudad</option>
+                                                    <?php
+                                                    if (!empty($proveedors)) {
+                                                        foreach ($proveedors as $p) {
+                                                    ?>
+                                                            <option value="<?php echo $p['id_ciudad']; ?>"><?php echo $p['ciu_descri']; ?></option>
+                                                        <?php
+                                                        }
+                                                    } else {
+                                                        ?>
+
+                                                    <?php }
+                                                    ?>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
