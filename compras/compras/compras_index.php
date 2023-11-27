@@ -116,9 +116,9 @@
                                                                     <?php } ?>
 
                                                                     <?php if ($c['com_estado'] == 'CONFIRMADO') { ?>
-                                                                        <!-- <a href="compras_imprimir_factura.php?vidcompra=<?php echo $c['id_compra']; ?>" class="btn btn-toolbar" role="button" data-title="Factura" rel="tooltip" data-placement="top">
+                                                                        <a href="compras_imprimir_factura.php?vidcompra=<?php echo $c['id_compra']; ?>" class="btn btn-toolbar" role="button" data-title="Factura" rel="tooltip" data-placement="top">
                                                                             <span class="fa fa-print"></span>
-                                                                        </a> -->
+                                                                        </a>
                                                                     <?php } ?>
 
 
