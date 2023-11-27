@@ -77,7 +77,7 @@
                                         if (!empty($compras)) {
                                         ?>
                                             <div class="table-responsive">
-                                                <table style="" class="table col-lg-12 col-md-12 col-xs-12">
+                                                <table class="table col-lg-12 col-md-12 col-xs-12">
                                                     <thead>
                                                         <tr>
                                                             <th class="text-center">N° de Compra</th>
