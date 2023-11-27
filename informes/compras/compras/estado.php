@@ -32,7 +32,7 @@ require '../../../estilos/css_lte.ctp';
 <?php require '../../../estilos/js_lte.ctp'; ?>
 <script>
     function enviar() {
-        window.open("/T.A/informes/compras/compras/impresion.php?vciudad=" + "'" + $('#vestado').val() + "'" + '&vopcion=' + $('#opcion').val(), '_blank');
+        window.open("/Taller/informes/compras/compras/impresion.php?vciudad=" + "'" + $('#vestado').val() + "'" + '&vopcion=' + $('#opcion').val(), '_blank');
 
     }
 </script>

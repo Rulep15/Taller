@@ -4,10 +4,12 @@ include '../../../librerias/tcpdf/tcpdf.php';
 require '../../../conexion.php';
 
 // Extend the TCPDF class to create custom Header and Footer
-class MYPDF extends TCPDF {
+class MYPDF extends TCPDF
+{
 
     // Page footer
-    public function Footer() {
+    public function Footer()
+    {
         // Position at 15 mm from bottom
         $this->SetY(-15);
         // Set font
@@ -15,7 +17,6 @@ class MYPDF extends TCPDF {
         // Page number
         $this->Cell(0, 0, 'Pag. ' . $this->getAliasNumPage() . '/' . $this->getAliasNbPages(), 0, false, 'R', 0, '', 0, false, 'T', 'M');
     }
-
 }
 
 // create new PDF document // CODIFICACION POR DEFECTO ES UTF-8
@@ -31,8 +32,8 @@ $pdf->setPrintHeader(false);
 // set default header data
 $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
 // set header and footer fonts
-$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
-$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+$pdf->setHeaderFont(array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+$pdf->setFooterFont(array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
 // set default monospaced font
 $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 //set margins POR DEFECTO
@@ -66,7 +67,7 @@ $pdf->SetFillColor(255, 255, 255);
 if ($_REQUEST['vopcion'] == '1') {
     $fechainicial = $_REQUEST['vdesde'];
     $fechafinal = $_REQUEST['vhasta'];
-    $pedidoss = consultas::get_datos("SELECT * FROM v_compras_pedido WHERE fechac BETWEEN $fechainicial AND $fechafinal ");
+    $pedidoss = consultas::get_datos("SELECT * FROM v_pedido WHERE fechac BETWEEN $fechainicial AND $fechafinal ");
     if (!empty($pedidoss)) {
         foreach ($pedidoss as $pedidos) {
             $pdf->SetFont('', 'B', 14);
@@ -92,9 +93,7 @@ if ($_REQUEST['vopcion'] == '1') {
             $pdf->Ln();
             $pdf->Cell(20, 7, '', 0, 0, 'C');
             $pdf->SetFont('', 'B', 14);
-            $pdf->Cell(40, 7, 'DESCRIPCION: ', 0, 0, 'L');
-            $pdf->SetFont('', 'N', 14);
-            $pdf->Cell(40, 7, $pedidos['descri'], 0, 0, 'L');
+
 
             $pdf->Ln();
             $pdf->Ln();
@@ -104,7 +103,7 @@ if ($_REQUEST['vopcion'] == '1') {
             $pdf->Ln();
             $pdf->Ln();
 
-            $detalles = consultas::get_datos("select * from v_compras_pedidos_detalle where id_pedido=" . $pedidos['id_pedido']);
+            $detalles = consultas::get_datos("select * from v_det_pedido where id_pedido=" . $pedidos['id_pedido']);
             if (!empty($detalles)) {
                 $pdf->SetFont('', 'B', 13);
                 $pdf->SetFillColor(188, 188, 188);
@@ -130,7 +129,7 @@ if ($_REQUEST['vopcion'] == '1') {
             $pdf->SetTextColor(3, 26, 47);
             $pdf->Cell(19, 7, '', 0, 0, 'C');
             $pdf->Cell(350, 0, '-----------------------------------------------------------------------------------------------------------------------------'
-                    . '------------------------------------------------------------------', 0, 1, 'L');
+                . '------------------------------------------------------------------', 0, 1, 'L');
             $pdf->Ln();
             $pdf->Ln();
             $pdf->Ln();
@@ -154,7 +153,6 @@ if ($_REQUEST['vopcion'] == '1') {
         $pdf->SetDrawColor(0, 0, 0);
         $pdf->Cell(320, 6, 'NO SE ENCUENTRAN DATOS', 0, 0, 'C', 0);
     }
-//SALIDA AL NAVEGADOR
+    //SALIDA AL NAVEGADOR
 }
 $pdf->Output('reporte_pedidos.pdf', 'I');
-?>
