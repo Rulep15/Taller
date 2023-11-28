@@ -59,7 +59,7 @@
 
                                 <?php } ?>
                                 <div class="box-tools">
-                                    <a href="pedidosc_index.php" class="btn btn-toolbar pull-right">
+                                    <a href="ajuste_index.php" class="btn btn-toolbar pull-right">
                                         <i style="color: #465F62" class="fa fa-arrow-left"></i>
                                     </a>
                                 </div>
