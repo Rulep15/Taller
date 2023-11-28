@@ -96,8 +96,8 @@
                                                                 <td class="text-center"> <?php echo $n['id_compra']; ?></td>
                                                                 <td class="text-center"> <?php echo $n['prv_razon_social']; ?></td>
                                                                 <td class="text-center"> <?php echo $n['nro_fact']; ?></td>
-                                                                <td class="text-center"> <?php echo $n['fecha_sistema1']; ?></td>
                                                                 <td class="text-center"> <?php echo $n['monto']; ?></td>
+                                                                <td class="text-center"> <?php echo $n['fecha_sistema1']; ?></td>
                                                                 <td class="text-center">
                                                                     <?php if ($n['estado'] == 'ACTIVO' || $n['estado'] == 'ANULADO' || $n['estado'] == 'CONFIRMADO') { ?>
                                                                         <a href="nota_debito_detalle.php?vidnota=<?php echo $n['id_debito']; ?>" class="btn btn-toolbar" role="button" data-title="Detalle" rel="tooltip" data-placement="top">
