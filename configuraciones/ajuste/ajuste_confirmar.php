@@ -12,7 +12,9 @@ if (isset($_REQUEST['vidajuste'])) {
 <div class="panel-body">
     <div class="panel-body se">
         <form action="ajuste_detalle_control.php" method="post" accept-charset="utf-8" class="form-horizontal">
-
+            <input type="hidden" name="vproducto" />
+            <input type="hidden" name="vmotivo" />
+            <input type="hidden" name="vcantidad" />
             <h4 class="modal-title" style="text-align: center"><strong>¿Desea confirmar el Ajuste?</strong></h4>
             <input name="voperacion" value="3" type="hidden">
             <input class="form-control" name="vidajuste" type="hidden" value="<?php echo $gru ?>" readonly="" id="codigo" onkeypress="return soloNum(event)" required="">

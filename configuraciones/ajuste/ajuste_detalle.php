@@ -56,11 +56,7 @@
                                             <span style="color: green" class="glyphicon glyphicon-ok-sign"></span>
                                         </a>
                                     <?php } ?>
-                                    <?php if ($con['estado'] == 'CONFIRMADO') { ?>
-                                        <a style="padding: 10px; margin: 1px" data-toggle="modal" data-target="#anular" onclick="registrar_anular(<?php echo "'" . $_REQUEST['vidajuste'] . "'" ?>);" class="btn btn-toolbar btn-lg" role="button" rel="tooltip" data-title="Anular" rel="tooltip" data-placement="top">
-                                            <span style="color: red" class="glyphicon glyphicon-ban-circle"></span>
-                                        </a>
-                                    <?php } ?>
+
                                 <?php } ?>
                                 <div class="box-tools">
                                     <a href="pedidosc_index.php" class="btn btn-toolbar pull-right">
@@ -221,7 +217,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label col-lg-6 col-sm-6 col-md-6 col-xs-6">Cantidad</label>
                                                             <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
-                                                                <input type="number" name="vcantidad" class="form-control" max="500" required="" min="1" value="1" style="width: 300px;" id="idcantidad" onchange="calsubtotal()" onkeydown="calsubtotal()">
+                                                                <input type="number" name="vcantidad" class="form-control" max="500" required="" min="1" value="1" style="width: 300px;">
                                                             </div>
                                                         </div>
                                                     </div>
