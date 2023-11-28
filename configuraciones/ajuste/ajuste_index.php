@@ -56,7 +56,7 @@
                                                 <div class="form-group">
                                                     <div class="col-lg-12 col-md-12 col-xs-12">
                                                         <div class="input-group custom-search-form">
-                                                            <input type="search" class="form-control" name="buscar" placeholder="Buscar por Productor..." autofocus="" />
+                                                            <input type="search" class="form-control" name="buscar" placeholder="Buscar..." autofocus="" />
                                                             <span class="input-group-btn">
                                                                 <button type="submit" class="btn btn-toolbar btn-flat" data-title="Buscar" data-placement="bottom" rel="tooltip">
                                                                     <span style="color: #465F62" class="fa fa-search"></span>
@@ -73,7 +73,7 @@
                                         if (isset($_REQUEST['buscar'])) {
                                             $valor = $_REQUEST['buscar'];
                                         }
-                                        $stock = consultas::get_datos("SELECT * FROM v_ajustes WHERE id_ajuste");
+                                        $stock = consultas::get_datos("SELECT * FROM v_ajustes");
                                         if (!empty($stock)) {
                                         ?>
                                             <div class="table-responsive">
@@ -81,7 +81,6 @@
                                                     <thead>
                                                         <tr>
                                                             <th class="text-center">N° Ajuste</th>
-                                                            <th class="text-center">Tipo Concepto</th>
                                                             <th class="text-center">Fecha</th>
                                                             <th class="text-center">Acciones</th>
                                                         </tr>
@@ -90,12 +89,11 @@
                                                         <?php foreach ($stock as $s) { ?>
                                                             <tr>
                                                                 <td class="text-center"> <?php echo $s['id_ajuste']; ?></td>
-                                                                <td class="text-center"> <?php echo $s['tipo_concepto']; ?></td>
                                                                 <td class="text-center"> <?php echo $s['fecha_ajus1']; ?></td>
                                                                 <td class="text-center">
-                                                                    <?php if ($s['estado'] == 'ACTIVO' || $s['estado'] == 'ANULADO' || $s['estado'] == 'AJUSTADO') { ?>
-                                                                        <a href="ajuste_detalle.php?vidajuste=<?php echo $c['id_ajuste']; ?>" class="btn btn-toolbar" role="button" data-title="Detalle" rel="tooltip" data-placement="top">
-                                                                            <i style="color: #465F62" class="fa  fa-list"></i>
+                                                                    <?php if ($s['estado'] == 'ACTIVO' || $s['estado'] == 'ANULADO' || $s['estado'] == 'CONFIRMADO') { ?>
+                                                                        <a href="ajuste_detalle.php?vidajuste=<?php echo $s['id_ajuste']; ?>" class="btn btn-toolbar" role="button" data-title="Detalle" rel="tooltip" data-placement="top">
+                                                                            <i style="color: #465F62" class="fa fa-list"></i>
 
                                                                         </a>
                                                                     <?php } ?>
