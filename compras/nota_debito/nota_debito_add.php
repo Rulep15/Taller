@@ -80,6 +80,26 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
+                                            <label class="control-label col-lg-2 col-sm-2 col-xs-4">Motivo</label>
+                                            <div class="col-lg-5 col-sm-5 col-xs-5">
+                                                <?php $productos = consultas::get_datos("SELECT * FROM motivo_nota WHERE id_tipo_n = 1") ?>
+                                                <select class="form-control" name="vidmotivo" required="" style="width: 530px;" id="idproducto">
+                                                    <option value="0">Seleccione un Motivo</option>
+                                                    <?php
+                                                    if (!empty($productos)) {
+                                                        foreach ($productos as $producto) {
+                                                    ?>
+                                                            <option value="<?php echo $producto['id_majuste']; ?>"><?php echo $producto['descripcion']; ?></option>
+                                                        <?php
+                                                        }
+                                                    } else {
+                                                        ?>
+                                                        <option value="">Debe insertar registros...</option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
                                             <label class="control-label col-lg-2 col-sm-2 col-xs-4">Monto</label>
                                             <div class="col-lg-6 col-sm-6 col-xs-7">
                                                 <input class="form-control" type="number" name="vmonto">
