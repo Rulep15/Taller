@@ -49,7 +49,7 @@
                             <form action="nota_debito_control.php" method="POST" accept-charset="UTF-8" class="form-horizontal">
                                 <div class="box-body">
                                     <div class="row">
-                                        <input type="hidden" name="voperacion" value="1">
+                                        <input type="hidden" name="operacion" value="1">
                                         <div class="form-group">
                                             <label class="control-label col-lg-2 col-sm-2 col-xs-4">N° Nota Debito</label>
                                             <?php $pc = consultas::get_datos("SELECT COALESCE(MAX(id_debito),0)+1 AS ultimo FROM nota_debito") ?>
@@ -82,13 +82,13 @@
                                             <label class="control-label col-lg-2 col-sm-2 col-xs-4">Motivo</label>
                                             <div class="col-lg-5 col-sm-5 col-xs-5">
                                                 <?php $productos = consultas::get_datos("SELECT * FROM motivo_nota WHERE id_tipo_n = 1") ?>
-                                                <select class="form-control" name="vidmotivo" required="" style="width: 530px;" id="idproducto">
+                                                <select class="form-control" name="vidmotivo" required="" style="width: 530px;">
                                                     <option value="0">Seleccione un Motivo</option>
                                                     <?php
                                                     if (!empty($productos)) {
                                                         foreach ($productos as $producto) {
                                                     ?>
-                                                            <option value="<?php echo $producto['id_majuste']; ?>"><?php echo $producto['descripcion']; ?></option>
+                                                            <option value="<?php echo $producto['id_moti']; ?>"><?php echo $producto['descripcion']; ?></option>
                                                         <?php
                                                         }
                                                     } else {
