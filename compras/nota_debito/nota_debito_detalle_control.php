@@ -12,8 +12,6 @@ $cantidad = $_REQUEST['vcantidad'];
 
 
 
-
-
 $sql = "SELECT sp_nota_debito_detalle(" . $operacion . "," .
     (!empty($codigo) ? $codigo : 0) . "," .
     (!empty($precio) ? $precio : 0) . "," .

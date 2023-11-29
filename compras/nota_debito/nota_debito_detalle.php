@@ -144,6 +144,9 @@
                                                         <th class="text-center">Cantidad</th>
                                                         <th class="text-center">Precio</th>
                                                         <th class="text-center">SubTotal</th>
+                                                        <th class="text-center">Iva5</th>
+                                                        <th class="text-center">Iva10</th>
+
                                                         <?php if ($pc['estado'] == 'ACTIVO') { ?>
                                                             <th class="text-center">Acciones</th>
                                                         <?php } ?>
@@ -156,9 +159,11 @@
                                                             <td class="text-center"> <?php echo $pcd['cantidad']; ?></td>
                                                             <td class="text-center"> <?php echo $pcd['precio']; ?></td>
                                                             <td class="text-center"> <?php echo $pcd['precio'] * $pcd['cantidad']; ?></td>
+                                                            <td class="text-center"> <?php echo $pcd['iva5']; ?></td>
+                                                            <td class="text-center"> <?php echo $pcd['iva10']; ?></td>
                                                             <td class="text-center">
                                                                 <?php if ($pc['estado'] == 'ACTIVO') { ?>
-                                                                    <a onclick="quitar(<?php echo "'" . $pcd['id_debito'] . "_" . $pcd['id_moti'] . "_"  . $pcd['pro_cod'] . "'" ?>)" class="btn btn-toolbar " role="button" data-title="Eliminar Detalle" data-placement="top" rel="tooltip" data-toggle="modal" data-target="#quitar">
+                                                                    <a onclick="quitar(<?php echo "'" . $pcd['id_debito'] . "_"   . $pcd['pro_cod'] . "'" ?>)" class="btn btn-toolbar " role="button" data-title="Eliminar Detalle" data-placement="top" rel="tooltip" data-toggle="modal" data-target="#quitar">
                                                                         <span style="color: red;" class="fa fa-trash"></span>
                                                                     </a>
                                                                 <?php } ?>
@@ -299,11 +304,6 @@
         $(this).alert('close');
     })
 
-    function quitar(datos) {
-        var dat = datos.split("_");
-        $('#si').attr('href', 'nota_debito_detalle_control.php?vidnota=' + dat[0] + '&vproducto=' + dat[3] + '&vdeposito=' + dat[2] + '&vidmotivo=' + dat[1] + '&voperacion=2');
-        $('#confirmacion').html('<span class="glyphicon glyphicon-warning-sign"></span> Desea quitar el Articulo del detalle <i><strong>' + '</strong></i>?');
-    }
 
 
 
@@ -335,5 +335,12 @@
         });
     }
 </SCRIPT>
+<script>
+    function quitar(datos) {
+        var dat = datos.split("_");
+        $('#si').attr('href', 'nota_debito_detalle_control.php?vidnota=' + dat[0] + '&vproducto=' + dat[1] + '&vdeposito=' + dat[2] + '&vidmotivo=' + dat[3] + '&voperacion=2');
+        $('#confirmacion').html('<span class="glyphicon glyphicon-warning-sign"></span> Desea quitar el Articulo del detalle <i><strong>' + '</strong></i>?');
+    }
+</script>
 
 </HTML>
