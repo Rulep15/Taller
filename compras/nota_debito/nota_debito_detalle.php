@@ -38,7 +38,7 @@
                             </div>
                         <?php } ?>
                         <!-- MENSAJE -->
-                        <h3 style="color: white">Nota Debito - Detalle</h3>
+                        <h3 style="text-align: center;color: white">Nota Debito - Detalle</h3>
                         <!--CABECERA-->
                         <div class="box box-primary">
                             <div class="box-header">
@@ -108,7 +108,8 @@
                                                                 <td class="text-center"> <?php echo $pc['id_debito']; ?></td>
                                                                 <td class="text-center"> <?php echo $pc['id_compra']; ?></td>
                                                                 <td class="text-center"> <?php echo $pc['nro_fact']; ?></td>
-                                                                <td class="text-center"> <?php echo $pc['fecha_sistema1']; ?></td>
+                                                                <td class="text-center"> <?php echo $pc['fecha_recibido']; ?></td>
+                                                                <td class="text-center"> <?php echo $pc['prv_razon_social']; ?></td>
                                                                 <td class="text-center"> <?php echo $resultadoiva; ?></td>
                                                                 <td class="text-center"> <?php echo $resultado; ?></td>
                                                             </tr>
@@ -142,6 +143,7 @@
                                                         <th class="text-center">Producto</th>
                                                         <th class="text-center">Cantidad</th>
                                                         <th class="text-center">Precio</th>
+                                                        <th class="text-center">SubTotal</th>
                                                         <?php if ($pc['estado'] == 'ACTIVO') { ?>
                                                             <th class="text-center">Acciones</th>
                                                         <?php } ?>
@@ -153,6 +155,7 @@
                                                             <td class="text-center"> <?php echo $pcd['pro_descri']; ?></td>
                                                             <td class="text-center"> <?php echo $pcd['cantidad']; ?></td>
                                                             <td class="text-center"> <?php echo $pcd['precio']; ?></td>
+                                                            <td class="text-center"> <?php echo $pcd['precio'] * $pcd['cantidad']; ?></td>
                                                             <td class="text-center">
                                                                 <?php if ($pc['estado'] == 'ACTIVO') { ?>
                                                                     <a onclick="quitar(<?php echo "'" . $pcd['id_debito'] . "_" . $pcd['id_moti'] . "_"  . $pcd['pro_cod'] . "'" ?>)" class="btn btn-toolbar " role="button" data-title="Eliminar Detalle" data-placement="top" rel="tooltip" data-toggle="modal" data-target="#quitar">
@@ -182,7 +185,7 @@
                             <?php } ?>
                             <?php if ($det['estado'] == 'ACTIVO') { ?>
                                 <!--AGREGAR DETALLE-->
-                                <div class="box box-primary" style="width: 550px; height: 350px;margin: 0 auto;">
+                                <div class="box box-primary" style="width: 550px; height: 300px;margin: 0 auto;">
                                     <div class="box-header">
                                         <i class="ion ion-clipboard"></i>
                                         <h3 class="box-title">Agregar Items</h3>
@@ -195,12 +198,11 @@
                                                         <input type="hidden" name="voperacion" value="1" />
                                                         <input type="hidden" name="vidnota" value="<?php echo $_REQUEST['vidnota']; ?>" />
                                                         <div class="col-lg-4 col-sm-4 col-md-4 col-xs-4">
-
                                                             <div class="form-group">
                                                                 <label class="control-label col-lg-6 col-sm-6 col-md-6 col-xs-6">Producto</label>
                                                                 <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
                                                                     <?php $productos = consultas::get_datos("SELECT * FROM producto ") ?>
-                                                                    <select class="select2" name="vproducto" required="" style="width: 300px;" id="idproducto" onchange="obtenerprecio()" onkeyup="obtenerprecio()" onclick="obtenerprecio()">
+                                                                    <select class="select2" name="vproducto" required="" style="width: 300px;" id="idproducto">
                                                                         <option value="0">Seleccione un Producto</option>
                                                                         <?php
                                                                         if (!empty($productos)) {
@@ -271,7 +273,6 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" arial-label="Close">X</button>
                         <h4 class="modal-title custom_align" id="Heading">Atencion!!!</h4>
                     </div>
                     <div class="modal-body">
@@ -301,32 +302,16 @@
     function quitar(datos) {
         var dat = datos.split("_");
         $('#si').attr('href', 'nota_debito_detalle_control.php?vidnota=' + dat[0] + '&vproducto=' + dat[3] + '&vdeposito=' + dat[2] + '&vidmotivo=' + dat[1] + '&voperacion=2');
-        $('#confirmacion').html('<span class="glyphicon glyphicon-warning-sign"></span> Desea quitar el Articulo del detalle <i><strong>' + dat[1] + '</strong></i>?');
+        $('#confirmacion').html('<span class="glyphicon glyphicon-warning-sign"></span> Desea quitar el Articulo del detalle <i><strong>' + '</strong></i>?');
     }
 
-    function obtenerprecio() {
-        var dat = $('#idproducto').val().split("_");
-        if (parseInt($('#idproducto').val()) > 0) {
-            $.ajax({
-                type: "GET",
-                url: "/T.A/compras/compras/listar_precios.php?vidproducto=" + dat[0],
-                cache: false,
-                beforeSend: function() {
-                    $('#precio').html('<img src="/T.A/img/sistema/ajax-loader.gif">\n\ <strong><i>Cargando...');
-                },
-                success: function(msg) {
-                    $('#precio').html(msg);
-                    calsubtotal();
-                }
-            });
-        }
-    }
+
 
     function registrar_permisos(datos) {
         var dat = datos.split("_");
         $.ajax({
             type: "GET",
-            url: "/T.A/compras/nota_debito/nota_debito_confirmar.php?vidnota=" + dat[0],
+            url: "/Taller/compras/nota_debito/nota_debito_confirmar.php?vidnota=" + dat[0],
             beforeSend: function() {
                 $('#detalles_registrar').html();
             },
@@ -340,7 +325,7 @@
         var dat = datos.split("_");
         $.ajax({
             type: "GET",
-            url: "/T.A/compras/nota_debito/nota_debito_anularm.php?vidnota=" + dat[0],
+            url: "/Taller/compras/nota_debito/nota_debito_anularm.php?vidnota=" + dat[0],
             beforeSend: function() {
                 $('#detalles_anular').html();
             },

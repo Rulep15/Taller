@@ -187,7 +187,7 @@
                                                                 <td class="text-center"> <?php echo $pcd['pro_descri']; ?></td>
                                                                 <td class="text-center"> <?php echo $pcd['precio']; ?></td>
                                                                 <td class="text-center"> <?php echo $pcd['cantidad']; ?></td>
-                                                                <td class="text-center"> <?php echo $resultado; ?></td>
+                                                                <td class="text-center"> <?php echo $pcd['precio'] * $pcd['cantidad']; ?></td>
                                                                 <td class="text-center"> <?php echo $pcd['iva5']; ?></td>
                                                                 <td class="text-center"> <?php echo $pcd['iva10']; ?></td>
                                                                 <td class="text-center">

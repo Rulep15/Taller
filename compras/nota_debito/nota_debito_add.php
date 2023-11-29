@@ -50,7 +50,6 @@
                                 <div class="box-body">
                                     <div class="row">
                                         <input type="hidden" name="voperacion" value="1">
-                                        <input type="hidden" name="vestado" value="ACTIVO" />
                                         <div class="form-group">
                                             <label class="control-label col-lg-2 col-sm-2 col-xs-4">N° Nota Debito</label>
                                             <?php $pc = consultas::get_datos("SELECT COALESCE(MAX(id_debito),0)+1 AS ultimo FROM nota_debito") ?>
