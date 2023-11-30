@@ -73,7 +73,7 @@
                                         if (isset($_REQUEST['buscar'])) {
                                             $valor = $_REQUEST['buscar'];
                                         }
-                                        $stock = consultas::get_datos("SELECT * FROM v_nota_remision WHERE (id_empleado||TRIM(per_nro_doc)) LIKE TRIM(UPPER('%" . $valor . "%')) ORDER BY id_remision");
+                                        $stock = consultas::get_datos("SELECT * FROM v_nota_remision ");
                                         if (!empty($stock)) {
                                         ?>
                                             <div class="table-responsive">
@@ -81,12 +81,10 @@
                                                     <thead>
                                                         <tr>
                                                             <th class="text-center">N°</th>
-                                                            <th class="text-center">Suc Destino</th>
+                                                            <th class="text-center">N° de Orden</th>
+                                                            <th class="text-center">Proveedor</th>
                                                             <th class="text-center">Conductor</th>
                                                             <th class="text-center">Vehiculo</th>
-                                                            <th class="text-center">Fecha Inicio</th>
-                                                            <th class="text-center">Fecha Fin</th>
-                                                            <th class="text-center">Estado</th>
                                                             <th class="text-center">Acciones</th>
                                                         </tr>
                                                     </thead>
@@ -94,30 +92,16 @@
                                                         <?php foreach ($stock as $s) { ?>
                                                             <tr>
                                                                 <td class="text-center"> <?php echo $s['id_remision']; ?></td>
-                                                                <td class="text-center"> <?php echo $s['suc_destino']; ?></td>
-                                                                <td class="text-center"> <?php echo $s['nombres']; ?></td>
-                                                                <td class="text-center"> <?php echo $s['auto']; ?></td>
-                                                                <td class="text-center"> <?php echo $s['fecha_inicio']; ?></td>
-                                                                <td class="text-center"> <?php echo $s['fecha_fin']; ?></td>
-                                                                <td class="text-center"> <?php echo $s['estado']; ?></td>
+                                                                <td class="text-center"> <?php echo $s['nro_orden']; ?><?php echo ' - '; ?><?php echo $s['orden_fecha']; ?></td>
+                                                                <td class="text-center"> <?php echo $s['prv_razon_social']; ?></td>
+                                                                <td class="text-center"> <?php echo $s['conductor']; ?><?php echo ' - '; ?><?php echo $s['cedula']; ?></td>
+                                                                <td class="text-center"> <?php echo $s['chapa']; ?></td>
                                                                 <td class="text-center">
-
                                                                     <a href="nota_remision_detalle.php?vidnota=<?php echo $s['id_remision']; ?>" class="btn btn-toolbar" role="button" data-title="Detalle" rel="tooltip" data-placement="top">
                                                                         <i style="color: #465F62" class="fa  fa-list"></i>
-
                                                                     </a>
-
-
-
-                                                                    <?php if ($s['sucursal_entrada'] == $_SESSION['id_sucursal'] && $s['estado'] == 'CONFIRMADO') { ?>
-                                                                        <a style="padding: 10px; margin: 1px" data-toggle="modal" data-target="#confirmar" onclick="registrar_permisos(<?php echo "'" . $s['id_remision'] . "'" ?>);" class="btn btn-toolbar btn-lg" role="button" rel="tooltip" data-title="recibido" rel="tooltip" data-placement="top">
-                                                                            <span style="color: blue" class="glyphicon glyphicon-ok-sign"></span>
-                                                                        </a>
-                                                                    <?php } ?>
                                                                 </td>
-
                                                             </tr>
-
                                                         <?php } ?>
                                                     </tbody>
                                                 </table>
