@@ -83,7 +83,7 @@
                                     </a>
                                 <?php } ?>
                                 <div class="box-tools">
-                                    <a href="compras_index.php" class="btn btn-toolbar pull-right">
+                                    <a href="nota_remision_index.php" class="btn btn-toolbar pull-right">
                                         <i style="color: #465F62" class="fa fa-arrow-left"></i>
                                     </a>
                                 </div>
