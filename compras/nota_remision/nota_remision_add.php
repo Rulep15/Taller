@@ -60,7 +60,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-lg-2 col-sm-2 col-xs-4">Fecha</label>
                                             <div class="col-lg-6 col-sm-6 col-xs-7">
-                                                <input class="form-control" type="date" name="vfechatranlado" readonly="" value="<?php echo date("Y-m-d"); ?>">
+                                                <input class="form-control" type="date" name="vfecha" readonly="" value="<?php echo date("Y-m-d"); ?>">
                                             </div>
                                         </div>
                                         <div class="form-group">
