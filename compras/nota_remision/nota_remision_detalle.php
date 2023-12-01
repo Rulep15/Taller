@@ -151,7 +151,7 @@
                             <div class="box box-primary">
                                 <div class="box-header">
                                     <i class="ion ion-clipboard"></i>
-                                    <h3 class="box-title">Detalles de Compras</h3>
+                                    <h3 class="box-title">Detalles de Remision</h3>
                                 </div>
                                 <div class="box-body no-padding">
                                     <div class="col-lg-12 col-md-12 col-xs-12">
@@ -204,7 +204,7 @@
                                             </div>
                                         <?php } else { ?>
                                             <div class="alert alert-danger flat">
-                                                <span class="glyphicon glyphicon-info-sign"></span> La Compra no tiene detalles...
+                                                <span class="glyphicon glyphicon-info-sign"></span> La Nota no tiene detalles...
                                             </div>
                                         <?php } ?>
                                     </div>
@@ -230,7 +230,7 @@
                                     <div class="box-body no-padding">
                                         <?php if ($det['estado'] == 'ACTIVO') { ?>
                                             <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-                                                <form action="compras_detalle_control.php" method="POST" accept-charset="UTF-8" class="form-horizontal">
+                                                <form action="nota_remision_detalle_control.php" method="POST" accept-charset="UTF-8" class="form-horizontal">
                                                     <div class="box-body" style="left: 1000px;">
                                                         <input type="hidden" name="voperacion" value="1" />
                                                         <input type="hidden" name="vidnota" value="<?php echo $_REQUEST['vidnota']; ?>" />
