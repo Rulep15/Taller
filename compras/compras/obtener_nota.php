@@ -3,7 +3,7 @@ session_start();
 
 require '../../conexion.php';
 $idproducto = $_REQUEST['vidpedido'];
-$productos = consultas::get_datos("SELECT * FROM nota_remision WHERE estado = 'CONFIRMADO' and nro_orden in (select nro_orden from orden_de_compra where orden_estado ='CONFIRMADO' AND prv_cod = " . $idproducto . ")"); ?>
+$productos = consultas::get_datos("SELECT * FROM v_nota_remision WHERE estado = 'CONFIRMADO' ORDER BY id_remision"); ?>
 
 <?php if (!empty($productos)) { ?>
     <div class="form-group">
