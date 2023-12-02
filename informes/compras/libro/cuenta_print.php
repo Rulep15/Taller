@@ -109,7 +109,6 @@ if ($_REQUEST['vopcion'] == '1') {
                 $pdf->SetFont('', 'B', 13);
                 $pdf->SetFillColor(188, 188, 188);
                 $pdf->Cell(20, 7, '', 0, 0, 'C');
-                $pdf->Cell(110, 7, 'Total', 1, 0, 'C', 1);
                 $pdf->Cell(110, 7, 'IVA 5%', 1, 0, 'C', 1);
                 $pdf->Cell(60, 7, 'IVA 10%', 1, 0, 'C', 1);
                 $pdf->Ln(); //salto
@@ -119,7 +118,6 @@ if ($_REQUEST['vopcion'] == '1') {
 
                 foreach ($detalles as $detalle) {
                     $pdf->Cell(20, 7, '', 0, 0, 'C');
-                    $pdf->Cell(110, 7, $detalle['total'], 1, 0, 'C', 1);
                     $pdf->Cell(110, 7, number_format($detalle['iva5'], 0, ',', '.'), 1, 0, 'C', 1);
                     $pdf->Cell(60, 7, $detalle['iva10'], 1, 0, 'C', 1);
                     $pdf->Ln();

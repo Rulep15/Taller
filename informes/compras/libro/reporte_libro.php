@@ -24,6 +24,8 @@
                                 <div class="list-group">
                                     <a href="#" class="list-group-item active" style="background-color: #465F62">Filtros</a>
                                     <a href="#" class="list-group-item" onclick="obtener_estado()">Por Estado</a>
+                                    <a href="#" class="list-group-item" onclick="obtener_fecha()">Por Fecha</a>
+
                                 </div>
                             </div>
                             <div id="cargando">
@@ -44,7 +46,7 @@
             url: "/Taller/informes/compras/libro/fecha.php",
             cache: false,
             beforeSend: function() {
-                $('#cargando').html('<img src="/T.A/img/sistema/ajax-loader.gif"><strong><i>Cargando...</i></strong>');
+                $('#cargando').html('<img src="/Taller/img/sistema/ajax-loader.gif"><strong><i>Cargando...</i></strong>');
             },
             success: function(msg) {
                 $('#cargando').html(msg);
@@ -58,7 +60,7 @@
             url: "/Taller/informes/compras/libro/estado.php",
             cache: false,
             beforeSend: function() {
-                $('#cargando').html('<img src="/T.A/img/sistema/ajax-loader.gif"><strong><i>Cargando...</i></strong>');
+                $('#cargando').html('<img src="/Taller/img/sistema/ajax-loader.gif"><strong><i>Cargando...</i></strong>');
             },
             success: function(msg) {
                 $('#cargando').html(msg);

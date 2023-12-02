@@ -67,7 +67,7 @@ $pdf->SetFillColor(255, 255, 255);
 if ($_REQUEST['vopcion'] == '1') {
     $fechainicial = $_REQUEST['vdesde'];
     $fechafinal = $_REQUEST['vhasta'];
-    $pedidoss = consultas::get_datos("SELECT * FROM v_pedido WHERE fechac BETWEEN $fechainicial AND $fechafinal ");
+    $pedidoss = consultas::get_datos("SELECT * FROM v_pedido WHERE fecha BETWEEN $fechainicial AND $fechafinal ");
     if (!empty($pedidoss)) {
         foreach ($pedidoss as $pedidos) {
             $pdf->SetFont('', 'B', 14);
@@ -109,7 +109,6 @@ if ($_REQUEST['vopcion'] == '1') {
                 $pdf->SetFillColor(188, 188, 188);
                 $pdf->Cell(20, 7, '', 0, 0, 'C');
                 $pdf->Cell(110, 7, 'ARTICULO', 1, 0, 'C', 1);
-                $pdf->Cell(110, 7, 'PRECIO UNIT', 1, 0, 'C', 1);
                 $pdf->Cell(60, 7, 'CANTIDAD', 1, 0, 'C', 1);
                 $pdf->Ln(); //salto
 
@@ -119,7 +118,6 @@ if ($_REQUEST['vopcion'] == '1') {
                 foreach ($detalles as $detalle) {
                     $pdf->Cell(20, 7, '', 0, 0, 'C');
                     $pdf->Cell(110, 7, $detalle['pro_descri'], 1, 0, 'C', 1);
-                    $pdf->Cell(110, 7, number_format($detalle['subtotal'], 0, ',', '.'), 1, 0, 'C', 1);
                     $pdf->Cell(60, 7, $detalle['cantidad'], 1, 0, 'C', 1);
                     $pdf->Ln();
                 }

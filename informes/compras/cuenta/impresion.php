@@ -43,7 +43,7 @@ $pdf->Ln();
 $pdf->Cell(60, 5, "N°", 1, 0, 'C', 1);
 $pdf->Cell(50, 5, "Vencimiento", 1, 0, 'C', 1);
 $pdf->Cell(100, 5, "Proveedor", 1, 0, 'C', 1);
-$pdf->Cell(50, 5, "Estado", 1, 0, 'C', 1);
+$pdf->Cell(100, 5, "Importe", 1, 0, 'C', 1);
 //Salto de linea 
 $pdf->Ln();
 //tabla
@@ -59,7 +59,7 @@ if ($_REQUEST['vopcion'] == '2') {
             $pdf->Cell(60, 5, $sql['id_cuenta'], 1, 0, 'C', 1);
             $pdf->Cell(50, 5, $sql['fecha_vencimiento'], 1, 0, 'C', 1);
             $pdf->Cell(100, 5, $sql['prv_razon_social'], 1, 0, 'C', 1);
-            $pdf->Cell(50, 5, $sql['cta_estado'], 1, 0, 'C', 1);
+            $pdf->Cell(100, 5, $sql['cta_importe'], 1, 0, 'C', 1);
             $pdf->Ln();
         }
     } else {

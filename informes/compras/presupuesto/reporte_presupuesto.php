@@ -24,6 +24,7 @@
                                 <div class="list-group">
                                     <a href="#" class="list-group-item active" style="background-color: #465F62">Filtros</a>
                                     <a href="#" class="list-group-item" onclick="obtener_estado()">Por Estado</a>
+                                    <a href="#" class="list-group-item" onclick="obtener_fecha()">Por Fecha</a>
                                 </div>
                             </div>
                             <div id="cargando">
