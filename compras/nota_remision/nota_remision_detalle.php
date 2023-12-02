@@ -539,7 +539,7 @@
         var dat = datos.split("_");
         $.ajax({
             type: "GET",
-            url: "/Taller/compras/nota_remision/nota_remision_anularm.php?vidnota=" + dat[0],
+            url: "/Taller/compras/nota_remision/nota_remision_anular.php?vidnota=" + dat[0],
             beforeSend: function() {
                 $('#detalles_anular').html();
             },

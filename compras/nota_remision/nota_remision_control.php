@@ -22,7 +22,7 @@ $factura = $_REQUEST['vnrofactura'];
 $sql = "SELECT sp_nremision(" . $operacion . "," .
     (!empty($codigo) ? $codigo : 0) . "," .
     (!empty($usuario) ? $usuario : 0) . ",'" .
-    (!empty($fecha) ? $fecha : 0) . "','" .
+    (!empty($fecha) ? $fecha : "01-01-2022") . "','" .
     (!empty($timbrado) ? $timbrado : "0001") . "','" .
     (!empty($conductor) ? $conductor : 'VACIO') . "','" .
     (!empty($cedula) ? $cedula : 'VACIO') . "','" .
@@ -30,8 +30,8 @@ $sql = "SELECT sp_nremision(" . $operacion . "," .
     (!empty($color) ? $color : 'VACIO') . "','" .
     (!empty($modelo) ? $modelo : 'VACIO') . "'," .
     (!empty($orden) ? $orden : 0) . ",'" .
-    (!empty($validez) ? $validez : 'VACIO') . "','" .
-    (!empty($factura) ? $factura : 0) . "') AS nota_remision;";
+    (!empty($validez) ? $validez : "01-01-2022") . "','" .
+    (!empty($factura) ? $factura : "0001") . "') AS nota_remision;";
 $resultado = consultas::get_datos($sql);
 
 if ($resultado[0]['nota_remision'] != NULL) {

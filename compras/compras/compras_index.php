@@ -80,7 +80,7 @@
                                                 <table class="table col-lg-12 col-md-12 col-xs-12">
                                                     <thead>
                                                         <tr>
-                                                            <th class="text-center">N° de Compra</th>
+                                                            <th class="text-center">N°</th>
                                                             <th class="text-center">N° de Orden</th>
                                                             <th class="text-center">N° de Remision</th>
                                                             <th class="text-center">Fecha</th>
@@ -95,13 +95,8 @@
                                                             <tr>
 
                                                                 <td class="text-center"> <?php echo $c['id_compra']; ?></td>
-                                                                <?php if ($c['nro_orden'] == 0) { ?>
-                                                                    <td class="text-center"><?php echo ' '; ?></td>
-                                                                <?php } ?>
-                                                                <?php if ($c['nro_orden'] > 0) { ?>
-                                                                    <td class="text-center"><?php echo $c['nro_orden'];; ?></td>
-                                                                <?php } ?>
-                                                                <td class="text-center"> <?php echo ' '; ?></td>
+                                                                <td class="text-center"><?php echo $c['nro_orden'];; ?></td>
+                                                                <td class="text-center"><?php echo $c['id_remision'];; ?></td>
                                                                 <td class="text-center"> <?php echo $c['fecha_compra']; ?></td>
                                                                 <td class="text-center"> <?php echo $c['prv_razon_social']; ?></td>
                                                                 <td class="text-center"> <?php echo $c['com_nro_factura']; ?></td>

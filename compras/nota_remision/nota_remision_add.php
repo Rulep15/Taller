@@ -115,7 +115,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-lg-2 col-sm-2 col-xs-4">Orden de Compra</label>
                                             <div class="col-lg-6 col-sm-6 col-xs-7">
-                                                <?php $marcas = consultas::get_datos("SELECT * FROM orden_de_compra WHERE orden_estado = 'CONFIRMADO' ORDER BY nro_orden"); ?>
+                                                <?php $marcas = consultas::get_datos("SELECT * FROM orden_de_compra WHERE orden_estado = 'CONFIRMADO' OR orden_estado = 'EN USO' ORDER BY nro_orden"); ?>
                                                 <select class="form-control" id="factura" name="vorden" required="" onchange="tiposelect();obtenercomp();" onclick="obtenercomp();">
                                                     <option value="">Seleccione una Orden</option>>
                                                     <?php
@@ -127,7 +127,7 @@
                                                         }
                                                     } else {
                                                         ?>
-                                                        <option value="">Debe seleccionar al menos una Orden</option>
+
                                                     <?php }
                                                     ?>
                                                 </select>
