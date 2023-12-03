@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../../conexion.php';
-$idpedido = $_REQUEST['videbito'];
+$idpedido = $_REQUEST['vcredito'];
 $compradetalle = consultas::get_datos("SELECT * FROM v_detalle_compras WHERE id_compra = $idpedido");
 ?>
 <div id="detalles_fact" class="box-body no-padding">

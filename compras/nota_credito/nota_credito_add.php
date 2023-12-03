@@ -54,7 +54,7 @@
                                             <label class="control-label col-lg-3 col-sm-2 col-xs-2">N° Nota Debito</label>
                                             <?php $pc = consultas::get_datos("SELECT COALESCE(MAX(id_debito),0)+1 AS ultimo FROM nota_debito") ?>
                                             <div class="col-lg-4 col-sm-4 col-xs-4">
-                                                <input class="form-control" type="text" name="videbito" readonly="" value="<?php echo $pc[0]['ultimo']; ?>">
+                                                <input class="form-control" type="text" name="vcredito" readonly="" value="<?php echo $pc[0]['ultimo']; ?>">
                                             </div>
                                         </div>
                                         <input class="form-control" type="hidden" name="vfechasis" readonly="" value="<?php echo date("Y-m-d"); ?>">
@@ -190,7 +190,7 @@
         if (parseInt($('#factura').val()) > 0) {
             $.ajax({
                 type: "GET",
-                url: "/Taller/compras/nota_credito/notacre_comp.php?videbito=" + dat[0],
+                url: "/Taller/compras/nota_credito/notacre_comp.php?vcredito=" + dat[0],
                 cache: false,
                 beforeSend: function() {},
                 success: function(msg) {

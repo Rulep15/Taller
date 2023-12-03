@@ -4,7 +4,7 @@ require '../../conexion.php';
 session_start();
 
 $operacion = $_REQUEST['operacion'];
-$codigo = $_REQUEST['videbito'];
+$codigo = $_REQUEST['vcredito'];
 $fechasistema = $_REQUEST['vfechasis'];
 $fecharecibido = $_REQUEST['vfechareci'];
 $nrofactura = $_REQUEST['vnrofactura'];
