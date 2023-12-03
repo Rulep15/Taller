@@ -73,7 +73,7 @@
                                         if (isset($_REQUEST['buscar'])) {
                                             $valor = $_REQUEST['buscar'];
                                         }
-                                        $pedidos = consultas::get_datos("SELECT  * FROM v_pedido WHERE estado <> 'ANULADO' AND (id_pedido||TRIM(UPPER(fecha))) LIKE TRIM(UPPER('%" . $valor . "%')) ORDER BY id_pedido");
+                                        $pedidos = consultas::get_datos("SELECT  * FROM v_pedido WHERE estado <> 'ANULADO' AND (id_pedido||TRIM(UPPER(fecha_pedido))) LIKE TRIM(UPPER('%" . $valor . "%')) ORDER BY id_pedido");
                                         if (!empty($pedidos)) {
                                         ?>
                                             <div class="table-responsive">

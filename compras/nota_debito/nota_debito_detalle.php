@@ -181,6 +181,7 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- DETALLE -->
                         <?php
                         $idpedido = $_REQUEST['vidnota'];
                         $detalle_debito = consultas::get_datos("SELECT * FROM v_nota_debito WHERE id_debito= $idpedido");
