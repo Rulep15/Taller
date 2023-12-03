@@ -83,7 +83,7 @@
                                             <div class="col-lg-4 col-sm-4 col-xs-4">
                                                 <?php $productos = consultas::get_datos("SELECT * FROM motivo_nota WHERE id_tipo_n = 1") ?>
                                                 <select class="form-control" name="vidmotivo" required="">
-                                                    <option value="0">Seleccione un Motivo</option>
+                                                    <option value="">Seleccione un Motivo</option>
                                                     <?php
                                                     if (!empty($productos)) {
                                                         foreach ($productos as $producto) {

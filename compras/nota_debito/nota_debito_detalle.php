@@ -209,7 +209,7 @@
                                                                 <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
                                                                     <?php $productos = consultas::get_datos("SELECT * FROM producto ") ?>
                                                                     <select class="select2" name="vproducto" required="" style="width: 300px;" id="idproducto">
-                                                                        <option value="0">Seleccione un Producto</option>
+                                                                        <option value="">Seleccione un Producto</option>
                                                                         <?php
                                                                         if (!empty($productos)) {
                                                                             foreach ($productos as $producto) {

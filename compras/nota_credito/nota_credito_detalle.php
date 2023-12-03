@@ -198,7 +198,7 @@
                                     <div class="box-body no-padding">
                                         <?php if ($pc['estado'] == 'ACTIVO') { ?>
                                             <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-                                                <form action="nota_credito_detalle_control.php" method="POST" accept-charset="UTF-8" class="form-horizontal">
+                                                <form id="miFormulario" action="nota_credito_detalle_control.php" method="POST" accept-charset="UTF-8" class="form-horizontal">
                                                     <div class="box-body" style="left: 1000px;">
                                                         <input type="hidden" name="voperacion" value="1" />
                                                         <input type="hidden" name="vidnota" value="<?php echo $_REQUEST['vidnota']; ?>" />
@@ -208,7 +208,7 @@
                                                                 <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
                                                                     <?php $productos = consultas::get_datos("SELECT * FROM producto ") ?>
                                                                     <select class="select2" name="vproducto" required="" style="width: 300px;" id="idproducto">
-                                                                        <option value="0">Seleccione un Producto</option>
+                                                                        <option value="">Seleccione un Producto</option>
                                                                         <?php
                                                                         if (!empty($productos)) {
                                                                             foreach ($productos as $producto) {
@@ -223,6 +223,7 @@
                                                                     </select>
                                                                 </div>
                                                             </div>
+
                                                             <div class="form-group" id="precio">
                                                                 <label class="control-label col-lg-6 col-sm-6 col-md-6 col-xs-6">Precio</label>
                                                                 <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
@@ -296,6 +297,9 @@
             </div>
         </div>
         <!-- MODAL DE QUITAR -->
+
+
+
     </div>
     <?php require '../../estilos/pie.ctp'; ?>
 </BODY>
@@ -341,5 +345,6 @@
         });
     }
 </SCRIPT>
+
 
 </HTML>

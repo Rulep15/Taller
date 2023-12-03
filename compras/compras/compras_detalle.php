@@ -389,6 +389,7 @@
                                 <div class="input-group">
                                     <?php $marcas = consultas::get_datos("SELECT * FROM ref_marca ORDER BY mar_cod"); ?>
                                     <select class="select2" name="vidmarca" required="" style="width: 320px;">
+                                        <option value="">Seleccione una Marca</option>
                                         <?php
                                         if (!empty($marcas)) {
                                             foreach ($marcas as $m) {
@@ -416,6 +417,7 @@
                                 <div class="input-group">
                                     <?php $tipoprod = consultas::get_datos("SELECT * FROM ref_tipo_producto ORDER BY id_tipro"); ?>
                                     <select class="select2" name="vidtipro" required="" style="width: 320px;">
+                                        <option value="">Seleccione una Tipo de Producto</option>
                                         <?php
                                         if (!empty($tipoprod)) {
                                             foreach ($tipoprod as $tp) {
@@ -439,6 +441,7 @@
                                 <div class="input-group">
                                     <?php $tipoimp = consultas::get_datos("SELECT * FROM ref_tipo_impuesto ORDER BY id_timp"); ?>
                                     <select class="select2" name="vidtimp" required="" style="width: 320px;">
+                                        <option value="">Seleccione una Tipo de Impuesto</option>
                                         <?php
                                         if (!empty($tipoimp)) {
                                             foreach ($tipoimp as $tim) {
@@ -461,6 +464,7 @@
                                 <div class="input-group">
                                     <?php $Unidad = consultas::get_datos("SELECT * FROM unidad_de_medida ORDER BY id_um"); ?>
                                     <select class="select2" name="vidum" required="" style="width: 320px;">
+                                        <option value="">Seleccione una Unidad de Medida</option>
                                         <?php
                                         if (!empty($Unidad)) {
                                             foreach ($Unidad as $um) {
