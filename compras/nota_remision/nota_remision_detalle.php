@@ -520,7 +520,7 @@
 
     function quitar(datos) {
         var dat = datos.split("_");
-        $('#si').attr('href', 'nota_remision_detalle_control.php?vidnota=' + dat[0] + '&vproducto=' + dat[1] + '&vdeposito=' + dat[2] + '&voperacion=2');
+        $('#si').attr('href', 'nota_remision_detalle_control.php?vidnota=' + dat[0] + '&vproducto=' + dat[1] + '&voperacion=2');
         $('#confirmacion').html('<span class="glyphicon glyphicon-warning-sign"></span> Desea quitar el Articulo del detalle <i><strong>' + '</strong></i>?');
     }
 
