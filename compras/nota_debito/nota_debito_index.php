@@ -73,7 +73,7 @@
                                         if (isset($_REQUEST['buscar'])) {
                                             $valor = $_REQUEST['buscar'];
                                         }
-                                        $notadebito = consultas::get_datos("SELECT * FROM v_nota_debito WHERE (id_debito||TRIM(UPPER(prv_razon_social))) LIKE TRIM(UPPER('%" . $valor . "%')) ORDER BY id_debito");
+                                        $notadebito = consultas::get_datos("SELECT * FROM v_nota_debito WHERE estado <> 'ANULADO' AND (id_debito||TRIM(UPPER(prv_razon_social))) LIKE TRIM(UPPER('%" . $valor . "%')) ORDER BY id_debito");
                                         if (!empty($notadebito)) {
                                         ?>
                                             <div class="table-responsive">

@@ -73,7 +73,7 @@
                                         if (isset($_REQUEST['buscar'])) {
                                             $valor = $_REQUEST['buscar'];
                                         }
-                                        $stock = consultas::get_datos("SELECT * FROM v_nota_de_credito WHERE (prv_cod||TRIM(UPPER(prv_razon_social))) LIKE TRIM(UPPER('%" . $valor . "%')) ORDER BY cod_notc");
+                                        $stock = consultas::get_datos("SELECT * FROM v_nota_de_credito WHERE estado <> 'ANULADO'  AND (prv_cod||TRIM(UPPER(prv_razon_social))) LIKE TRIM(UPPER('%" . $valor . "%')) ORDER BY cod_notc");
                                         if (!empty($stock)) {
                                         ?>
                                             <div class="table-responsive">
