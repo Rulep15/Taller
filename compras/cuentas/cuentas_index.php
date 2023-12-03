@@ -54,7 +54,7 @@
                                                 <div class="form-group">
                                                     <div class="col-lg-12 col-md-12 col-xs-12">
                                                         <div class="input-group custom-search-form">
-                                                            <input type="search" class="form-control" name="buscar" placeholder="Buscar por codigo..." autofocus="" />
+                                                            <input type="search" class="form-control" name="buscar" placeholder="Buscar por Proveedor..." autofocus="" />
                                                             <span class="input-group-btn">
                                                                 <button type="submit" class="btn btn-toolbar btn-flat" data-title="Buscar" data-placement="bottom" rel="tooltip">
                                                                     <span style="color: #465F62" class="fa fa-search"></span>
@@ -71,7 +71,7 @@
                                         if (isset($_REQUEST['buscar'])) {
                                             $valor = $_REQUEST['buscar'];
                                         }
-                                        $stock = consultas::get_datos("SELECT * FROM v_cuentas ORDER BY id_cuenta");
+                                        $stock = consultas::get_datos("SELECT * FROM v_cuentas WHERE cta_estado <> 'ANULADO' AND id_cuenta > 0 AND (id_cuenta||TRIM(UPPER(prv_razon_social))) LIKE TRIM(UPPER('%" . $valor . "%')) ORDER BY id_cuenta");
                                         if (!empty($stock)) {
                                         ?>
                                             <div class="table-responsive">
@@ -81,7 +81,6 @@
                                                             <th class="text-center">N° Cuenta</th>
                                                             <th class="text-center">Proveedor</th>
                                                             <th class="text-center">Importe</th>
-                                                            <th class="text-center">Estado</th>
                                                             <th class="text-center">N° Fact</th>
                                                             <th class="text-center">Vencimiento</th>
                                                         </tr>
@@ -92,7 +91,6 @@
                                                                 <td class="text-center"> <?php echo $s['id_cuenta']; ?></td>
                                                                 <td class="text-center"> <?php echo $s['prv_razon_social']; ?></td>
                                                                 <td class="text-center"> <?php echo $s['cta_importe']; ?></td>
-                                                                <td class="text-center"> <?php echo $s['cta_estado']; ?></td>
                                                                 <td class="text-center"> <?php echo $s['com_nro_factura']; ?></td>
                                                                 <td class="text-center"> <?php echo $s['fecha_vencimiento1']; ?></td>
                                                                 </td>

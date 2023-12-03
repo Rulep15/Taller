@@ -51,38 +51,38 @@
                                     <div class="row">
                                         <input type="hidden" name="operacion" value="1">
                                         <div class="form-group">
-                                            <label class="control-label col-lg-2 col-sm-2 col-xs-4">N° Nota Debito</label>
+                                            <label class="control-label col-lg-3 col-sm-2 col-xs-2">N° Nota Debito</label>
                                             <?php $pc = consultas::get_datos("SELECT COALESCE(MAX(id_debito),0)+1 AS ultimo FROM nota_debito") ?>
-                                            <div class="col-lg-6 col-sm-6 col-xs-7">
+                                            <div class="col-lg-4 col-sm-4 col-xs-4">
                                                 <input class="form-control" type="text" name="videbito" readonly="" value="<?php echo $pc[0]['ultimo']; ?>">
                                             </div>
                                         </div>
                                         <input class="form-control" type="hidden" name="vfechasis" readonly="" value="<?php echo date("Y-m-d"); ?>">
                                         <div class="form-group">
-                                            <label class="control-label col-lg-2 col-sm-2 col-xs-4">Fecha</label>
-                                            <div class="col-lg-6 col-sm-6 col-xs-7">
+                                            <label class="control-label col-lg-3 col-sm-2 col-xs-2">Fecha</label>
+                                            <div class="col-lg-4 col-sm-4 col-xs-4">
                                                 <input class="form-control" type="date" name="vfechareci" value="<?php echo date("Y-m-d"); ?>">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label  col-lg-2 col-sm-2 col-xs-4">Nro. de factura</label>
-                                            <div class="col-lg-6 col-sm-6 col-xs-7">
+                                            <label class="control-label  col-lg-3 col-sm-2 col-xs-2">Nro. de factura</label>
+                                            <div class="col-lg-4 col-sm-4 col-xs-4">
                                                 <input class="form-control" type="text" placeholder=" FORMATO: 000-000-0000000" pattern="[0-9]{3}-[0-9]{3}-[0-9]{7}" title="Debe coincidir con el formato xxx-xxx-xxxxxxx" onkeypress="return SoloNum(event)" name="vnrofactura" required="">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-lg-2 col-sm-2 col-xs-4">Personal</label>
-                                            <div class="col-lg-6 col-sm-6 col-xs-7">
+                                            <label class="control-label col-lg-3 col-sm-2 col-xs-2">Personal</label>
+                                            <div class="col-lg-4 col-sm-4 col-xs-4">
                                                 <input class="form-control" type="text" readonly="" name="vusuario" value="Lucas Vietsky" />
                                                 <input class="form-control" type="hidden" name="vusuario" value="<?php echo $_SESSION['usu_cod']; ?>" />
                                                 <input class="form-control" type="hidden" name="vusunick" readonly="" value="<?php echo $_SESSION['usu_nick']; ?>">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-lg-2 col-sm-2 col-xs-4">Motivo</label>
-                                            <div class="col-lg-5 col-sm-5 col-xs-5">
+                                            <label class="control-label col-lg-3 col-sm-2 col-xs-2">Motivo</label>
+                                            <div class="col-lg-4 col-sm-4 col-xs-4">
                                                 <?php $productos = consultas::get_datos("SELECT * FROM motivo_nota WHERE id_tipo_n = 1") ?>
-                                                <select class="form-control" name="vidmotivo" required="" style="width: 530px;">
+                                                <select class="form-control" name="vidmotivo" required="">
                                                     <option value="0">Seleccione un Motivo</option>
                                                     <?php
                                                     if (!empty($productos)) {
@@ -99,27 +99,27 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-lg-2 col-sm-2 col-xs-4">Monto</label>
-                                            <div class="col-lg-6 col-sm-6 col-xs-7">
-                                                <input class="form-control" type="number" name="vmonto">
+                                            <label class="control-label col-lg-3 col-sm-2 col-xs-2">Monto</label>
+                                            <div class="col-lg-4 col-sm-4 col-xs-4">
+                                                <input class="form-control" required="" type="number" name="vmonto" min="1">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label  col-lg-2 col-sm-2 col-xs-4">Timbrado</label>
-                                            <div class="col-lg-6 col-sm-6 col-xs-7">
+                                            <label class="control-label  col-lg-3 col-sm-2 col-xs-2">Timbrado</label>
+                                            <div class="col-lg-4 col-sm-4 col-xs-4">
                                                 <input class="form-control" type="text" maxlength="8" minlength="8" placeholder="INSERTE 8 DIGITOS" onkeypress="return SoloNum(event)" name="vtimbrado" required="">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label  col-lg-2 col-sm-2 col-xs-4">Validez timbrado</label>
-                                            <div class="col-lg-6 col-sm-6 col-xs-7">
+                                            <label class="control-label  col-lg-3 col-sm-2 col-xs-2">Validez timbrado</label>
+                                            <div class="col-lg-4 col-sm-4 col-xs-4">
                                                 <input class="form-control" type="date" onkeypress="return SoloNum(event)" name="vvalidez" value="<?php echo date("Y-m-d"); ?>" min="<?php echo date("Y-m-d"); ?>" required="">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="control-label  col-lg-3 col-sm-2 col-xs-2">Seleccione una Fact de Compra: </label>
-                                            <div class="col-lg-5 col-sm-5 col-xs-5">
+                                            <div class="col-lg-4 col-sm-4 col-xs-4">
                                                 <?php $marcas = consultas::get_datos("SELECT * FROM v_compras ORDER BY id_compra"); ?>
                                                 <select class="form-control" name="vcompra" id="factura" required="" onchange="tiposelect();obtenercomp();" onclick="obtenercomp();">
                                                     <option value="">Seleccione una Factura de Compra</option>>

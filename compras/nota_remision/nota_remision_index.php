@@ -56,7 +56,7 @@
                                                 <div class="form-group">
                                                     <div class="col-lg-12 col-md-12 col-xs-12">
                                                         <div class="input-group custom-search-form">
-                                                            <input type="search" class="form-control" name="buscar" placeholder="Buscar por numero de codigo/cedula de chofer..." autofocus="" />
+                                                            <input type="search" class="form-control" name="buscar" placeholder="Buscar por Proveedor..." autofocus="" />
                                                             <span class="input-group-btn">
                                                                 <button type="submit" class="btn btn-toolbar btn-flat" data-title="Buscar" data-placement="bottom" rel="tooltip">
                                                                     <span style="color: #465F62" class="fa fa-search"></span>
@@ -73,7 +73,7 @@
                                         if (isset($_REQUEST['buscar'])) {
                                             $valor = $_REQUEST['buscar'];
                                         }
-                                        $stock = consultas::get_datos("SELECT * FROM v_nota_remision ");
+                                        $stock = consultas::get_datos("SELECT * FROM v_nota_remision WHERE estado <> 'ANULADO' AND id_remision > 0 AND (id_remision||TRIM(UPPER(prv_razon_social))) LIKE TRIM(UPPER('%" . $valor . "%')) ORDER BY id_remision ");
                                         if (!empty($stock)) {
                                         ?>
                                             <div class="table-responsive">

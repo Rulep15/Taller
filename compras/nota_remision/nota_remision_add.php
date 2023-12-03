@@ -51,70 +51,70 @@
                                     <div class="row">
                                         <input type="hidden" name="voperacion" value="1">
                                         <div class="form-group">
-                                            <label class="control-label col-lg-2 col-sm-2 col-xs-4">N° Remision</label>
+                                            <label class="control-label col-lg-3 col-sm-2 col-xs-2">N° Remision</label>
                                             <?php $pc = consultas::get_datos("SELECT COALESCE(MAX(id_remision),0)+1 AS ultimo FROM nota_remision") ?>
-                                            <div class="col-lg-6 col-sm-6 col-xs-7">
+                                            <div class="col-lg-4 col-sm-4 col-xs-4">
                                                 <input class="form-control" type="text" name="vidremision" readonly="" value="<?php echo $pc[0]['ultimo']; ?>">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-lg-2 col-sm-2 col-xs-4">Fecha</label>
-                                            <div class="col-lg-6 col-sm-6 col-xs-7">
+                                            <label class="control-label col-lg-3 col-sm-2 col-xs-2">Fecha</label>
+                                            <div class="col-lg-4 col-sm-4 col-xs-4">
                                                 <input class="form-control" type="date" name="vfecha" readonly="" value="<?php echo date("Y-m-d"); ?>">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-lg-2 col-sm-2 col-xs-4">Nro de Timbrado</label>
-                                            <div class="col-lg-6 col-sm-6 col-xs-7">
+                                            <label class="control-label col-lg-3 col-sm-2 col-xs-2">Nro de Timbrado</label>
+                                            <div class="col-lg-4 col-sm-4 col-xs-4">
                                                 <input class="form-control" required="" type="text" name="vtimbrado" placeholder="INSERTE O DIGITE 8  DIGITOS" minlength="8" maxlength="8" value="" onkeypress="return soloNumero(event);">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-lg-2 col-sm-2 col-xs-4">Validez</label>
-                                            <div class="col-lg-6 col-sm-6 col-xs-7">
+                                            <label class="control-label col-lg-3 col-sm-2 col-xs-2">Validez</label>
+                                            <div class="col-lg-4 col-sm-4 col-xs-4">
                                                 <input class="form-control" type="date" onkeypress="return soloNum(event)" name="vvalidez" value="<?php echo date("Y-m-d"); ?>" min="<?php echo date("Y-m-d"); ?>" required="">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-lg-2 col-sm-2 col-xs-4">Nro de Fact</label>
-                                            <div class="col-lg-6 col-sm-6 col-xs-7">
+                                            <label class="control-label col-lg-3 col-sm-2 col-xs-2">Nro de Fact</label>
+                                            <div class="col-lg-4 col-sm-4 col-xs-4">
                                                 <input class="form-control" type="text" placeholder=" FORMATO: 000-000-0000000" pattern="[0-9]{3}-[0-9]{3}-[0-9]{7}" title="Debe coincidir con el formato xxx-xxx-xxxxxxx" onkeypress="return SoloNum(event)" name="vnrofactura" required="">
                                             </div>
                                         </div>
                                         <input class="form-control" type="hidden" name="vusuario" value="<?php echo $_SESSION['usu_cod']; ?>" />
                                         <div class="form-group">
-                                            <label class="control-label col-lg-2 col-sm-2 col-xs-4">Conductor</label>
-                                            <div class="col-lg-6 col-sm-6 col-xs-7">
+                                            <label class="control-label col-lg-3 col-sm-2 col-xs-2">Conductor</label>
+                                            <div class="col-lg-4 col-sm-4 col-xs-4">
                                                 <input class="form-control" required="" type="text" name="vconductor" value="">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-lg-2 col-sm-2 col-xs-4">Cedula</label>
-                                            <div class="col-lg-6 col-sm-6 col-xs-7">
+                                            <label class="control-label col-lg-3 col-sm-2 col-xs-2">Cedula</label>
+                                            <div class="col-lg-4 col-sm-4 col-xs-4">
                                                 <input class="form-control" required="" type="text" onkeypress="return SoloNum(event)" name="vcedula" value="">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-lg-2 col-sm-2 col-xs-4">Chapa</label>
-                                            <div class="col-lg-6 col-sm-6 col-xs-7">
+                                            <label class="control-label col-lg-3 col-sm-2 col-xs-2">Chapa</label>
+                                            <div class="col-lg-4 col-sm-4 col-xs-4">
                                                 <input class="form-control" required="" type="text" name="vchapa" value="">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-lg-2 col-sm-2 col-xs-4">Color</label>
-                                            <div class="col-lg-6 col-sm-6 col-xs-7">
+                                            <label class="control-label col-lg-3 col-sm-2 col-xs-2">Color</label>
+                                            <div class="col-lg-4 col-sm-4 col-xs-4">
                                                 <input class="form-control" required="" type="text" onkeypress="soloLetras(event)" name="vcolor" value="">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-lg-2 col-sm-2 col-xs-4">Modelo</label>
-                                            <div class="col-lg-6 col-sm-6 col-xs-7">
+                                            <label class="control-label col-lg-3 col-sm-2 col-xs-2">Modelo</label>
+                                            <div class="col-lg-4 col-sm-4 col-xs-4">
                                                 <input class="form-control" required="" type="text" name="vmodelo" value="">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-lg-2 col-sm-2 col-xs-4">Orden de Compra</label>
-                                            <div class="col-lg-6 col-sm-6 col-xs-7">
+                                            <label class="control-label col-lg-3 col-sm-2 col-xs-2">Orden de Compra</label>
+                                            <div class="col-lg-4 col-sm-4 col-xs-4">
                                                 <?php $marcas = consultas::get_datos("SELECT * FROM orden_de_compra WHERE orden_estado = 'CONFIRMADO' OR orden_estado = 'EN USO' ORDER BY nro_orden"); ?>
                                                 <select class="form-control" id="factura" name="vorden" required="" onchange="tiposelect();obtenercomp();" onclick="obtenercomp();">
                                                     <option value="">Seleccione una Orden</option>>

@@ -52,26 +52,26 @@
                                         <input type="hidden" name="voperacion" value="1">
                                         <input type="hidden" name="vestado" value="ACTIVO" />
                                         <div class="form-group">
-                                            <label class="control-label col-lg-2 col-sm-2 col-xs-4">Codigo de Pedido</label>
+                                            <label class="control-label col-lg-3 col-sm-2 col-xs-2">Codigo de Pedido</label>
                                             <?php $pc = consultas::get_datos("SELECT COALESCE(MAX(id_pedido),0)+1 AS ultimo FROM pedido") ?>
-                                            <div class="col-lg-6 col-sm-6 col-xs-7">
+                                            <div class="col-lg-4 col-sm-4 col-xs-4">
                                                 <input class="form-control" type="text" name="vidpedido" readonly="" value="<?php echo $pc[0]['ultimo']; ?>">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-lg-2 col-sm-2 col-xs-4">Fecha</label>
-                                            <div class="col-lg-6 col-sm-6 col-xs-7">
+                                            <label class="control-label col-lg-3 col-sm-2 col-xs-2">Fecha</label>
+                                            <div class="col-lg-4 col-sm-4 col-xs-4">
                                                 <input class="form-control" type="text" name="vfecha" readonly="" value="<?php echo date("d-m-Y"); ?>">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-lg-2 col-sm-2 col-xs-4">Personal</label>
-                                            <div class="col-lg-6 col-sm-6 col-xs-7">
+                                            <label class="control-label col-lg-3 col-sm-2 col-xs-2">Personal</label>
+                                            <div class="col-lg-4 col-sm-4 col-xs-4">
                                                 <input class="form-control" type="hidden" name="vusuario" value="<?php echo $_SESSION['usu_cod']; ?>" />
                                                 <input class="form-control" type="text" name="vusunick" readonly="" value="Lucas Vietsky">
                                             </div>
                                         </div>
-                                      
+
                                     </div>
                                 </div>
                                 <div class="box-footer" style="text-align: right;">
