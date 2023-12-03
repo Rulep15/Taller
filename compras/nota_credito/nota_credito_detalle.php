@@ -190,7 +190,7 @@
                             <?php } ?>
                             <?php if ($det['estado'] == 'ACTIVO') { ?>
                                 <!--AGREGAR DETALLE-->
-                                <div class="box box-primary" style="width: 550px; height: 300px;margin: 0 auto;">
+                                <div class="box box-primary" style="width: 550px; height: auto; margin: 0 auto;">
                                     <div class="box-header">
                                         <i class="ion ion-clipboard"></i>
                                         <h3 class="box-title">Agregar Items</h3>
