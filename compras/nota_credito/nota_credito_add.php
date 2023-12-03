@@ -46,7 +46,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <form action="nota_debito_control.php" method="POST" accept-charset="UTF-8" class="form-horizontal">
+                            <form action="nota_credito_control.php" method="POST" accept-charset="UTF-8" class="form-horizontal">
                                 <div class="box-body">
                                     <div class="row">
                                         <input type="hidden" name="operacion" value="1">

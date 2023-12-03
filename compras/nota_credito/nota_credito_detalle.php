@@ -63,7 +63,7 @@
                                     <?php } ?>
                                 <?php } ?>
                                 <div class="box-tools">
-                                    <a href="nota_debito_index.php" class="btn btn-toolbar pull-right">
+                                    <a href="nota_credito_index.php" class="btn btn-toolbar pull-right">
                                         <i style="color: #465F62" class="fa fa-arrow-left"></i>
                                     </a>
                                 </div>
@@ -198,7 +198,7 @@
                                     <div class="box-body no-padding">
                                         <?php if ($pc['estado'] == 'ACTIVO') { ?>
                                             <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-                                                <form action="nota_debito_detalle_control.php" method="POST" accept-charset="UTF-8" class="form-horizontal">
+                                                <form action="nota_credito_detalle_control.php" method="POST" accept-charset="UTF-8" class="form-horizontal">
                                                     <div class="box-body" style="left: 1000px;">
                                                         <input type="hidden" name="voperacion" value="1" />
                                                         <input type="hidden" name="vidnota" value="<?php echo $_REQUEST['vidnota']; ?>" />
@@ -311,29 +311,13 @@
         $('#confirmacion').html('<span class="glyphicon glyphicon-warning-sign"></span> Desea quitar el Articulo del detalle <i><strong>' + dat[1] + '</strong></i>?');
     }
 
-    function obtenerprecio() {
-        var dat = $('#idproducto').val().split("_");
-        if (parseInt($('#idproducto').val()) > 0) {
-            $.ajax({
-                type: "GET",
-                url: "/T.A/compras/compras/listar_precios.php?vidproducto=" + dat[0],
-                cache: false,
-                beforeSend: function() {
-                    $('#precio').html('<img src="/T.A/img/sistema/ajax-loader.gif">\n\ <strong><i>Cargando...');
-                },
-                success: function(msg) {
-                    $('#precio').html(msg);
-                    calsubtotal();
-                }
-            });
-        }
-    }
+
 
     function registrar_permisos(datos) {
         var dat = datos.split("_");
         $.ajax({
             type: "GET",
-            url: "/T.A/compras/nota_credito/nota_credito_confirmar.php?vidnota=" + dat[0],
+            url: "/Taller/compras/nota_credito/nota_credito_confirmar.php?vidnota=" + dat[0],
             beforeSend: function() {
                 $('#detalles_registrar').html();
             },
@@ -347,7 +331,7 @@
         var dat = datos.split("_");
         $.ajax({
             type: "GET",
-            url: "/T.A/compras/nota_credito/nota_credito_anularm.php?vidnota=" + dat[0],
+            url: "/Taller/compras/nota_credito/nota_credito_anularm.php?vidnota=" + dat[0],
             beforeSend: function() {
                 $('#detalles_anular').html();
             },
