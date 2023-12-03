@@ -81,7 +81,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-lg-3 col-sm-2 col-xs-2">Motivo</label>
                                             <div class="col-lg-4 col-sm-4 col-xs-4">
-                                                <?php $productos = consultas::get_datos("SELECT * FROM motivo_nota WHERE id_tipo_n = 1") ?>
+                                                <?php $productos = consultas::get_datos("SELECT * FROM motivo_nota WHERE id_tipo_n = 2") ?>
                                                 <select required="" class="form-control" name="vidmotivo">
                                                     <option value="">Seleccione un Motivo</option>
                                                     <?php
