@@ -111,7 +111,7 @@
                                                                 <td class="text-center"> <?php echo $pc['fecha_recibido']; ?></td>
                                                                 <td class="text-center"> <?php echo $pc['prv_razon_social']; ?></td>
                                                                 <td class="text-center"> <?php echo $resultadoiva; ?></td>
-                                                                <td class="text-center"> <?php echo $resultado; ?></td>
+                                                                <td class="text-center"> <?php echo $resultado + $pc['monto']; ?></td>
                                                             </tr>
                                                         <?php } ?>
                                                     </tbody>
