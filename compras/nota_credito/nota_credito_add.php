@@ -52,7 +52,7 @@
                                         <input type="hidden" name="operacion" value="1">
                                         <div class="form-group">
                                             <label class="control-label col-lg-3 col-sm-2 col-xs-2">N° Nota Debito</label>
-                                            <?php $pc = consultas::get_datos("SELECT COALESCE(MAX(id_debito),0)+1 AS ultimo FROM nota_debito") ?>
+                                            <?php $pc = consultas::get_datos("SELECT COALESCE(MAX(cod_notc),0)+1 AS ultimo FROM nota_credito") ?>
                                             <div class="col-lg-4 col-sm-4 col-xs-4">
                                                 <input class="form-control" type="text" name="vcredito" readonly="" value="<?php echo $pc[0]['ultimo']; ?>">
                                             </div>
