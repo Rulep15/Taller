@@ -71,7 +71,7 @@
                                         if (isset($_REQUEST['buscar'])) {
                                             $valor = $_REQUEST['buscar'];
                                         }
-                                        $stock = consultas::get_datos("SELECT * FROM v_cuentas WHERE cta_estado <> 'ANULADO' AND id_cuenta > 0 AND (id_cuenta||TRIM(UPPER(prv_razon_social))) LIKE TRIM(UPPER('%" . $valor . "%')) ORDER BY id_cuenta");
+                                        $stock = consultas::get_datos("SELECT * FROM v_cuentas WHERE cta_estado <> 'ANULADO' AND id_cuenta > 0 AND (id_cuenta||TRIM(UPPER(prv_razon_social))) LIKE TRIM(UPPER('%" . $valor . "%')) ORDER BY id_compra");
                                         if (!empty($stock)) {
                                         ?>
                                             <div class="table-responsive">
