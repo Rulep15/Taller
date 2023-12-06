@@ -84,10 +84,6 @@
                                                         <tr>
                                                             <th class="text-center">N°</th>
                                                             <th class="text-center">Producto</th>
-                                                            <th class="text-center">Marca</th>
-                                                            <th class="text-center">Tipo</th>
-                                                            <th class="text-center">U.Medida</th>
-                                                            <th class="text-center">Impuesto</th>
                                                             <th class="text-center">Cod.Barra</th>
                                                             <th class="text-center">Cantidad</th>
                                                         </tr>
@@ -97,10 +93,6 @@
                                                             <tr>
                                                                 <td class="text-center"> <?php echo $p['pro_cod']; ?></td>
                                                                 <td class="text-center"> <?php echo $p['pro_descri']; ?></td>
-                                                                <td class="text-center"> <?php echo $p['mar_descri']; ?></td>
-                                                                <td class="text-center"> <?php echo $p['tipro_descri']; ?></td>
-                                                                <td class="text-center"> <?php echo $p['unidadmedida']; ?></td>
-                                                                <td class="text-center"> <?php echo $p['impuesto']; ?></td>
                                                                 <td class="text-center"> <?php echo $p['codigo_barra']; ?></td>
                                                                 <td style="color: #3C8DBC;" class="text-center"> <?php echo $p['cantidad']; ?></td>
 
