@@ -7,6 +7,7 @@ $codigo = $_REQUEST['vidpresupuesto'];
 $proveedor = $_REQUEST['vidproveedor'];
 $pedido = $_REQUEST['vidpedido'];
 $usuario = $_REQUEST['vusuario'];
+$sucur = $_REQUEST['vusuario'];
 $fechasistema = $_REQUEST['vfechasistema'];
 $validez = $_REQUEST['vvalidez'];
 $fecha = $_REQUEST['vfecha'];
@@ -17,7 +18,8 @@ $sql = "SELECT sp_presupuesto(" . $operacion . "," .
     (!empty($codigo) ? $codigo : 0) . "," .
     (!empty($proveedor) ? $proveedor : 0) . "," .
     (!empty($pedido) ? $pedido : 0) . "," .
-    (!empty($usuario) ? $usuario : 0) . ",'" .
+    (!empty($usuario) ? $usuario : 0) . "," .
+    (!empty($sucur) ? $sucur : 0) . ",'" .
     (!empty($fechasistema) ? $fechasistema : "2000/01/01") . "','" .
     (!empty($validez) ? $validez : "2000/01/01") . "','" .
     (!empty($fecha) ? $fecha : "2000/01/01") . "') AS presupuesto;";
