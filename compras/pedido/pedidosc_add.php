@@ -69,6 +69,7 @@
                                             <div class="col-lg-4 col-sm-4 col-xs-4">
                                                 <input class="form-control" type="hidden" name="vusuario" value="<?php echo $_SESSION['usu_cod']; ?>" />
                                                 <input class="form-control" type="text" name="vusunick" readonly="" value="Lucas Vietsky">
+                                                <input type="hidden" name="vsucursal" value="<?php echo $_SESSION['id_sucursal']; ?>">
                                             </div>
                                         </div>
 

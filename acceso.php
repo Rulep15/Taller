@@ -21,6 +21,9 @@ if ($resultado[0]['usu_cod'] == NULL) {
     $_SESSION['car_descri'] = $resultado[0]['car_descri'];
     $_SESSION['gru_cod'] = $resultado[0]['gru_cod'];
     $_SESSION['gru_nombre'] = $resultado[0]['gru_nombre'];
+    $_SESSION['id_sucursal'] = $resultado[0]['id_sucursal'];
+    $_SESSION['suc_descri'] = $resultado[0]['suc_descri'];
+
 
     header('location:menu.php');
 }
