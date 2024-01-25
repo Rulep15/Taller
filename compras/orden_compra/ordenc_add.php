@@ -74,7 +74,7 @@
                                         <input type="hidden" name="voperacion" value="1">
                                         <input type="hidden" name="vestado" value="ACTIVO">
                                         <div class="form-group">
-                                            <label class="control-label  col-lg-3 col-sm-2 col-xs-2">Cod Orden</label>
+                                            <label class="control-label  col-lg-3 col-sm-2 col-xs-2">N° Orden</label>
                                             <?php $cp = consultas::get_datos("SELECT COALESCE(MAX(nro_orden),0)+1 AS ultimo FROM orden_de_compra;") ?>
                                             <div class="col-xs-8 col-sm-4 col-xs-4 ">
                                                 <input class="form-control" type="text" name="vidorden" readonly="" value="<?php echo $cp[0]['ultimo']; ?>" required="">
@@ -90,9 +90,9 @@
                                         <div class="form-group">
                                             <label class="control-label  col-lg-3 col-sm-2 col-xs-2">Personal</label>
                                             <div class="col-lg-4 col-sm-4 col-xs-4">
-                                                <input class="form-control" type="text" name="vusunick" readonly="" value="Lucas Vietsky">
+                                                <input class="form-control" type="text" readonly="" name="vusunick" value="<?php echo $_SESSION['usu_nick']; ?>">
                                                 <input type="hidden" name="vusuario" value="<?php echo $_SESSION['usu_cod']; ?>">
-                                                <input class="form-control" type="hidden" name="vusunick" readonly="" value="<?php echo $_SESSION['usu_nick']; ?>">
+                                                <input type="hidden" name="vsucursal" value="<?php echo $_SESSION['id_sucursal']; ?>">
                                             </div>
                                         </div>
 

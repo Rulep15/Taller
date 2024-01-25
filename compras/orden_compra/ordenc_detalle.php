@@ -110,6 +110,7 @@
                                                             <th class="text-center">N° Presupuesto</th>
                                                             <th class="text-center">Proveedor</th>
                                                             <th class="text-center">Fecha</th>
+                                                            <th class="text-center">Sucursal</th>
                                                             <th class="text-center">Total</th>
                                                         </tr>
                                                     </thead>
@@ -120,6 +121,7 @@
                                                                 <td class="text-center"> <?php echo $pc['id_presu']; ?><?php echo ' - '; ?><?php echo $pc['fecha']; ?></td>
                                                                 <td class="text-center"> <?php echo $pc['prv_razon_social']; ?></td>
                                                                 <td class="text-center"> <?php echo $pc['fecha_orden']; ?></td>
+                                                                <td class="text-center"> <?php echo $pc['suc_descri']; ?></td>
                                                                 <td class="text-center"> <?php echo $resultado; ?></td>
                                                             </tr>
                                                         <?php } ?>

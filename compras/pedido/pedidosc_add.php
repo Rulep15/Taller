@@ -52,7 +52,7 @@
                                         <input type="hidden" name="voperacion" value="1">
                                         <input type="hidden" name="vestado" value="ACTIVO" />
                                         <div class="form-group">
-                                            <label class="control-label col-lg-3 col-sm-2 col-xs-2">Codigo de Pedido</label>
+                                            <label class="control-label col-lg-3 col-sm-2 col-xs-2">N° de Pedido</label>
                                             <?php $pc = consultas::get_datos("SELECT COALESCE(MAX(id_pedido),0)+1 AS ultimo FROM pedido") ?>
                                             <div class="col-lg-4 col-sm-4 col-xs-4">
                                                 <input class="form-control" type="text" name="vidpedido" readonly="" value="<?php echo $pc[0]['ultimo']; ?>">
@@ -65,7 +65,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-lg-3 col-sm-2 col-xs-2">Personal</label>
+                                            <label class="control-label col-lg-3 col-sm-2 col-xs-2">Usuario</label>
                                             <div class="col-lg-4 col-sm-4 col-xs-4">
                                                 <input class="form-control" type="hidden" name="vusuario" value="<?php echo $_SESSION['usu_cod']; ?>" />
                                                 <input class="form-control" type="text" readonly="" name="vusunick" value="<?php echo $_SESSION['usu_nick']; ?>">
