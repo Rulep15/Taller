@@ -82,7 +82,7 @@
                                                         <tr>
                                                             <th class="text-center">N°</th>
                                                             <th class="text-center">Fecha</th>
-                                                            <th class="text-center">Personal</th>
+                                                            <th class="text-center">Usuario</th>
                                                             <th class="text-center">Acciones</th>
                                                         </tr>
                                                     </thead>
@@ -91,7 +91,7 @@
                                                             <tr>
                                                                 <td class="text-center"> <?php echo $pc['id_pedido']; ?></td>
                                                                 <td class="text-center"> <?php echo $pc['fecha_pedido1']; ?></td>
-                                                                <td class="text-center">Lucas Vietsky</td>
+                                                                <td class="text-center"> <?php echo $pc['usu_nick']; ?></td>
 
                                                                 <td class="text-center">
                                                                     <!--                                                                    ?php if ($pc['estado'] == 'ACTIVO') { ?>

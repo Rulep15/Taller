@@ -40,6 +40,15 @@
                                     }
                                     ?>
                                 </small>
+                                <small> <b> SUCURSAL: </b>
+                                    <?php
+                                    if (!empty($_SESSION['suc_descri'])) {
+                                        echo $_SESSION['suc_descri'];
+                                    } else {
+                                        echo "ERROR 69, CONTACTE AL 911";
+                                    }
+                                    ?>
+                                </small>
                             </p>
                         </li>
                         <!-- acciones dentro del menu emergente-->
