@@ -116,6 +116,7 @@
                                                             <th class="text-center">N° de Orden</th>
                                                             <th class="text-center">Proveedor</th>
                                                             <th class="text-center">Fecha</th>
+                                                            <th class="text-center">Sucursal</th>
                                                             <th class="text-center">Iva Total</th>
                                                             <th class="text-center">Total</th>
                                                         </tr>
@@ -127,6 +128,7 @@
                                                                 <td class="text-center"> <?php echo $pc['nro_orden']; ?></td>
                                                                 <td class="text-center"> <?php echo $pc['prv_razon_social']; ?></td>
                                                                 <td class="text-center"> <?php echo $pc['fecha_compra']; ?></td>
+                                                                <td class="text-center"> <?php echo $pc['suc_descri']; ?></td>
                                                                 <td class="text-center"> <?php echo $resultadoiva; ?></td>
                                                                 <td class="text-center"> <?php echo $resultado; ?></td>
                                                             </tr>
@@ -173,7 +175,7 @@
                                                             <th class="text-center">Producto</th>
                                                             <th class="text-center">Precio</th>
                                                             <th class="text-center">Cantidad</th>
-                                                            <th class="text-center">SubTotal</th>
+                                                            <th class="text-center">Deposito</th>
                                                             <th class="text-center">Iva 5%</th>
                                                             <th class="text-center">Iva 10%</th>
                                                             <?php if ($deti['com_estado'] == 'ACTIVO') { ?>
@@ -187,13 +189,19 @@
                                                                 <td class="text-center"> <?php echo $pcd['pro_descri']; ?></td>
                                                                 <td class="text-center"> <?php echo $pcd['precio']; ?></td>
                                                                 <td class="text-center"> <?php echo $pcd['cantidad']; ?></td>
-                                                                <td class="text-center"> <?php echo $pcd['precio'] * $pcd['cantidad']; ?></td>
+                                                                <td class="text-center"> <?php echo $pcd['dep_descri']; ?></td>
                                                                 <td class="text-center"> <?php echo $pcd['iva5']; ?></td>
                                                                 <td class="text-center"> <?php echo $pcd['iva10']; ?></td>
                                                                 <td class="text-center">
                                                                     <?php if ($deti['com_estado'] == 'ACTIVO') { ?>
                                                                         <a onclick="quitar(<?php echo "'" . $pcd['id_compra'] . "_" . $pcd['pro_cod'] . "'" ?>)" class="btn btn-toolbar " role="button" data-title="Eliminar Detalle" data-placement="top" rel="tooltip" data-toggle="modal" data-target="#quitar">
                                                                             <span style="color: red;" class="fa fa-trash"></span>
+                                                                        </a>
+                                                                        <a onclick="deposito(<?php echo "'" . $pcd['id_compra'] . "_" . $pcd['pro_cod'] . "'" ?>)" class="btn btn-toolbar " role="button" data-title="Seleccionar Deposito" data-placement="top" rel="tooltip" data-toggle="modal" data-target="#quitar">
+                                                                            <span style="color: brown;" class="fa fa-archive"></span>
+                                                                        </a>
+                                                                        <a onclick="cantidad(<?php echo "'" . $pcd['id_compra'] . "_" . $pcd['pro_cod'] . "'" ?>)" class="btn btn-toolbar " role="button" data-title="Agregar Cantidad" data-placement="top" rel="tooltip" data-toggle="modal" data-target="#quitar">
+                                                                            <span style="color: green;" class="fa fa-plus"></span>
                                                                         </a>
                                                                     <?php } ?>
                                                                 </td>
@@ -271,12 +279,12 @@
                                                                     <input type="number" name="vprecio" class="form-control" required="" min="1000" style="width: 300px;">
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group">
+                                                            <!-- <div class="form-group">
                                                                 <label class="control-label col-lg-6 col-sm-6 col-md-6 col-xs-6">Cantidad</label>
                                                                 <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
                                                                     <input type="number" name="vcantidad" class="form-control" required="" min="1" max="500" value="1" style="width: 300px;" id="idcantidad">
                                                                 </div>
-                                                            </div>
+                                                            </div> -->
                                                         </div>
                                                     </div>
                                                     <div class="">

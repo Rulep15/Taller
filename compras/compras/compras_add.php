@@ -93,11 +93,12 @@
                                     <div class="form-group">
                                         <input type="hidden" name="voperacion" value="1">
                                         <div class="form-group">
-                                            <label class="control-label  col-lg-3 col-sm-2 col-xs-2">Codigo de compra</label>
+                                            <label class="control-label  col-lg-3 col-sm-2 col-xs-2">N° de compra</label>
                                             <?php $compra = consultas::get_datos("SELECT COALESCE(MAX(id_compra),0)+1 AS ultimo FROM compra;") ?>
                                             <div class="col-xs-8 col-sm-4 col-xs-4 ">
                                                 <input class="form-control" type="text" name="vidcompra" readonly="" value="<?php echo $compra[0]['ultimo']; ?>" required="">
                                                 <input type="hidden" name="vusuario" value="<?php echo $_SESSION['usu_cod']; ?>">
+                                                <input type="hidden" name="vsucursal" value="<?php echo $_SESSION['id_sucursal']; ?>">
                                             </div>
                                         </div>
                                         <div class="form-group">

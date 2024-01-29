@@ -88,7 +88,7 @@
                                         </div>
                                         <input class="form-control" type="hidden" name="vcantidad" value="0">
                                         <div class="form-group">
-                                            <label class="control-label  col-lg-3 col-sm-2 col-xs-2">Personal</label>
+                                            <label class="control-label  col-lg-3 col-sm-2 col-xs-2">Usuario</label>
                                             <div class="col-lg-4 col-sm-4 col-xs-4">
                                                 <input class="form-control" type="text" readonly="" name="vusunick" value="<?php echo $_SESSION['usu_nick']; ?>">
                                                 <input type="hidden" name="vusuario" value="<?php echo $_SESSION['usu_cod']; ?>">

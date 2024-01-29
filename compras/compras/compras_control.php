@@ -6,6 +6,7 @@ session_start();
 $operacion = $_REQUEST['voperacion'];
 $codigo = $_REQUEST['vidcompra'];
 $usuario = $_REQUEST['vusuario'];
+$sucur = $_REQUEST['vsucursal'];
 $idremision = $_REQUEST['vidremision'];
 $proveedor = $_REQUEST['vproveedor'];
 $fecha = $_REQUEST['vfecha'];
@@ -25,6 +26,7 @@ $orden = $_REQUEST['vordenes'];
 $sql = "SELECT sp_compras(" . $operacion . "," .
     (!empty($codigo) ? $codigo : 0) . "," .
     (!empty($usuario) ? $usuario : 0) . "," .
+    (!empty($sucur) ? $sucur : 0) . "," .
     (!empty($idremision) ? $idremision : 0) . "," .
     (!empty($proveedor) ? $proveedor : 0) . ",'" .
     (!empty($fecha) ? $fecha : "01-01-0001") . "','" .
