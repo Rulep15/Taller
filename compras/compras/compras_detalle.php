@@ -200,8 +200,8 @@
                                                                         <a class="btn" type="button" onclick="deposito(<?php echo "'" . $pcd['id_compra'] . "_" . $pcd['pro_cod'] . "'"; ?>);" data-title="Agregar deposito de destino" rel="tooltip" data-toggle="modal" data-target="#registrar_deposito">
                                                                             <i style="color: brown;" class="fa fa-archive"></i>
                                                                         </a>
-                                                                        <a onclick="cantidad(<?php echo "'" . $pcd['id_compra'] . "_" . $pcd['pro_cod'] . "'" ?>)" class="btn btn-toolbar " role="button" data-title="Agregar Cantidad" data-placement="top" rel="tooltip" data-toggle="modal" data-target="#cantidad">
-                                                                            <span style="color: green;" class="fa fa-plus"></span>
+                                                                        <a class="btn" type="button" onclick="cantidad(<?php echo "'" . $pcd['id_compra'] . "_" . $pcd['pro_cod'] . "'"; ?>);" data-title="Agregar Cantidad" rel="tooltip" data-toggle="modal" data-target="#registrar_cantidad">
+                                                                            <i style="color: green;" class="fa fa-plus"></i>
                                                                         </a>
                                                                     <?php } ?>
                                                                 </td>
@@ -304,7 +304,14 @@
         <div id="confirmar" class="modal fade" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content" id="detalles_registrar">
-
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Descripcion</label>
+                            <div class="col-xs-10 col-md-10 col-lg-10">
+                                <input type="text" class="form-control" name="vdescripcionmarca" required="" autofocus="" id="vmardescri" onkeypress="return soloLetras(event);">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -382,42 +389,43 @@
                             <button type="reset" data-dismiss="modal" class="fa fa-remove btn btn-danger" id="cerrarm"> Cerrar</button>
                             <button type="submit" id="regis" class="fa fa-save btn btn-success pull-right"> Guardar</button>
                         </div>
-
                     </form>
                 </div>
-
             </div>
-
         </div>
         <!--MODAL DEPOSITO-->
-        <!-- MODAL DE Cantidad -->
-        <div class="modal fade" id="cantidad" role="dialog" style="z-index: 1060;">
+        <!--MODAL CANTIDAD-->
+        <div class="modal fade" id="registrar_cantidad" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title"><strong>Registrar Cantidad</strong></h4>
+                        <h4 class="modal-title"><strong>Asignar cantidad</strong></h4>
                     </div>
-                    <form action="marca_control.php" method="POST" accept-charset="UTF-8" class="form-horizontal">
-                        <input name="voperacion" value="6" type="hidden">
-                        <input name="vidpedido" value="<?php echo $_REQUEST['vidcompra']; ?>" type="hidden" id="vidpedido">
+                    <form action="compras_detalle_control.php" method="POST" accept-charset="UTF-8" class="form-horizontal">
+                        <input type="hidden" name="voperacion" value="6">
+                        <input type="hidden" name="vidcompra" value="<?php echo $_REQUEST['vidcompra']; ?>" id="vidcompra">
                         <div class="box-body">
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">Cantidad</label>
+                                <label for="" class="col-sm-2">Cantidad</label>
                                 <div class="col-xs-10 col-md-10 col-lg-10">
-                                    <input type="number" class="form-control" min="1" name="vcantidad" required="" autofocus="" id="vmardescri" onkeypress="return soloLetras(event);">
+                                    <input type="number" name="vcantidad" onkeypress="return soloNUM(event)" id="vcanti" class="form-control" required="" onchange="calsubtotal();" onkeydown="calsubtotal();" min="1" value="1" max="1000" style="width: 300px;">
+                                    <input type="hidden" name="vproducto" id="productos">
+                                    <input type="hidden" name="vidcompra" value="<?php echo $_REQUEST['vidcompra']; ?>">
                                 </div>
                             </div>
                         </div>
                         <div class="box-footer">
-                            <button type="reset" data-dismiss="modal" class="fa fa-remove btn btn-danger" id="cerrar_marca"> Cerrar</button>
-
-                            <button type="submit" class="fa fa-save btn btn-success pull-right"> Guardar</button>
+                            <button type="reset" data-dismiss="modal" class="btn btn-danger fa fa-remove" id="cerrarcanti"> Cerrar</button>
+                            <button type="submit" class="btn btn-success pull-right fa fa-save"> Guardar</button>
                         </div>
+
                     </form>
                 </div>
+
             </div>
+
         </div>
-        <!-- MODAL DE Cantidad -->
+        <!--MODAL CANTIDAD-->
         <!--MODAL DE MARCAS-->
         <div class="modal fade" id="registrar_marca" role="dialog" style="z-index: 1060;">
             <div class="modal-dialog">
@@ -604,21 +612,10 @@
         $('#confirmacion').html('<span class="glyphicon glyphicon-warning-sign"></span> Desea quitar el Articulo del detalle <i><strong>' + '</strong></i>?');
     }
 
-    function cantidad(datos) {
-        var dat = datos.split("_");
-        $('#sicanti').attr('href', 'compras_detalle_control.php?vidcompra=' + dat[0] + '&vproducto=' + dat[1] + '&vdeposito=' + dat[2] + '&voperacion=6');
-        $('#confirmacion').html('<span class="glyphicon glyphicon-warning-sign"></span> Desea Asignar la Cantidad al Articulo <i><strong>' + '</strong></i>?');
-    }
-
-
     function deposito(datos) {
         var dat = datos.split("_");
         document.getElementById("producto").value = dat[1];
     }
-
-
-
-
 
     function registrar_permisos(datos) {
         var dat = datos.split("_");
@@ -695,6 +692,12 @@
         $('#precioc').val("");
         $('#preciov').val("");
     });
+</script>
+<script>
+    function cantidad(datos) {
+        var dat = datos.split("_");
+        document.getElementById("productos").value = dat[1];
+    }
 </script>
 
 </HTML>
