@@ -78,7 +78,8 @@
                                                         <tr>
                                                             <th class="text-center">N°</th>
                                                             <th class="text-center">Fecha</th>
-                                                            <th class="text-center">Personal</th>
+                                                            <th class="text-center">Usuario</th>
+                                                            <th class="text-center">Sucursal</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -86,7 +87,8 @@
                                                             <tr>
                                                                 <td class="text-center"> <?php echo $pc['id_ajuste']; ?></td>
                                                                 <td class="text-center"> <?php echo $pc['fecha_ajus1']; ?></td>
-                                                                <td class="text-center">Lucas Vietsky</td>
+                                                                <td class="text-center"> <?php echo $pc['usu_nick']; ?></td>
+                                                                <td class="text-center"> <?php echo $pc['suc_descri']; ?></td>
                                                             </tr>
                                                         <?php } ?>
                                                     </tbody>
@@ -118,6 +120,7 @@
                                                         <th class="text-center">Producto</th>
                                                         <th class="text-center">Cantidad</th>
                                                         <th class="text-center">Motivo</th>
+                                                        <th class="text-center">Deposito</th>
                                                         <?php if ($pc['estado'] == 'ACTIVO') { ?>
                                                             <th class="text-center">Acciones</th>
                                                         <?php } ?>
@@ -129,6 +132,7 @@
                                                             <td class="text-center"> <?php echo $pcd['pro_descri']; ?></td>
                                                             <td class="text-center"> <?php echo $pcd['cantidad']; ?></td>
                                                             <td class="text-center"> <?php echo $pcd['maj_descri']; ?></td>
+                                                            <td class="text-center"> <?php echo $pcd['dep_descri']; ?></td>
                                                             <td class="text-center">
                                                                 <?php if ($pc['estado'] == 'ACTIVO') { ?>
                                                                     <a onclick="quitar(<?php echo "'" . $pcd['id_ajuste'] . "_" . $pcd['pro_cod'] . "'"; ?>);" class="btn btn-toolbar" role="button" data-title="Quitar" rel="tooltip" data-placement="top" data-toggle="modal" data-target="#quitar">
@@ -201,6 +205,31 @@
                                                                             foreach ($productos as $producto) {
                                                                         ?>
                                                                                 <option value="<?php echo $producto['id_majuste']; ?>"><?php echo $producto['maj_descri']; ?></option>
+                                                                            <?php
+                                                                            }
+                                                                        } else {
+                                                                            ?>
+                                                                            <option value="">Debe insertar registros..
+
+                                                                            </option>
+                                                                        <?php } ?>
+                                                                    </select>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label col-lg-6 col-sm-6 col-md-6 col-xs-6">Desposito</label>
+                                                            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                                                                <?php $productos = consultas::get_datos("SELECT * FROM ref_deposito") ?>
+                                                                <div class="input-group">
+                                                                    <select class="select2 form-control" name="vdeposito" required="" style="width: 300px;">
+                                                                        <option value="">Seleccione un Deposito</option>
+                                                                        <?php
+                                                                        if (!empty($productos)) {
+                                                                            foreach ($productos as $producto) {
+                                                                        ?>
+                                                                                <option value="<?php echo $producto['id_depo']; ?>"><?php echo $producto['dep_descri']; ?></option>
                                                                             <?php
                                                                             }
                                                                         } else {
@@ -292,7 +321,7 @@
 
     function quitar(datos) {
         var dat = datos.split("_");
-        $('#si').attr('href', 'ajuste_detalle_control.php?vidajuste=' + dat[0] + '&vproducto=' + dat[1] + '&vdeposito=' + dat[2] + '&voperacion=2');
+        $('#si').attr('href', 'ajuste_detalle_control.php?vidajuste=' + dat[0] + '&vproducto=' + dat[1] + '&voperacion=2');
         $('#confirmacion').html('<span class="glyphicon glyphicon-warning-sign"></span> Desea quitar el ajuste del detalle <i><strong>' + dat[1] + '</strong></i>?');
     }
 
