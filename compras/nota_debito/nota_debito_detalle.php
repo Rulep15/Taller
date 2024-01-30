@@ -97,6 +97,8 @@
                                                             <th class="text-center">N° Fact</th>
                                                             <th class="text-center">Fecha</th>
                                                             <th class="text-center">Proveedor</th>
+                                                            <th class="text-center">Motivo</th>
+                                                            <th class="text-center">Sucursal</th>
                                                             <th class="text-center">Iva Total</th>
                                                             <th class="text-center">Total</th>
 
@@ -110,6 +112,8 @@
                                                                 <td class="text-center"> <?php echo $pc['nro_fact']; ?></td>
                                                                 <td class="text-center"> <?php echo $pc['fecha_recibido']; ?></td>
                                                                 <td class="text-center"> <?php echo $pc['prv_razon_social']; ?></td>
+                                                                <td class="text-center"> <?php echo $pc['descripcion']; ?></td>
+                                                                <td class="text-center"> <?php echo $pc['suc_descri']; ?></td>
                                                                 <td class="text-center"> <?php echo $resultadoiva; ?></td>
                                                                 <td class="text-center"> <?php echo $resultado + $pc['monto']; ?></td>
                                                             </tr>
@@ -207,8 +211,7 @@
                                                             <div class="form-group">
                                                                 <label class="control-label col-lg-6 col-sm-6 col-md-6 col-xs-6">Producto</label>
                                                                 <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
-                                                                    <?php $productos = consultas::get_datos("SELECT * FROM producto ") ?>
-                                                                    <select class="select2" name="vproducto" required="" style="width: 300px;" id="idproducto">
+                                                                    <?php $productos = consultas::get_datos("SELECT * FROM v_detalle_compras where id_compra = (SELECT id_compra from nota_debito where id_debito = " . $_REQUEST['vidnota'] . " )") ?> <select class="select2" name="vproducto" required="" style="width: 300px;" id="idproducto">
                                                                         <option value="">Seleccione un Producto</option>
                                                                         <?php
                                                                         if (!empty($productos)) {

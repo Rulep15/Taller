@@ -9,6 +9,7 @@ $fechasistema = $_REQUEST['vfechasis'];
 $fecharecibido = $_REQUEST['vfechareci'];
 $nrofactura = $_REQUEST['vnrofactura'];
 $motivo = $_REQUEST['vidmotivo'];
+$suc = $_REQUEST['vsucursal'];
 $monto = $_REQUEST['vmonto'];
 $timbrado = $_REQUEST['vtimbrado'];
 $validez = $_REQUEST['vvalidez'];
@@ -23,6 +24,7 @@ $sql = "SELECT sp_nota_debito(" . $operacion . "," .
     (!empty($fecharecibido) ? $fecharecibido : "01-01-0001") . "','" .
     (!empty($nrofactura) ? $nrofactura : 0) . "'," .
     (!empty($motivo) ? $motivo : 0) . "," .
+    (!empty($suc) ? $suc : 0) . "," .
     (!empty($timbrado) ? $timbrado : 0) . "," .
     (!empty($monto) ? $monto : 0) . ",'" .
     (!empty($validez) ? $validez : "01-01-0001") . "'," .

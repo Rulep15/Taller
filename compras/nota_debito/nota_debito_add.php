@@ -55,6 +55,7 @@
                                             <?php $pc = consultas::get_datos("SELECT COALESCE(MAX(id_debito),0)+1 AS ultimo FROM nota_debito") ?>
                                             <div class="col-lg-4 col-sm-4 col-xs-4">
                                                 <input class="form-control" type="text" name="videbito" readonly="" value="<?php echo $pc[0]['ultimo']; ?>">
+                                                <input type="hidden" name="vsucursal" value="<?php echo $_SESSION['id_sucursal']; ?>">
                                             </div>
                                         </div>
                                         <input class="form-control" type="hidden" name="vfechasis" readonly="" value="<?php echo date("Y-m-d"); ?>">
