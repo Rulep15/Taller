@@ -82,6 +82,7 @@
                                                         <tr>
                                                             <th class="text-center">N° Ajuste</th>
                                                             <th class="text-center">Fecha</th>
+                                                            <th class="text-center">Usuario</th>
                                                             <th class="text-center">Acciones</th>
                                                         </tr>
                                                     </thead>
@@ -90,6 +91,7 @@
                                                             <tr>
                                                                 <td class="text-center"> <?php echo $s['id_ajuste']; ?></td>
                                                                 <td class="text-center"> <?php echo $s['fecha_ajus1']; ?></td>
+                                                                <td class="text-center"> <?php echo $s['usu_nick']; ?></td>
                                                                 <td class="text-center">
                                                                     <?php if ($s['estado'] == 'ACTIVO' || $s['estado'] == 'ANULADO' || $s['estado'] == 'CONFIRMADO') { ?>
                                                                         <a href="ajuste_detalle.php?vidajuste=<?php echo $s['id_ajuste']; ?>" class="btn btn-toolbar" role="button" data-title="Detalle" rel="tooltip" data-placement="top">
