@@ -111,7 +111,7 @@
                                                                 <td class="text-center"> <?php echo $pc['fecha_recibido']; ?></td>
                                                                 <td class="text-center"> <?php echo $pc['prv_razon_social']; ?></td>
                                                                 <td class="text-center"> <?php echo $resultadoiva; ?></td>
-                                                                <td class="text-center"> <?php echo $resultado + $pc['monto']; ?></td>
+                                                                <td class="text-center"> <?php echo $resultado ?></td>
                                                             </tr>
                                                         <?php } ?>
                                                     </tbody>
@@ -206,9 +206,9 @@
                                                             <div class="form-group">
                                                                 <label class="control-label col-lg-6 col-sm-6 col-md-6 col-xs-6">Producto</label>
                                                                 <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
-                                                                    <?php $productos = consultas::get_datos("SELECT * FROM producto ") ?>
-                                                                    <select class="select2" name="vproducto" required="" style="width: 300px;" id="idproducto">
-                                                                        <option value="">Seleccione un Producto</option>
+                                                                    <?php $productos = consultas::get_datos("SELECT * FROM v_detalle_compras where id_compra = (SELECT id_compra from nota_credito where cod_notc = " . $_REQUEST['vidnota'] . " )") ?>
+                                                                    <select class="select2" id="idproducto" onchange="obtenerprecio();obtenerdeposito()" onkeyup="obtenerprecio();obtenerdeposito()" onclick="obtenerprecio();obtenerdeposito()" name="vproducto" required="" style="width: 300px;height: auto;">
+                                                                        <option value="">Seleccionar al menos un producto</option>
                                                                         <?php
                                                                         if (!empty($productos)) {
                                                                             foreach ($productos as $producto) {
@@ -223,7 +223,12 @@
                                                                     </select>
                                                                 </div>
                                                             </div>
-
+                                                            <div class="form-group" id="deposito">
+                                                                <label class="control-label col-lg-6 col-sm-6 col-md-6 col-xs-6">Deposito</label>
+                                                                <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+                                                                    <input type="text" name="vdeposito" class="form-control" readonly="" onkeypress="return soloNUM(event)" style="width: 300px;">
+                                                                </div>
+                                                            </div>
                                                             <div class="form-group" id="precio">
                                                                 <label class="control-label col-lg-6 col-sm-6 col-md-6 col-xs-6">Precio</label>
                                                                 <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
@@ -308,6 +313,68 @@
     $("#mensaje").delay(1500).slideUp(200, function() {
         $(this).alert('close');
     })
+
+    function editar(datos) {
+        var dat = datos.split("_"); //ayuda a quitar el guion
+        $('#codigo').val(dat[0]);
+        $('#producto').val(dat[1]);
+        $('#deposito').val(dat[2]);
+        $('#cantidad').val(dat[3]);
+        $('#pre').val(dat[4]);
+    }
+
+    function cantidad(datos) {
+        var dat = datos.split("_"); //ayuda a quitar el guion
+        $('#idcom').val(dat[0]);
+        $('#product').val(dat[1]);
+        $('#deposit').val(dat[2]);
+        $('#cant').val(dat[3]);
+        $('#preci').val(dat[4]);
+    }
+
+    function calsubtotal() {
+        if (parseInt($('#idprecio').val()) > 0) {
+            var precio = parseInt($('#idprecio').val());
+            var cant = parseInt($('#idcantidad').val());
+            $('#idsubtotal').val((precio) * cant);
+        }
+    }
+
+    function obtenerprecio() {
+        var dat = $('#idproducto').val().split("_");
+        if (parseInt($('#idproducto').val()) > 0) {
+            $.ajax({
+                type: "GET",
+                url: "/Taller/compras/nota_credito/listar_precios.php?vidproducto=" + dat[0],
+                cache: false,
+                beforeSend: function() {
+                    $('#precio').html('<img src="/Taller/img/sistema/ajax-loader.gif">\n\<strong><i>Cargando...</i></strong></img>');
+                },
+                success: function(msg) {
+                    $('#precio').html(msg);
+                    calsubtotal();
+                }
+            });
+        }
+    }
+
+    function obtenerdeposito() {
+        var dat = $('#idproducto').val().split("_");
+        if (parseInt($('#idproducto').val()) > 0) {
+            $.ajax({
+                type: "GET",
+                url: "/Taller/compras/nota_credito/listar_deposito.php?vidproducto=" + dat[0],
+                cache: false,
+                beforeSend: function() {
+                    $('#deposito').html('<img src="/Taller/img/sistema/ajax-loader.gif">\n\<strong><i>Cargando...</i></strong></img>');
+                },
+                success: function(msg) {
+                    $('#deposito').html(msg);
+                }
+            });
+        }
+    }
+
 
     function quitar(datos) {
         var dat = datos.split("_");

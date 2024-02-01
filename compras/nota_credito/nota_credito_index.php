@@ -82,7 +82,6 @@
                                                         <tr>
                                                             <th class="text-center">N°</th>
                                                             <th class="text-center">N° de Compra</th>
-                                                            <th class="text-center">Monto</th>
                                                             <th class="text-center">Fecha</th>
                                                             <th class="text-center">Proveedor</th>
                                                             <th class="text-center">N° de Fact</th>
@@ -94,7 +93,6 @@
                                                             <tr>
                                                                 <td class="text-center"> <?php echo $s['cod_notc']; ?></td>
                                                                 <td class="text-center"> <?php echo $s['id_compra']; ?></td>
-                                                                <td class="text-center"> <?php echo $s['monto']; ?></td>
                                                                 <td class="text-center"> <?php echo $s['fecha_sistema1']; ?></td>
                                                                 <td class="text-center"> <?php echo $s['prv_razon_social']; ?></td>
                                                                 <td class="text-center"> <?php echo $s['nro_fact']; ?></td>
