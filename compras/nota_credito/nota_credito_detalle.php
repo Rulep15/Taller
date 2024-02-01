@@ -97,6 +97,7 @@
                                                             <th class="text-center">N° Fact</th>
                                                             <th class="text-center">Fecha</th>
                                                             <th class="text-center">Proveedor</th>
+                                                            <th class="text-center">Sucursal</th>
                                                             <th class="text-center">Iva Total</th>
                                                             <th class="text-center">Total</th>
 
@@ -110,6 +111,7 @@
                                                                 <td class="text-center"> <?php echo $pc['nro_fact']; ?></td>
                                                                 <td class="text-center"> <?php echo $pc['fecha_recibido']; ?></td>
                                                                 <td class="text-center"> <?php echo $pc['prv_razon_social']; ?></td>
+                                                                <td class="text-center"> <?php echo $pc['suc_descri']; ?></td>
                                                                 <td class="text-center"> <?php echo $resultadoiva; ?></td>
                                                                 <td class="text-center"> <?php echo $resultado ?></td>
                                                             </tr>
@@ -232,7 +234,7 @@
                                                             <div class="form-group" id="precio">
                                                                 <label class="control-label col-lg-6 col-sm-6 col-md-6 col-xs-6">Precio</label>
                                                                 <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
-                                                                    <input type="number" name="vprecio" class="form-control" min="1" max="10000000" required="" style="width: 300px;">
+                                                                    <input type="number" readonly name="vprecio" class="form-control" min="1" max="10000000" required="" style="width: 300px;">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
@@ -378,7 +380,7 @@
 
     function quitar(datos) {
         var dat = datos.split("_");
-        $('#si').attr('href', 'nota_credito_detalle_control.php?vidnota=' + dat[0] + '&vproducto=' + dat[1] + '&vdeposito=' + dat[2] + '&voperacion=2');
+        $('#si').attr('href', 'nota_credito_detalle_control.php?vidnota=' + dat[0] + '&vproducto=' + dat[1] + '&voperacion=2');
         $('#confirmacion').html('<span class="glyphicon glyphicon-warning-sign"></span> Desea quitar el Articulo del detalle <i><strong>' + dat[1] + '</strong></i>?');
     }
 
