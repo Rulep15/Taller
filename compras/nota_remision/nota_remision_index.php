@@ -43,7 +43,10 @@
                                 <h3 class="box-title">Nota de Remision</h3>
                                 <div class="box-tools">
                                     <a href="nota_remision_add.php" class="btn btn-toolbar pull-right">
-                                        <i style="color: #465F62" class="fa fa-plus"></i>
+                                        <i style="color: blue" class="fa fa-shopping-cart"></i>
+                                    </a>
+                                    <a href="nota_remisiontranslado_add.php" class="btn btn-toolbar pull-right">
+                                        <i style="color: brown" class="fa fa-car"></i>
                                     </a>
                                 </div>
                             </div>

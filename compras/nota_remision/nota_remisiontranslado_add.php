@@ -83,33 +83,45 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="control-label col-lg-3 col-sm-2 col-xs-2">Conductor</label>
+                                                <label class="control-label  col-lg-3 col-sm-2 col-xs-2">Sucursal</label>
                                                 <div class="col-lg-4 col-sm-4 col-xs-4">
-                                                    <input class="form-control" type="text" required name="vconductor">
+                                                    <?php $marcas = consultas::get_datos("SELECT * FROM proveedor ORDER BY prv_cod"); ?>
+                                                    <select required class="form-control" name="vsucursaldest">
+                                                        <option value="">Seleccione una Sucursal</option>>
+                                                        <?php
+                                                        if (!empty($marcas)) {
+                                                            foreach ($marcas as $m) {
+                                                        ?>
+                                                                <option value="<?php echo $m['prv_cod']; ?>"><?php echo $m['prv_razon_social']; ?></option>
+                                                            <?php
+                                                            }
+                                                        } else {
+                                                            ?>
+                                                            <option value="">Debe seleccionar al menos una marca</option>
+                                                        <?php }
+                                                        ?>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="control-label col-lg-3 col-sm-2 col-xs-2">Cedula</label>
+                                                <label class="control-label  col-lg-3 col-sm-2 col-xs-2">Empleado</label>
                                                 <div class="col-lg-4 col-sm-4 col-xs-4">
-                                                    <input class="form-control" type="text" required="" name="vcedula">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-lg-3 col-sm-2 col-xs-2">Chapa</label>
-                                                <div class="col-lg-4 col-sm-4 col-xs-4">
-                                                    <input class="form-control" type="text" required name="vchapa">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-lg-3 col-sm-2 col-xs-2">Color</label>
-                                                <div class="col-lg-4 col-sm-4 col-xs-4">
-                                                    <input class="form-control" type="text" required name="vcolor">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-lg-3 col-sm-2 col-xs-2">Modelo</label>
-                                                <div class="col-lg-4 col-sm-4 col-xs-4">
-                                                    <input class="form-control" type="text" required name="vmodelo">
+                                                    <?php $marcas = consultas::get_datos("SELECT * FROM proveedor ORDER BY prv_cod"); ?>
+                                                    <select required class="form-control" name="vempleado">
+                                                        <option value="">Seleccione un Empleado</option>>
+                                                        <?php
+                                                        if (!empty($marcas)) {
+                                                            foreach ($marcas as $m) {
+                                                        ?>
+                                                                <option value="<?php echo $m['prv_cod']; ?>"><?php echo $m['prv_razon_social']; ?></option>
+                                                            <?php
+                                                            }
+                                                        } else {
+                                                            ?>
+                                                            <option value="">Debe seleccionar al menos una marca</option>
+                                                        <?php }
+                                                        ?>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="form-group">
