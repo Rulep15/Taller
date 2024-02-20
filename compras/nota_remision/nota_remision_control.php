@@ -7,6 +7,7 @@ $operacion = $_REQUEST['voperacion'];
 $codigo = $_REQUEST['vidremision'];
 $timbrado = $_REQUEST['vtimbrado'];
 $usuario = $_REQUEST['vusuario'];
+$sucursal = $_REQUEST['vsucursal'];
 $conductor = $_REQUEST['vconductor'];
 $fecha = $_REQUEST['vfecha'];
 $cedula = $_REQUEST['vcedula'];
@@ -21,7 +22,8 @@ $factura = $_REQUEST['vnrofactura'];
 
 $sql = "SELECT sp_nremision(" . $operacion . "," .
     (!empty($codigo) ? $codigo : 0) . "," .
-    (!empty($usuario) ? $usuario : 0) . ",'" .
+    (!empty($usuario) ? $usuario : 0) . "," .
+    (!empty($sucursal) ? $sucursal : 0) . ",'" .
     (!empty($fecha) ? $fecha : "01-01-2022") . "','" .
     (!empty($timbrado) ? $timbrado : "0001") . "','" .
     (!empty($conductor) ? $conductor : 'VACIO') . "','" .
