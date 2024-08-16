@@ -28,7 +28,7 @@ require './estilos/css_lte.ctp';
                     <section class="content">
 
                         <h3 style="color: whitesmoke; font-size: 30px; font-family: Impact; font-style: italic;">
-                            Bienvenido al Sistema <?php echo '- ', $_SESSION['nombres']; ?>
+                            Bienvenido al Sistemas <?php echo '- ', $_SESSION['nombres']; ?>
                         </h3>
                         <br><br>
                         <br>
