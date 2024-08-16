@@ -28,7 +28,7 @@ if ($_SESSION) {
             -mos-box-shadow: 0px 0px 10px 0px rgb(48, 50, 50, 0.48);
             box-shadow: 0px 0px 10px 0px rgb(48, 50, 50, 0.48);
             border-radius: 6%;
-            border-color: #FFDE59;
+            border-color: #FFDE59s;
             background-color: #243037;
         }
 
